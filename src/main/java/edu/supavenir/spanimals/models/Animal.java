@@ -205,6 +205,16 @@ public class Animal implements Serializable {
     public boolean getSos() {
         return sos;
     }
+    
+    /**
+     * Access method for all sos.
+     *
+     * @return true if and only if sos is currently true
+     */
+    //public boolean getAllSos() {
+        
+    //	return sos;
+    //}
 
     /**
      * Setter method for sos.
@@ -410,5 +420,4 @@ public class Animal implements Serializable {
         ret.put("id", Integer.valueOf(getId()));
         return ret;
     }
-
 }

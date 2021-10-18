@@ -1,0 +1,40 @@
+{{> inc/header}}
+
+
+<h1>Animaux</h1>
+<form method="post" action="">
+<select class="ui dropdown">
+{{#especes}}
+  <option value="">Espece</option>
+  <option value="1">{{libelle}}</option>
+ {{/especes}}
+</select>
+
+<div class="ui input">
+<input type="text" placeholder="race" name="race">
+</div>
+
+<select class="ui dropdown">
+  <option value="">Refuge</option>
+  <option value="1">Caen</option>
+  <option value="0">Marseille</option>
+</select>
+
+<select class="ui dropdown">
+  <option value="">Sexe</option>
+  <option value="1">Male</option>
+  <option value="0">Femelle</option>
+</select>
+
+<div class="ui input">
+<input type="text" placeholder="nom" name="race">
+</div>
+
+<div class="ui input">
+<input type="text" placeholder="nom" name="race">
+</div>
+
+<button>Rechercher</button>
+</form>
+
+{{> inc/footer}}

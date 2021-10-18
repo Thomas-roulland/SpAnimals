@@ -2,22 +2,23 @@
 
 
 <h1>Animaux</h1>
-<form method="post" action="">
-<select class="ui dropdown">
+<form method="post" action="search">
+<select class="ui dropdown" name="espece">
+  <option value="">espece</option>
 {{#especes}}
-  <option value="">Espece</option>
   <option value="1">{{libelle}}</option>
- {{/especes}}
+{{/especes}}
 </select>
 
 <div class="ui input">
 <input type="text" placeholder="race" name="race">
 </div>
 
-<select class="ui dropdown">
+<select class="ui dropdown" name="refuge">
   <option value="">Refuge</option>
-  <option value="1">Caen</option>
-  <option value="0">Marseille</option>
+{{#refuges}}
+  <option value="1">{{nom}}</option>
+{{/refuges}}
 </select>
 
 <select class="ui dropdown">
@@ -27,11 +28,11 @@
 </select>
 
 <div class="ui input">
-<input type="text" placeholder="nom" name="race">
+<input type="text" placeholder="Age" name="age">
 </div>
 
 <div class="ui input">
-<input type="text" placeholder="nom" name="race">
+<input type="text" placeholder="Nom" name="nom">
 </div>
 
 <button>Rechercher</button>

@@ -16,7 +16,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Version;
 
-@Entity(name="ESPECE")
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+@Entity(name = "ESPECE")
 public class Espece implements Serializable {
 
     /** Primary key. */
@@ -26,7 +28,7 @@ public class Espece implements Serializable {
      * The optimistic lock. Available via standard bean get/set operations.
      */
     @Version
-    @Column(name="LOCK_FLAG")
+    @Column(name = "LOCK_FLAG")
     private Integer lockFlag;
 
     /**
@@ -35,7 +37,7 @@ public class Espece implements Serializable {
      * @return the current value of the lockFlag property
      */
     public Integer getLockFlag() {
-        return lockFlag;
+	return lockFlag;
     }
 
     /**
@@ -44,27 +46,30 @@ public class Espece implements Serializable {
      * @param aLockFlag the new value of the lockFlag property
      */
     public void setLockFlag(Integer aLockFlag) {
-        lockFlag = aLockFlag;
+	lockFlag = aLockFlag;
     }
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name="ID", unique=true, nullable=false, precision=10)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID", unique = true, nullable = false, precision = 10)
     private int id;
-    @Column(name="LIBELLE", nullable=false, length=50)
+    @Column(name = "LIBELLE", nullable = false, length = 50)
     private String libelle;
-    @Column(name="FRAIS", precision=19, scale=4)
+    @Column(name = "FRAIS", precision = 19, scale = 4)
     private BigDecimal frais;
-    @OneToMany(mappedBy="espece")
+    @OneToMany(mappedBy = "espece")
+    @JsonIgnore
     private Set<Race> race;
-    @OneToMany(mappedBy="espece")
+    @OneToMany(mappedBy = "espece")
+    @JsonIgnore
     private Set<Animal> animal;
-    @OneToMany(mappedBy="espece")
+    @OneToMany(mappedBy = "espece")
+    @JsonIgnore
     private Set<Caracteristiqueespece> caracteristiqueespece;
 
     /** Default constructor. */
     public Espece() {
-        super();
+	super();
     }
 
     /**
@@ -73,7 +78,7 @@ public class Espece implements Serializable {
      * @return the current value of id
      */
     public int getId() {
-        return id;
+	return id;
     }
 
     /**
@@ -82,7 +87,7 @@ public class Espece implements Serializable {
      * @param aId the new value for id
      */
     public void setId(int aId) {
-        id = aId;
+	id = aId;
     }
 
     /**
@@ -91,7 +96,7 @@ public class Espece implements Serializable {
      * @return the current value of libelle
      */
     public String getLibelle() {
-        return libelle;
+	return libelle;
     }
 
     /**
@@ -100,7 +105,7 @@ public class Espece implements Serializable {
      * @param aLibelle the new value for libelle
      */
     public void setLibelle(String aLibelle) {
-        libelle = aLibelle;
+	libelle = aLibelle;
     }
 
     /**
@@ -109,7 +114,7 @@ public class Espece implements Serializable {
      * @return the current value of frais
      */
     public BigDecimal getFrais() {
-        return frais;
+	return frais;
     }
 
     /**
@@ -118,7 +123,7 @@ public class Espece implements Serializable {
      * @param aFrais the new value for frais
      */
     public void setFrais(BigDecimal aFrais) {
-        frais = aFrais;
+	frais = aFrais;
     }
 
     /**
@@ -127,7 +132,7 @@ public class Espece implements Serializable {
      * @return the current value of race
      */
     public Set<Race> getRace() {
-        return race;
+	return race;
     }
 
     /**
@@ -136,7 +141,7 @@ public class Espece implements Serializable {
      * @param aRace the new value for race
      */
     public void setRace(Set<Race> aRace) {
-        race = aRace;
+	race = aRace;
     }
 
     /**
@@ -145,7 +150,7 @@ public class Espece implements Serializable {
      * @return the current value of animal
      */
     public Set<Animal> getAnimal() {
-        return animal;
+	return animal;
     }
 
     /**
@@ -154,7 +159,7 @@ public class Espece implements Serializable {
      * @param aAnimal the new value for animal
      */
     public void setAnimal(Set<Animal> aAnimal) {
-        animal = aAnimal;
+	animal = aAnimal;
     }
 
     /**
@@ -163,7 +168,7 @@ public class Espece implements Serializable {
      * @return the current value of caracteristiqueespece
      */
     public Set<Caracteristiqueespece> getCaracteristiqueespece() {
-        return caracteristiqueespece;
+	return caracteristiqueespece;
     }
 
     /**
@@ -172,27 +177,28 @@ public class Espece implements Serializable {
      * @param aCaracteristiqueespece the new value for caracteristiqueespece
      */
     public void setCaracteristiqueespece(Set<Caracteristiqueespece> aCaracteristiqueespece) {
-        caracteristiqueespece = aCaracteristiqueespece;
+	caracteristiqueespece = aCaracteristiqueespece;
     }
 
     /**
      * Compares the key for this instance with another Espece.
      *
      * @param other The object to compare to
-     * @return True if other object is instance of class Espece and the key objects are equal
+     * @return True if other object is instance of class Espece and the key objects
+     *         are equal
      */
     private boolean equalKeys(Object other) {
-        if (this==other) {
-            return true;
-        }
-        if (!(other instanceof Espece)) {
-            return false;
-        }
-        Espece that = (Espece) other;
-        if (this.getId() != that.getId()) {
-            return false;
-        }
-        return true;
+	if (this == other) {
+	    return true;
+	}
+	if (!(other instanceof Espece)) {
+	    return false;
+	}
+	Espece that = (Espece) other;
+	if (this.getId() != that.getId()) {
+	    return false;
+	}
+	return true;
     }
 
     /**
@@ -203,8 +209,9 @@ public class Espece implements Serializable {
      */
     @Override
     public boolean equals(Object other) {
-        if (!(other instanceof Espece)) return false;
-        return this.equalKeys(other) && ((Espece)other).equalKeys(this);
+	if (!(other instanceof Espece))
+	    return false;
+	return this.equalKeys(other) && ((Espece) other).equalKeys(this);
     }
 
     /**
@@ -214,11 +221,11 @@ public class Espece implements Serializable {
      */
     @Override
     public int hashCode() {
-        int i;
-        int result = 17;
-        i = getId();
-        result = 37*result + i;
-        return result;
+	int i;
+	int result = 17;
+	i = getId();
+	result = 37 * result + i;
+	return result;
     }
 
     /**
@@ -226,13 +233,11 @@ public class Espece implements Serializable {
      *
      * @return String representation of this instance
      */
-    @Override
-    public String toString() {
-        StringBuffer sb = new StringBuffer("[Espece |");
-        sb.append(" id=").append(getId());
-        sb.append("]");
-        return sb.toString();
-    }
+    /*
+     * @Override public String toString() { StringBuffer sb = new
+     * StringBuffer("[Espece |"); sb.append(" id=").append(getId()); sb.append("]");
+     * return sb.toString(); }
+     */
 
     /**
      * Return all elements of the primary key.
@@ -240,9 +245,15 @@ public class Espece implements Serializable {
      * @return Map of key names to values
      */
     public Map<String, Object> getPrimaryKey() {
-        Map<String, Object> ret = new LinkedHashMap<String, Object>(6);
-        ret.put("id", Integer.valueOf(getId()));
-        return ret;
+	Map<String, Object> ret = new LinkedHashMap<String, Object>(6);
+	ret.put("id", Integer.valueOf(getId()));
+	return ret;
+    }
+
+    @Override
+    public String toString() {
+	return "Espece [lockFlag=" + lockFlag + ", id=" + id + ", libelle=" + libelle + ", frais=" + frais + ", animal="
+		+ animal + ", caracteristiqueespece=" + caracteristiqueespece + "]";
     }
 
 }

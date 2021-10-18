@@ -3,7 +3,6 @@
 package edu.supavenir.spanimals.models;
 
 import java.io.Serializable;
-import java.sql.Clob;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
@@ -18,7 +17,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Version;
 
-@Entity(name="RACE")
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+@Entity(name = "RACE")
 public class Race implements Serializable {
 
     /** Primary key. */
@@ -28,7 +29,7 @@ public class Race implements Serializable {
      * The optimistic lock. Available via standard bean get/set operations.
      */
     @Version
-    @Column(name="LOCK_FLAG")
+    @Column(name = "LOCK_FLAG")
     private Integer lockFlag;
 
     /**
@@ -37,7 +38,7 @@ public class Race implements Serializable {
      * @return the current value of the lockFlag property
      */
     public Integer getLockFlag() {
-        return lockFlag;
+	return lockFlag;
     }
 
     /**
@@ -46,30 +47,32 @@ public class Race implements Serializable {
      * @param aLockFlag the new value of the lockFlag property
      */
     public void setLockFlag(Integer aLockFlag) {
-        lockFlag = aLockFlag;
+	lockFlag = aLockFlag;
     }
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name="ID", unique=true, nullable=false, precision=10)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID", unique = true, nullable = false, precision = 10)
     private int id;
-    @Column(name="LIBELLE", length=50)
+    @Column(name = "LIBELLE", length = 50)
     private String libelle;
-    @Column(name="DESCRIPTIF")
-    private Clob descriptif;
-    @Column(name="PREREQUIS", length=50)
+    @Column(name = "DESCRIPTIF")
+    private String descriptif;
+    @Column(name = "PREREQUIS", length = 50)
     private String prerequis;
-    @ManyToOne(optional=false)
-    @JoinColumn(name="IDESPECE", nullable=false)
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "IDESPECE", nullable = false)
     private Espece espece;
-    @OneToMany(mappedBy="race")
+    @OneToMany(mappedBy = "race")
+    @JsonIgnore
     private Set<Animal> animal;
-    @OneToMany(mappedBy="race")
+    @OneToMany(mappedBy = "race")
+    @JsonIgnore
     private Set<Caracteristiquerace> caracteristiquerace;
 
     /** Default constructor. */
     public Race() {
-        super();
+	super();
     }
 
     /**
@@ -78,7 +81,7 @@ public class Race implements Serializable {
      * @return the current value of id
      */
     public int getId() {
-        return id;
+	return id;
     }
 
     /**
@@ -87,7 +90,7 @@ public class Race implements Serializable {
      * @param aId the new value for id
      */
     public void setId(int aId) {
-        id = aId;
+	id = aId;
     }
 
     /**
@@ -96,7 +99,7 @@ public class Race implements Serializable {
      * @return the current value of libelle
      */
     public String getLibelle() {
-        return libelle;
+	return libelle;
     }
 
     /**
@@ -105,7 +108,7 @@ public class Race implements Serializable {
      * @param aLibelle the new value for libelle
      */
     public void setLibelle(String aLibelle) {
-        libelle = aLibelle;
+	libelle = aLibelle;
     }
 
     /**
@@ -113,8 +116,8 @@ public class Race implements Serializable {
      *
      * @return the current value of descriptif
      */
-    public Clob getDescriptif() {
-        return descriptif;
+    public String getDescriptif() {
+	return descriptif;
     }
 
     /**
@@ -122,8 +125,8 @@ public class Race implements Serializable {
      *
      * @param aDescriptif the new value for descriptif
      */
-    public void setDescriptif(Clob aDescriptif) {
-        descriptif = aDescriptif;
+    public void setDescriptif(String aDescriptif) {
+	descriptif = aDescriptif;
     }
 
     /**
@@ -132,7 +135,7 @@ public class Race implements Serializable {
      * @return the current value of prerequis
      */
     public String getPrerequis() {
-        return prerequis;
+	return prerequis;
     }
 
     /**
@@ -141,7 +144,7 @@ public class Race implements Serializable {
      * @param aPrerequis the new value for prerequis
      */
     public void setPrerequis(String aPrerequis) {
-        prerequis = aPrerequis;
+	prerequis = aPrerequis;
     }
 
     /**
@@ -150,7 +153,7 @@ public class Race implements Serializable {
      * @return the current value of espece
      */
     public Espece getEspece() {
-        return espece;
+	return espece;
     }
 
     /**
@@ -159,7 +162,7 @@ public class Race implements Serializable {
      * @param aEspece the new value for espece
      */
     public void setEspece(Espece aEspece) {
-        espece = aEspece;
+	espece = aEspece;
     }
 
     /**
@@ -168,7 +171,7 @@ public class Race implements Serializable {
      * @return the current value of animal
      */
     public Set<Animal> getAnimal() {
-        return animal;
+	return animal;
     }
 
     /**
@@ -177,7 +180,7 @@ public class Race implements Serializable {
      * @param aAnimal the new value for animal
      */
     public void setAnimal(Set<Animal> aAnimal) {
-        animal = aAnimal;
+	animal = aAnimal;
     }
 
     /**
@@ -186,7 +189,7 @@ public class Race implements Serializable {
      * @return the current value of caracteristiquerace
      */
     public Set<Caracteristiquerace> getCaracteristiquerace() {
-        return caracteristiquerace;
+	return caracteristiquerace;
     }
 
     /**
@@ -195,27 +198,28 @@ public class Race implements Serializable {
      * @param aCaracteristiquerace the new value for caracteristiquerace
      */
     public void setCaracteristiquerace(Set<Caracteristiquerace> aCaracteristiquerace) {
-        caracteristiquerace = aCaracteristiquerace;
+	caracteristiquerace = aCaracteristiquerace;
     }
 
     /**
      * Compares the key for this instance with another Race.
      *
      * @param other The object to compare to
-     * @return True if other object is instance of class Race and the key objects are equal
+     * @return True if other object is instance of class Race and the key objects
+     *         are equal
      */
     private boolean equalKeys(Object other) {
-        if (this==other) {
-            return true;
-        }
-        if (!(other instanceof Race)) {
-            return false;
-        }
-        Race that = (Race) other;
-        if (this.getId() != that.getId()) {
-            return false;
-        }
-        return true;
+	if (this == other) {
+	    return true;
+	}
+	if (!(other instanceof Race)) {
+	    return false;
+	}
+	Race that = (Race) other;
+	if (this.getId() != that.getId()) {
+	    return false;
+	}
+	return true;
     }
 
     /**
@@ -226,8 +230,9 @@ public class Race implements Serializable {
      */
     @Override
     public boolean equals(Object other) {
-        if (!(other instanceof Race)) return false;
-        return this.equalKeys(other) && ((Race)other).equalKeys(this);
+	if (!(other instanceof Race))
+	    return false;
+	return this.equalKeys(other) && ((Race) other).equalKeys(this);
     }
 
     /**
@@ -237,11 +242,11 @@ public class Race implements Serializable {
      */
     @Override
     public int hashCode() {
-        int i;
-        int result = 17;
-        i = getId();
-        result = 37*result + i;
-        return result;
+	int i;
+	int result = 17;
+	i = getId();
+	result = 37 * result + i;
+	return result;
     }
 
     /**
@@ -249,13 +254,11 @@ public class Race implements Serializable {
      *
      * @return String representation of this instance
      */
-    @Override
-    public String toString() {
-        StringBuffer sb = new StringBuffer("[Race |");
-        sb.append(" id=").append(getId());
-        sb.append("]");
-        return sb.toString();
-    }
+    /*
+     * @Override public String toString() { StringBuffer sb = new
+     * StringBuffer("[Race |"); sb.append(" id=").append(getId()); sb.append("]");
+     * return sb.toString(); }
+     */
 
     /**
      * Return all elements of the primary key.
@@ -263,9 +266,16 @@ public class Race implements Serializable {
      * @return Map of key names to values
      */
     public Map<String, Object> getPrimaryKey() {
-        Map<String, Object> ret = new LinkedHashMap<String, Object>(6);
-        ret.put("id", Integer.valueOf(getId()));
-        return ret;
+	Map<String, Object> ret = new LinkedHashMap<String, Object>(6);
+	ret.put("id", Integer.valueOf(getId()));
+	return ret;
+    }
+
+    @Override
+    public String toString() {
+	return "Race [lockFlag=" + lockFlag + ", id=" + id + ", libelle=" + libelle + ", descriptif=" + descriptif
+		+ ", prerequis=" + prerequis + ", animal=" + animal + ", caracteristiquerace=" + caracteristiquerace
+		+ "]";
     }
 
 }

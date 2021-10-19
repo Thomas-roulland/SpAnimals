@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -58,5 +59,27 @@ public class SpaController {
 	test1 = "SELECT * FROM Animal WHERE " + test + ";";
 	return test1;
     }
+<<<<<<< HEAD
 
 }
+=======
+<<<<<<< HEAD
+
+    @GetMapping("/login")
+    private String LoginAction() {
+	return "login";
+    }
+
+    @PostMapping("connecter")
+    private @ResponseBody String addLogin(User user) {
+	if (user.getName() == "user" && user.getPassword() == "user") {
+	    return "success";
+	} else {
+	    return "marche pas";
+	}
+    }
+}
+=======
+}
+>>>>>>> 841303e52d685e7f69fc3617c4c4553e275ddc3b
+>>>>>>> d256ccf1bf280848c0558c590d11bf89c876af14

@@ -19,4 +19,5 @@ public class SosController {
     public List<Animal> SosAnimal() {
 	return repo.findBySos(true);
     }
+
 }

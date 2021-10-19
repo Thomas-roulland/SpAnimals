@@ -3,7 +3,6 @@
 package edu.supavenir.spanimals.models;
 
 import java.io.Serializable;
-import java.sql.Clob;
 import java.time.LocalDate;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -15,7 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Version;
 
-@Entity(name="ADOPTANT")
+@Entity(name = "ADOPTANT")
 public class Adoptant implements Serializable {
 
     /** Primary key. */
@@ -25,7 +24,7 @@ public class Adoptant implements Serializable {
      * The optimistic lock. Available via standard bean get/set operations.
      */
     @Version
-    @Column(name="LOCK_FLAG")
+    @Column(name = "LOCK_FLAG")
     private Integer lockFlag;
 
     /**
@@ -34,7 +33,7 @@ public class Adoptant implements Serializable {
      * @return the current value of the lockFlag property
      */
     public Integer getLockFlag() {
-        return lockFlag;
+	return lockFlag;
     }
 
     /**
@@ -43,40 +42,40 @@ public class Adoptant implements Serializable {
      * @param aLockFlag the new value of the lockFlag property
      */
     public void setLockFlag(Integer aLockFlag) {
-        lockFlag = aLockFlag;
+	lockFlag = aLockFlag;
     }
 
     @Id
-    @Column(name="ID", unique=true, nullable=false, precision=10)
+    @Column(name = "ID", unique = true, nullable = false, precision = 10)
     private int id;
-    @Column(name="NOM", nullable=false, length=50)
+    @Column(name = "NOM", nullable = false, length = 50)
     private String nom;
-    @Column(name="PRENOM", nullable=false, length=50)
+    @Column(name = "PRENOM", nullable = false, length = 50)
     private String prenom;
-    @Column(name="DATENAISS", nullable=false)
+    @Column(name = "DATENAISS", nullable = false)
     private LocalDate datenaiss;
-    @Column(name="NUMEROETRUE", length=50)
+    @Column(name = "NUMEROETRUE", length = 50)
     private String numeroetrue;
-    @Column(name="COMPLEMENTAD", nullable=false, length=100)
+    @Column(name = "COMPLEMENTAD", nullable = false, length = 100)
     private String complementad;
-    @Column(name="CP", nullable=false, length=5)
+    @Column(name = "CP", nullable = false, length = 5)
     private String cp;
-    @Column(name="VILLE", nullable=false, length=50)
+    @Column(name = "VILLE", nullable = false, length = 50)
     private String ville;
-    @Column(name="MAIL", nullable=false, length=50)
+    @Column(name = "MAIL", nullable = false, length = 50)
     private String mail;
-    @Column(name="TELMOBILE", nullable=false, length=10)
+    @Column(name = "TELMOBILE", nullable = false, length = 10)
     private String telmobile;
-    @Column(name="TELFIXE", nullable=false, length=10)
+    @Column(name = "TELFIXE", nullable = false, length = 10)
     private String telfixe;
-    @Column(name="INFOCOMPLEMENTAIRES", nullable=false)
-    private Clob infocomplementaires;
-    @OneToMany(mappedBy="adoptant")
+    @Column(name = "INFOCOMPLEMENTAIRES", nullable = false)
+    private String infocomplementaires;
+    @OneToMany(mappedBy = "adoptant")
     private Set<Adoption> adoption;
 
     /** Default constructor. */
     public Adoptant() {
-        super();
+	super();
     }
 
     /**
@@ -85,7 +84,7 @@ public class Adoptant implements Serializable {
      * @return the current value of id
      */
     public int getId() {
-        return id;
+	return id;
     }
 
     /**
@@ -94,7 +93,7 @@ public class Adoptant implements Serializable {
      * @param aId the new value for id
      */
     public void setId(int aId) {
-        id = aId;
+	id = aId;
     }
 
     /**
@@ -103,7 +102,7 @@ public class Adoptant implements Serializable {
      * @return the current value of nom
      */
     public String getNom() {
-        return nom;
+	return nom;
     }
 
     /**
@@ -112,7 +111,7 @@ public class Adoptant implements Serializable {
      * @param aNom the new value for nom
      */
     public void setNom(String aNom) {
-        nom = aNom;
+	nom = aNom;
     }
 
     /**
@@ -121,7 +120,7 @@ public class Adoptant implements Serializable {
      * @return the current value of prenom
      */
     public String getPrenom() {
-        return prenom;
+	return prenom;
     }
 
     /**
@@ -130,7 +129,7 @@ public class Adoptant implements Serializable {
      * @param aPrenom the new value for prenom
      */
     public void setPrenom(String aPrenom) {
-        prenom = aPrenom;
+	prenom = aPrenom;
     }
 
     /**
@@ -139,7 +138,7 @@ public class Adoptant implements Serializable {
      * @return the current value of datenaiss
      */
     public LocalDate getDatenaiss() {
-        return datenaiss;
+	return datenaiss;
     }
 
     /**
@@ -148,7 +147,7 @@ public class Adoptant implements Serializable {
      * @param aDatenaiss the new value for datenaiss
      */
     public void setDatenaiss(LocalDate aDatenaiss) {
-        datenaiss = aDatenaiss;
+	datenaiss = aDatenaiss;
     }
 
     /**
@@ -157,7 +156,7 @@ public class Adoptant implements Serializable {
      * @return the current value of numeroetrue
      */
     public String getNumeroetrue() {
-        return numeroetrue;
+	return numeroetrue;
     }
 
     /**
@@ -166,7 +165,7 @@ public class Adoptant implements Serializable {
      * @param aNumeroetrue the new value for numeroetrue
      */
     public void setNumeroetrue(String aNumeroetrue) {
-        numeroetrue = aNumeroetrue;
+	numeroetrue = aNumeroetrue;
     }
 
     /**
@@ -175,7 +174,7 @@ public class Adoptant implements Serializable {
      * @return the current value of complementad
      */
     public String getComplementad() {
-        return complementad;
+	return complementad;
     }
 
     /**
@@ -184,7 +183,7 @@ public class Adoptant implements Serializable {
      * @param aComplementad the new value for complementad
      */
     public void setComplementad(String aComplementad) {
-        complementad = aComplementad;
+	complementad = aComplementad;
     }
 
     /**
@@ -193,7 +192,7 @@ public class Adoptant implements Serializable {
      * @return the current value of cp
      */
     public String getCp() {
-        return cp;
+	return cp;
     }
 
     /**
@@ -202,7 +201,7 @@ public class Adoptant implements Serializable {
      * @param aCp the new value for cp
      */
     public void setCp(String aCp) {
-        cp = aCp;
+	cp = aCp;
     }
 
     /**
@@ -211,7 +210,7 @@ public class Adoptant implements Serializable {
      * @return the current value of ville
      */
     public String getVille() {
-        return ville;
+	return ville;
     }
 
     /**
@@ -220,7 +219,7 @@ public class Adoptant implements Serializable {
      * @param aVille the new value for ville
      */
     public void setVille(String aVille) {
-        ville = aVille;
+	ville = aVille;
     }
 
     /**
@@ -229,7 +228,7 @@ public class Adoptant implements Serializable {
      * @return the current value of mail
      */
     public String getMail() {
-        return mail;
+	return mail;
     }
 
     /**
@@ -238,7 +237,7 @@ public class Adoptant implements Serializable {
      * @param aMail the new value for mail
      */
     public void setMail(String aMail) {
-        mail = aMail;
+	mail = aMail;
     }
 
     /**
@@ -247,7 +246,7 @@ public class Adoptant implements Serializable {
      * @return the current value of telmobile
      */
     public String getTelmobile() {
-        return telmobile;
+	return telmobile;
     }
 
     /**
@@ -256,7 +255,7 @@ public class Adoptant implements Serializable {
      * @param aTelmobile the new value for telmobile
      */
     public void setTelmobile(String aTelmobile) {
-        telmobile = aTelmobile;
+	telmobile = aTelmobile;
     }
 
     /**
@@ -265,7 +264,7 @@ public class Adoptant implements Serializable {
      * @return the current value of telfixe
      */
     public String getTelfixe() {
-        return telfixe;
+	return telfixe;
     }
 
     /**
@@ -274,7 +273,7 @@ public class Adoptant implements Serializable {
      * @param aTelfixe the new value for telfixe
      */
     public void setTelfixe(String aTelfixe) {
-        telfixe = aTelfixe;
+	telfixe = aTelfixe;
     }
 
     /**
@@ -282,8 +281,8 @@ public class Adoptant implements Serializable {
      *
      * @return the current value of infocomplementaires
      */
-    public Clob getInfocomplementaires() {
-        return infocomplementaires;
+    public String getInfocomplementaires() {
+	return infocomplementaires;
     }
 
     /**
@@ -291,8 +290,8 @@ public class Adoptant implements Serializable {
      *
      * @param aInfocomplementaires the new value for infocomplementaires
      */
-    public void setInfocomplementaires(Clob aInfocomplementaires) {
-        infocomplementaires = aInfocomplementaires;
+    public void setInfocomplementaires(String aInfocomplementaires) {
+	infocomplementaires = aInfocomplementaires;
     }
 
     /**
@@ -301,7 +300,7 @@ public class Adoptant implements Serializable {
      * @return the current value of adoption
      */
     public Set<Adoption> getAdoption() {
-        return adoption;
+	return adoption;
     }
 
     /**
@@ -310,27 +309,28 @@ public class Adoptant implements Serializable {
      * @param aAdoption the new value for adoption
      */
     public void setAdoption(Set<Adoption> aAdoption) {
-        adoption = aAdoption;
+	adoption = aAdoption;
     }
 
     /**
      * Compares the key for this instance with another Adoptant.
      *
      * @param other The object to compare to
-     * @return True if other object is instance of class Adoptant and the key objects are equal
+     * @return True if other object is instance of class Adoptant and the key
+     *         objects are equal
      */
     private boolean equalKeys(Object other) {
-        if (this==other) {
-            return true;
-        }
-        if (!(other instanceof Adoptant)) {
-            return false;
-        }
-        Adoptant that = (Adoptant) other;
-        if (this.getId() != that.getId()) {
-            return false;
-        }
-        return true;
+	if (this == other) {
+	    return true;
+	}
+	if (!(other instanceof Adoptant)) {
+	    return false;
+	}
+	Adoptant that = (Adoptant) other;
+	if (this.getId() != that.getId()) {
+	    return false;
+	}
+	return true;
     }
 
     /**
@@ -341,8 +341,9 @@ public class Adoptant implements Serializable {
      */
     @Override
     public boolean equals(Object other) {
-        if (!(other instanceof Adoptant)) return false;
-        return this.equalKeys(other) && ((Adoptant)other).equalKeys(this);
+	if (!(other instanceof Adoptant))
+	    return false;
+	return this.equalKeys(other) && ((Adoptant) other).equalKeys(this);
     }
 
     /**
@@ -352,11 +353,11 @@ public class Adoptant implements Serializable {
      */
     @Override
     public int hashCode() {
-        int i;
-        int result = 17;
-        i = getId();
-        result = 37*result + i;
-        return result;
+	int i;
+	int result = 17;
+	i = getId();
+	result = 37 * result + i;
+	return result;
     }
 
     /**
@@ -366,10 +367,10 @@ public class Adoptant implements Serializable {
      */
     @Override
     public String toString() {
-        StringBuffer sb = new StringBuffer("[Adoptant |");
-        sb.append(" id=").append(getId());
-        sb.append("]");
-        return sb.toString();
+	StringBuffer sb = new StringBuffer("[Adoptant |");
+	sb.append(" id=").append(getId());
+	sb.append("]");
+	return sb.toString();
     }
 
     /**
@@ -378,9 +379,9 @@ public class Adoptant implements Serializable {
      * @return Map of key names to values
      */
     public Map<String, Object> getPrimaryKey() {
-        Map<String, Object> ret = new LinkedHashMap<String, Object>(6);
-        ret.put("id", Integer.valueOf(getId()));
-        return ret;
+	Map<String, Object> ret = new LinkedHashMap<String, Object>(6);
+	ret.put("id", Integer.valueOf(getId()));
+	return ret;
     }
 
 }

@@ -1,0 +1,58 @@
+{{> inc/header}}
+
+
+<form method="post" action="add">
+
+<div class="ui input">
+<input type="text" placeholder="D-Naissance" name="dnaissance">
+</div>
+
+<div class="ui input">
+<input type="text" placeholder="description" name="description">
+</div>
+
+<div class="ui input">
+<input type="text" placeholder="couleur" name="couleur">
+</div>
+
+<div class="ui input">
+<input type="text" placeholder="sos(true ou false)" name="sos">
+</div>
+
+<div class="ui input">
+<input type="text" placeholder="adopte(true ou false)" name="adopte">
+</div>
+
+<div class="ui input">
+<input type="text" placeholder="incomptatible" name="incompatible">
+</div>
+
+<div class="ui input">
+<input type="text" placeholder="espece" name="espece">
+</div>
+
+<div class="ui input">
+<input type="text" placeholder="race" name="race">
+</div>
+
+<select class="ui dropdown">
+  <option value="">Refuge</option>
+  <option value="1">Caen</option>
+  <option value="0">Marseille</option>
+</select>
+
+<select class="ui dropdown">
+  <option value="">Sexe</option>
+  <option value="1">Male</option>
+  <option value="0">Femelle</option>
+</select>
+
+<div class="ui input">
+<input type="text" placeholder="nom" name="nom">
+</div>
+
+<button>Ajoute</button>
+</form>
+
+
+{{> inc/footer}}

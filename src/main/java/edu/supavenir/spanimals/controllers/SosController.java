@@ -15,9 +15,9 @@ public class SosController {
     @Autowired
     private AnimalRepository repo;
 
-    @GetMapping("/soss")
+    @GetMapping("/sos")
     public List<Animal> SosAnimal() {
 	return repo.findBySos(true);
-
     }
+
 }

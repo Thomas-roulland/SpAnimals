@@ -41,7 +41,8 @@ public class SpaLEmployéController {
 	return AnimRepo.findById(id);
     }
 
-    // REgarder tout les animaux
+    // Regarder tous les animaux
+
     @GetMapping("/animal")
     public List<Animal> affichageAnimal() {
 	return AnimRepo.findAll();
@@ -85,20 +86,12 @@ public class SpaLEmployéController {
 	return new RedirectView("/Adoptant/");
     }
 
-    /*
-     * // AJOUTER UN ANIMAL
-     * 
-     * @GetMapping("animal/add") public String addAnimal() { return "addAni"; }
-     * 
-     * @PostMapping("animal/add") private RedirectView AjouteAnimal(@RequestBody
-     * Animal animal) { AnimRepo.saveAndFlush(animal); return new
-     * RedirectView("/animal"); }
-     */
+    // AJOUTER UN ANIMAL
 
-    @PostMapping("animal/add")
+    @PostMapping("/animal/add")
     private @ResponseBody String ajouteAnimal(Animal animal) {
-	AnimRepo.saveAndFlush(animal);
-	return "animal ajouté : " + animal;
+	AnimRepo.save(animal);
+	return animal.toString();
     }
 
 }

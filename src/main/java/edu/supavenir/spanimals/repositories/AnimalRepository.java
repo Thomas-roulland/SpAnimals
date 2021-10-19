@@ -10,6 +10,6 @@ import edu.supavenir.spanimals.models.Animal;
 @Repository
 public interface AnimalRepository extends JpaRepository<Animal, Integer> {
 
-	List<Animal> findBySos(boolean SOS);
-		
+    List<Animal> findBySos(boolean SOS);
+
 }

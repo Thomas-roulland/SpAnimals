@@ -1,10 +1,10 @@
 {{> inc/header}}
 
 
-<form method="post" action="add">
+<form method="post" action="/employe/animal/add">
 
 <div class="ui input">
-<input type="text" placeholder="D-Naissance" name="dnaissance">
+<input type="date" name="dnaissance">
 </div>
 
 <div class="ui input">
@@ -15,24 +15,31 @@
 <input type="text" placeholder="couleur" name="couleur">
 </div>
 
+<select class="ui dropdown">
+  <option value="">SOS ?</option>
+  <option value="0">False</option>
+  <option value="1">True</option>
+</select>
+
+
+<select class="ui dropdown">
+  <option value="">Adopte ?</option>
+  <option value="0">False</option>
+  <option value="1">True</option>
+</select>
+
+
+
 <div class="ui input">
-<input type="text" placeholder="sos(true ou false)" name="sos">
+<input type="text" placeholder="frais" name="frais">
 </div>
 
 <div class="ui input">
-<input type="text" placeholder="adopte(true ou false)" name="adopte">
+<input type="text" placeholder="espece" name="idespece">
 </div>
 
 <div class="ui input">
-<input type="text" placeholder="incomptatible" name="incompatible">
-</div>
-
-<div class="ui input">
-<input type="text" placeholder="espece" name="espece">
-</div>
-
-<div class="ui input">
-<input type="text" placeholder="race" name="race">
+<input type="text" placeholder="race" name="idrace">
 </div>
 
 <select class="ui dropdown">

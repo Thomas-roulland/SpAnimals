@@ -15,13 +15,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import edu.supavenir.spanimals.models.Espece;
-<<<<<<< HEAD
-import edu.supavenir.spanimals.repositories.EspeceRepository;
-=======
 import edu.supavenir.spanimals.models.Refuge;
 import edu.supavenir.spanimals.repositories.EspeceRepository;
 import edu.supavenir.spanimals.repositories.RefugeRepository;
->>>>>>> e6598dbe0dac642a6297864319b103df100291f3
 
 @Controller
 public class SpaController {
@@ -29,23 +25,13 @@ public class SpaController {
     @Autowired
     private EspeceRepository repo;
 
-<<<<<<< HEAD
-=======
     @Autowired
     private RefugeRepository repoR;
 
->>>>>>> e6598dbe0dac642a6297864319b103df100291f3
     @GetMapping("recherche")
     private String ContactAction(Model model) {
 	List<Espece> especes = repo.findAll();
 	model.addAttribute("especes", especes);
-<<<<<<< HEAD
-	return "recherche";
-
-    }
-
-}
-=======
 
 	List<Refuge> refuges = repoR.findAll();
 	model.addAttribute("refuges", refuges);
@@ -72,4 +58,3 @@ public class SpaController {
 	return test1;
     }
 }
->>>>>>> e6598dbe0dac642a6297864319b103df100291f3

@@ -19,7 +19,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Version;
 
-@Entity(name="ANIMAL")
+@Entity(name = "ANIMAL")
 public class Animal implements Serializable {
 
     /** Primary key. */
@@ -29,7 +29,7 @@ public class Animal implements Serializable {
      * The optimistic lock. Available via standard bean get/set operations.
      */
     @Version
-    @Column(name="LOCK_FLAG")
+    @Column(name = "LOCK_FLAG")
     private Integer lockFlag;
 
     /**
@@ -38,7 +38,7 @@ public class Animal implements Serializable {
      * @return the current value of the lockFlag property
      */
     public Integer getLockFlag() {
-        return lockFlag;
+	return lockFlag;
     }
 
     /**
@@ -47,46 +47,48 @@ public class Animal implements Serializable {
      * @param aLockFlag the new value of the lockFlag property
      */
     public void setLockFlag(Integer aLockFlag) {
-        lockFlag = aLockFlag;
+	lockFlag = aLockFlag;
     }
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name="ID", unique=true, nullable=false, precision=10)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID", unique = true, nullable = false, precision = 10)
     private int id;
-    @Column(name="DNAISSANCE")
+    @Column(name = "DNAISSANCE")
     private LocalDate dnaissance;
-    @Column(name="SEXE", length=50)
+    @Column(name = "SIMILAIRE")
+    private String similaire;
+    @Column(name = "SEXE", length = 50)
     private String sexe;
-    @Column(name="NOM", length=50)
+    @Column(name = "NOM", length = 50)
     private String nom;
-    @Column(name="DESCRIPTION", length=500)
+    @Column(name = "DESCRIPTION", length = 500)
     private String description;
-    @Column(name="COULEUR", length=50)
+    @Column(name = "COULEUR", length = 50)
     private String couleur;
-    @Column(name="SOS", length=1)
+    @Column(name = "SOS", length = 1)
     private boolean sos;
-    @Column(name="ADOPTE", length=1)
+    @Column(name = "ADOPTE", length = 1)
     private boolean adopte;
-    @Column(name="FRAIS", precision=19, scale=4)
+    @Column(name = "FRAIS", precision = 19, scale = 4)
     private BigDecimal frais;
-    @ManyToOne(optional=true)
-    @JoinColumn(name="IDRACE", nullable=true)
+    @ManyToOne(optional = true)
+    @JoinColumn(name = "IDRACE", nullable = true)
     private Race race;
-    @ManyToOne(optional=true)
-    @JoinColumn(name="IDESPECE", nullable=true)
+    @ManyToOne(optional = true)
+    @JoinColumn(name = "IDESPECE", nullable = true)
     private Espece espece;
-    @ManyToOne(optional=true)
-    @JoinColumn(name="IDREFUGE", nullable=true)
+    @ManyToOne(optional = true)
+    @JoinColumn(name = "IDREFUGE", nullable = true)
     private Refuge refuge;
-    @OneToMany(mappedBy="animal")
+    @OneToMany(mappedBy = "animal")
     private Set<Incompatible> incompatible;
-    @OneToMany(mappedBy="animal")
+    @OneToMany(mappedBy = "animal")
     private Set<Adoption> adoption;
 
     /** Default constructor. */
     public Animal() {
-        super();
+	super();
     }
 
     /**
@@ -95,7 +97,7 @@ public class Animal implements Serializable {
      * @return the current value of id
      */
     public int getId() {
-        return id;
+	return id;
     }
 
     /**
@@ -104,7 +106,7 @@ public class Animal implements Serializable {
      * @param aId the new value for id
      */
     public void setId(int aId) {
-        id = aId;
+	id = aId;
     }
 
     /**
@@ -113,7 +115,7 @@ public class Animal implements Serializable {
      * @return the current value of dnaissance
      */
     public LocalDate getDnaissance() {
-        return dnaissance;
+	return dnaissance;
     }
 
     /**
@@ -122,7 +124,7 @@ public class Animal implements Serializable {
      * @param aDnaissance the new value for dnaissance
      */
     public void setDnaissance(LocalDate aDnaissance) {
-        dnaissance = aDnaissance;
+	dnaissance = aDnaissance;
     }
 
     /**
@@ -131,7 +133,7 @@ public class Animal implements Serializable {
      * @return the current value of sexe
      */
     public String getSexe() {
-        return sexe;
+	return sexe;
     }
 
     /**
@@ -140,7 +142,7 @@ public class Animal implements Serializable {
      * @param aSexe the new value for sexe
      */
     public void setSexe(String aSexe) {
-        sexe = aSexe;
+	sexe = aSexe;
     }
 
     /**
@@ -149,7 +151,7 @@ public class Animal implements Serializable {
      * @return the current value of nom
      */
     public String getNom() {
-        return nom;
+	return nom;
     }
 
     /**
@@ -158,7 +160,7 @@ public class Animal implements Serializable {
      * @param aNom the new value for nom
      */
     public void setNom(String aNom) {
-        nom = aNom;
+	nom = aNom;
     }
 
     /**
@@ -167,7 +169,7 @@ public class Animal implements Serializable {
      * @return the current value of description
      */
     public String getDescription() {
-        return description;
+	return description;
     }
 
     /**
@@ -176,7 +178,7 @@ public class Animal implements Serializable {
      * @param aDescription the new value for description
      */
     public void setDescription(String aDescription) {
-        description = aDescription;
+	description = aDescription;
     }
 
     /**
@@ -185,7 +187,7 @@ public class Animal implements Serializable {
      * @return the current value of couleur
      */
     public String getCouleur() {
-        return couleur;
+	return couleur;
     }
 
     /**
@@ -194,7 +196,7 @@ public class Animal implements Serializable {
      * @param aCouleur the new value for couleur
      */
     public void setCouleur(String aCouleur) {
-        couleur = aCouleur;
+	couleur = aCouleur;
     }
 
     /**
@@ -203,18 +205,18 @@ public class Animal implements Serializable {
      * @return true if and only if sos is currently true
      */
     public boolean getSos() {
-        return sos;
+	return sos;
     }
-    
+
     /**
      * Access method for all sos.
      *
      * @return true if and only if sos is currently true
      */
-    //public boolean getAllSos() {
-        
-    //	return sos;
-    //}
+    // public boolean getAllSos() {
+
+    // return sos;
+    // }
 
     /**
      * Setter method for sos.
@@ -222,7 +224,7 @@ public class Animal implements Serializable {
      * @param aSos the new value for sos
      */
     public void setSos(boolean aSos) {
-        sos = aSos;
+	sos = aSos;
     }
 
     /**
@@ -231,7 +233,7 @@ public class Animal implements Serializable {
      * @return true if and only if adopte is currently true
      */
     public boolean getAdopte() {
-        return adopte;
+	return adopte;
     }
 
     /**
@@ -240,7 +242,7 @@ public class Animal implements Serializable {
      * @param aAdopte the new value for adopte
      */
     public void setAdopte(boolean aAdopte) {
-        adopte = aAdopte;
+	adopte = aAdopte;
     }
 
     /**
@@ -249,7 +251,7 @@ public class Animal implements Serializable {
      * @return the current value of frais
      */
     public BigDecimal getFrais() {
-        return frais;
+	return frais;
     }
 
     /**
@@ -258,7 +260,7 @@ public class Animal implements Serializable {
      * @param aFrais the new value for frais
      */
     public void setFrais(BigDecimal aFrais) {
-        frais = aFrais;
+	frais = aFrais;
     }
 
     /**
@@ -267,7 +269,7 @@ public class Animal implements Serializable {
      * @return the current value of race
      */
     public Race getRace() {
-        return race;
+	return race;
     }
 
     /**
@@ -276,7 +278,7 @@ public class Animal implements Serializable {
      * @param aRace the new value for race
      */
     public void setRace(Race aRace) {
-        race = aRace;
+	race = aRace;
     }
 
     /**
@@ -285,7 +287,7 @@ public class Animal implements Serializable {
      * @return the current value of espece
      */
     public Espece getEspece() {
-        return espece;
+	return espece;
     }
 
     /**
@@ -294,7 +296,7 @@ public class Animal implements Serializable {
      * @param aEspece the new value for espece
      */
     public void setEspece(Espece aEspece) {
-        espece = aEspece;
+	espece = aEspece;
     }
 
     /**
@@ -303,7 +305,7 @@ public class Animal implements Serializable {
      * @return the current value of refuge
      */
     public Refuge getRefuge() {
-        return refuge;
+	return refuge;
     }
 
     /**
@@ -312,7 +314,7 @@ public class Animal implements Serializable {
      * @param aRefuge the new value for refuge
      */
     public void setRefuge(Refuge aRefuge) {
-        refuge = aRefuge;
+	refuge = aRefuge;
     }
 
     /**
@@ -321,7 +323,7 @@ public class Animal implements Serializable {
      * @return the current value of incompatible
      */
     public Set<Incompatible> getIncompatible() {
-        return incompatible;
+	return incompatible;
     }
 
     /**
@@ -330,7 +332,7 @@ public class Animal implements Serializable {
      * @param aIncompatible the new value for incompatible
      */
     public void setIncompatible(Set<Incompatible> aIncompatible) {
-        incompatible = aIncompatible;
+	incompatible = aIncompatible;
     }
 
     /**
@@ -339,7 +341,7 @@ public class Animal implements Serializable {
      * @return the current value of adoption
      */
     public Set<Adoption> getAdoption() {
-        return adoption;
+	return adoption;
     }
 
     /**
@@ -348,27 +350,28 @@ public class Animal implements Serializable {
      * @param aAdoption the new value for adoption
      */
     public void setAdoption(Set<Adoption> aAdoption) {
-        adoption = aAdoption;
+	adoption = aAdoption;
     }
 
     /**
      * Compares the key for this instance with another Animal.
      *
      * @param other The object to compare to
-     * @return True if other object is instance of class Animal and the key objects are equal
+     * @return True if other object is instance of class Animal and the key objects
+     *         are equal
      */
     private boolean equalKeys(Object other) {
-        if (this==other) {
-            return true;
-        }
-        if (!(other instanceof Animal)) {
-            return false;
-        }
-        Animal that = (Animal) other;
-        if (this.getId() != that.getId()) {
-            return false;
-        }
-        return true;
+	if (this == other) {
+	    return true;
+	}
+	if (!(other instanceof Animal)) {
+	    return false;
+	}
+	Animal that = (Animal) other;
+	if (this.getId() != that.getId()) {
+	    return false;
+	}
+	return true;
     }
 
     /**
@@ -379,8 +382,9 @@ public class Animal implements Serializable {
      */
     @Override
     public boolean equals(Object other) {
-        if (!(other instanceof Animal)) return false;
-        return this.equalKeys(other) && ((Animal)other).equalKeys(this);
+	if (!(other instanceof Animal))
+	    return false;
+	return this.equalKeys(other) && ((Animal) other).equalKeys(this);
     }
 
     /**
@@ -390,11 +394,11 @@ public class Animal implements Serializable {
      */
     @Override
     public int hashCode() {
-        int i;
-        int result = 17;
-        i = getId();
-        result = 37*result + i;
-        return result;
+	int i;
+	int result = 17;
+	i = getId();
+	result = 37 * result + i;
+	return result;
     }
 
     /**
@@ -404,10 +408,10 @@ public class Animal implements Serializable {
      */
     @Override
     public String toString() {
-        StringBuffer sb = new StringBuffer("[Animal |");
-        sb.append(" id=").append(getId());
-        sb.append("]");
-        return sb.toString();
+	StringBuffer sb = new StringBuffer("[Animal |");
+	sb.append(" id=").append(getId());
+	sb.append("]");
+	return sb.toString();
     }
 
     /**
@@ -416,8 +420,8 @@ public class Animal implements Serializable {
      * @return Map of key names to values
      */
     public Map<String, Object> getPrimaryKey() {
-        Map<String, Object> ret = new LinkedHashMap<String, Object>(6);
-        ret.put("id", Integer.valueOf(getId()));
-        return ret;
+	Map<String, Object> ret = new LinkedHashMap<String, Object>(6);
+	ret.put("id", Integer.valueOf(getId()));
+	return ret;
     }
 }

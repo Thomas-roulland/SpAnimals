@@ -5,6 +5,7 @@ package edu.supavenir.spanimals.models;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
@@ -18,6 +19,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Version;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity(name = "ANIMAL")
 public class Animal implements Serializable {
@@ -81,14 +84,18 @@ public class Animal implements Serializable {
     @ManyToOne(optional = true)
     @JoinColumn(name = "IDREFUGE", nullable = true)
     private Refuge refuge;
+    @JsonIgnore
     @OneToMany(mappedBy = "animal")
     private Set<Incompatible> incompatible;
+    @JsonIgnore
     @OneToMany(mappedBy = "animal")
     private Set<Adoption> adoption;
 
     /** Default constructor. */
     public Animal() {
 	super();
+	incompatible = new HashSet<Incompatible>();
+	adoption = new HashSet<Adoption>();
     }
 
     /**

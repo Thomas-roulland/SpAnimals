@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.sun.jdi.connect.spi.Connection;
+
 import edu.supavenir.spanimals.models.Espece;
 import edu.supavenir.spanimals.models.Refuge;
 import edu.supavenir.spanimals.repositories.EspeceRepository;
@@ -57,6 +59,10 @@ public class SpaController {
 	return test1;
     }
 
+}
+=======
+<<<<<<< HEAD
+
     @GetMapping("/login")
     private String LoginAction() {
 	return "login";
@@ -80,3 +86,10 @@ public class SpaController {
 	}
     }
 }
+<<<<<<< HEAD
+=======
+=======
+}
+>>>>>>> 841303e52d685e7f69fc3617c4c4553e275ddc3b
+>>>>>>> d256ccf1bf280848c0558c590d11bf89c876af14
+>>>>>>> cb5b681755a948624980e4ebd0fd6909e7999ad3

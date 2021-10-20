@@ -1,20 +1,20 @@
 {{> inc/header}}
 
-{{#ESPECE}}
+{{#especes}}
 <form method="post" action="/admin/add/espece">
 
 <div class="ui input">
-<input type="text" value="Espece.frais" name="{{frais}}">
+<input type="text" value="{{frais}}" name="{{frais}}">
 </div>
 
 <div class="ui input">
-<input type="text" value="Espece.libelle" name="{{libelle}}">
+<input type="text" value="{{libelle}}" name="{{libelle}}">
 </div>
 
 <div class="ui input">
-<input type="text" value="Espece.lockFlag" name="{{lockFlag}}">
+<input type="text" value="{{lockFlag}}" name="{{lockFlag}}">
 </div>
-{{/ESPECE}}
+{{/especes}}
 <button>Ajoute</button>
 </form>
 

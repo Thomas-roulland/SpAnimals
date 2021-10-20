@@ -12,13 +12,17 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.supavenir.spanimals.models.Espece;
+import edu.supavenir.spanimals.models.Refuge;
 import edu.supavenir.spanimals.repositories.EspeceRepository;
+import edu.supavenir.spanimals.repositories.RefugeRepository;
 
 @RequestMapping("/admin")
 @RestController
 public class AdminRestController {
     @Autowired
     private EspeceRepository repoE;
+    @Autowired
+    private RefugeRepository repoR;
 
     @GetMapping("/list/espece")
     private String listEspece() {
@@ -44,9 +48,14 @@ public class AdminRestController {
     }
 
     @PostMapping("/modifier/espece/{id}")
-    private @ResponseBody String modifieEspece(Espece espece) {
-	repoE.saveAndFlush(espece);
+    private @ResponseBody String modifierEspece(@PathVariable int id, Espece espece) {
+	repoE.save(espece);
 	return espece.toString();
     }
 
+    @PostMapping("add/refuge")
+    private @ResponseBody String ajouteRefuge(Refuge refuge) {
+	repoR.saveAndFlush(refuge);
+	return refuge.toString();
+    }
 }

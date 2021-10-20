@@ -29,4 +29,9 @@ public class AdminController {
 	model.addAttribute("especes", especes);
 	return "FormModifierEspece";
     }
+
+    @GetMapping("/add/Refuge")
+    private String addRefuge() {
+	return "FormAddRefuge";
+    }
 }

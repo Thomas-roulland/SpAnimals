@@ -1,6 +1,5 @@
 package edu.supavenir.spanimals.controllers;
 
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
@@ -46,7 +45,6 @@ public class SpaController {
 	String s = "";
 	String test = "";
 	String test1 = "";
-	Connection connection = null;
 
 	for (Map.Entry<String, String[]> entry : map.entrySet()) {
 	    s += ("Key = " + entry.getKey() + ", Value = " + entry.getValue()[0]) + "<br>";
@@ -58,7 +56,6 @@ public class SpaController {
 	test1 = "SELECT * FROM Animal WHERE " + test + ";";
 	return test1;
     }
-<<<<<<< HEAD
 
     @GetMapping("/login")
     private String LoginAction() {
@@ -73,7 +70,13 @@ public class SpaController {
 	    return "marche pas";
 	}
     }
+
+    @PostMapping("logout")
+    private @ResponseBody String addLogout(User user) {
+	if (user.getName() == "user" && user.getPassword() == "user") {
+	    return "success";
+	} else {
+	    return "marche pas";
+	}
+    }
 }
-=======
-}
->>>>>>> 841303e52d685e7f69fc3617c4c4553e275ddc3b

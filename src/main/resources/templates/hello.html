@@ -1,7 +1,7 @@
 {{> inc/header }}
 
         <h1 inline="{{text}}">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
-        <form action="{{logout}}" method="post">
+        <form action="logout" method="post">
         <input type="submit" value="Sign Out"/>
         </form>
  

@@ -17,7 +17,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Version;
 
-@Entity(name="ADOPTION")
+@Entity(name = "ADOPTION")
 public class Adoption implements Serializable {
 
     /** Primary key. */
@@ -27,7 +27,7 @@ public class Adoption implements Serializable {
      * The optimistic lock. Available via standard bean get/set operations.
      */
     @Version
-    @Column(name="LOCK_FLAG")
+    @Column(name = "LOCK_FLAG")
     private Integer lockFlag;
 
     /**
@@ -36,7 +36,7 @@ public class Adoption implements Serializable {
      * @return the current value of the lockFlag property
      */
     public Integer getLockFlag() {
-        return lockFlag;
+	return lockFlag;
     }
 
     /**
@@ -45,27 +45,27 @@ public class Adoption implements Serializable {
      * @param aLockFlag the new value of the lockFlag property
      */
     public void setLockFlag(Integer aLockFlag) {
-        lockFlag = aLockFlag;
+	lockFlag = aLockFlag;
     }
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name="ID", unique=true, nullable=false, precision=10)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID", unique = true, nullable = false, precision = 10)
     private int id;
-    @Column(name="DATEADOPTION")
+    @Column(name = "DATEADOPTION")
     private LocalDate dateadoption;
-    @Column(name="PARTICIPATION", precision=19, scale=4)
+    @Column(name = "PARTICIPATION", precision = 19, scale = 4)
     private BigDecimal participation;
-    @ManyToOne(optional=false)
-    @JoinColumn(name="IDANIMAL", nullable=false)
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "IDANIMAL", nullable = false)
     private Animal animal;
-    @ManyToOne(optional=false)
-    @JoinColumn(name="IDADOPTANT", nullable=false)
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "IDADOPTANT", nullable = false)
     private Adoptant adoptant;
 
     /** Default constructor. */
     public Adoption() {
-        super();
+	super();
     }
 
     /**
@@ -74,7 +74,7 @@ public class Adoption implements Serializable {
      * @return the current value of id
      */
     public int getId() {
-        return id;
+	return id;
     }
 
     /**
@@ -83,7 +83,7 @@ public class Adoption implements Serializable {
      * @param aId the new value for id
      */
     public void setId(int aId) {
-        id = aId;
+	id = aId;
     }
 
     /**
@@ -92,7 +92,7 @@ public class Adoption implements Serializable {
      * @return the current value of dateadoption
      */
     public LocalDate getDateadoption() {
-        return dateadoption;
+	return dateadoption;
     }
 
     /**
@@ -101,7 +101,7 @@ public class Adoption implements Serializable {
      * @param aDateadoption the new value for dateadoption
      */
     public void setDateadoption(LocalDate aDateadoption) {
-        dateadoption = aDateadoption;
+	dateadoption = aDateadoption;
     }
 
     /**
@@ -110,7 +110,7 @@ public class Adoption implements Serializable {
      * @return the current value of participation
      */
     public BigDecimal getParticipation() {
-        return participation;
+	return participation;
     }
 
     /**
@@ -119,7 +119,7 @@ public class Adoption implements Serializable {
      * @param aParticipation the new value for participation
      */
     public void setParticipation(BigDecimal aParticipation) {
-        participation = aParticipation;
+	participation = aParticipation;
     }
 
     /**
@@ -128,7 +128,7 @@ public class Adoption implements Serializable {
      * @return the current value of animal
      */
     public Animal getAnimal() {
-        return animal;
+	return animal;
     }
 
     /**
@@ -137,7 +137,7 @@ public class Adoption implements Serializable {
      * @param aAnimal the new value for animal
      */
     public void setAnimal(Animal aAnimal) {
-        animal = aAnimal;
+	animal = aAnimal;
     }
 
     /**
@@ -146,7 +146,7 @@ public class Adoption implements Serializable {
      * @return the current value of adoptant
      */
     public Adoptant getAdoptant() {
-        return adoptant;
+	return adoptant;
     }
 
     /**
@@ -155,27 +155,28 @@ public class Adoption implements Serializable {
      * @param aAdoptant the new value for adoptant
      */
     public void setAdoptant(Adoptant aAdoptant) {
-        adoptant = aAdoptant;
+	adoptant = aAdoptant;
     }
 
     /**
      * Compares the key for this instance with another Adoption.
      *
      * @param other The object to compare to
-     * @return True if other object is instance of class Adoption and the key objects are equal
+     * @return True if other object is instance of class Adoption and the key
+     *         objects are equal
      */
     private boolean equalKeys(Object other) {
-        if (this==other) {
-            return true;
-        }
-        if (!(other instanceof Adoption)) {
-            return false;
-        }
-        Adoption that = (Adoption) other;
-        if (this.getId() != that.getId()) {
-            return false;
-        }
-        return true;
+	if (this == other) {
+	    return true;
+	}
+	if (!(other instanceof Adoption)) {
+	    return false;
+	}
+	Adoption that = (Adoption) other;
+	if (this.getId() != that.getId()) {
+	    return false;
+	}
+	return true;
     }
 
     /**
@@ -186,8 +187,9 @@ public class Adoption implements Serializable {
      */
     @Override
     public boolean equals(Object other) {
-        if (!(other instanceof Adoption)) return false;
-        return this.equalKeys(other) && ((Adoption)other).equalKeys(this);
+	if (!(other instanceof Adoption))
+	    return false;
+	return this.equalKeys(other) && ((Adoption) other).equalKeys(this);
     }
 
     /**
@@ -197,11 +199,11 @@ public class Adoption implements Serializable {
      */
     @Override
     public int hashCode() {
-        int i;
-        int result = 17;
-        i = getId();
-        result = 37*result + i;
-        return result;
+	int i;
+	int result = 17;
+	i = getId();
+	result = 37 * result + i;
+	return result;
     }
 
     /**
@@ -211,10 +213,10 @@ public class Adoption implements Serializable {
      */
     @Override
     public String toString() {
-        StringBuffer sb = new StringBuffer("[Adoption |");
-        sb.append(" id=").append(getId());
-        sb.append("]");
-        return sb.toString();
+	StringBuffer sb = new StringBuffer("[Adoption |");
+	sb.append(" id=").append(getId());
+	sb.append("]");
+	return sb.toString();
     }
 
     /**
@@ -223,9 +225,9 @@ public class Adoption implements Serializable {
      * @return Map of key names to values
      */
     public Map<String, Object> getPrimaryKey() {
-        Map<String, Object> ret = new LinkedHashMap<String, Object>(6);
-        ret.put("id", Integer.valueOf(getId()));
-        return ret;
+	Map<String, Object> ret = new LinkedHashMap<String, Object>(6);
+	ret.put("id", Integer.valueOf(getId()));
+	return ret;
     }
 
 }

@@ -10,7 +10,7 @@ import edu.supavenir.spanimals.repositories.RaceRepository;
 
 @RequestMapping("/employe")
 @RestController
-public class ListEmployeController {
+public class RestEmployeController {
     @Autowired
     private EspeceRepository repoE;
     @Autowired

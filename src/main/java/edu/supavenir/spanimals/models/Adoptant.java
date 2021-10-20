@@ -4,6 +4,7 @@ package edu.supavenir.spanimals.models;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
@@ -13,6 +14,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Version;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity(name = "ADOPTANT")
 public class Adoptant implements Serializable {
@@ -70,12 +73,14 @@ public class Adoptant implements Serializable {
     private String telfixe;
     @Column(name = "INFOCOMPLEMENTAIRES", nullable = false)
     private String infocomplementaires;
+    @JsonIgnore
     @OneToMany(mappedBy = "adoptant")
     private Set<Adoption> adoption;
 
     /** Default constructor. */
     public Adoptant() {
 	super();
+	adoption = new HashSet<Adoption>();
     }
 
     /**

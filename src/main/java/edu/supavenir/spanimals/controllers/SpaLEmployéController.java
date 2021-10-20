@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,30 +28,35 @@ public class SpaLEmployéController {
     @Autowired
     private AnimalRepository AnimRepo;
 
-    // REGARDER LA FICHE ADOPTANT
+    // REGARDER LA FICHE ADOPTANT [DONE]
     @GetMapping("/adoptant/{id}")
-    private Optional<Adoptant> FicheAdoptant(@PathVariable int id, Adoptant adoptant) {
+    private Optional<Adoptant> FicheAdoptant(@PathVariable int id) {
 	return RepoAdop.findById(id);
     }
 
-    // REGARDER LA FICHE ANIMAL
+    // REGARDER LA FICHE ANIMAL [DONE]
     @GetMapping("/animal/{id}")
     private Optional<Animal> FicheAnimalAction(@PathVariable int id) {
 	return AnimRepo.findById(id);
     }
 
+    @GetMapping("/adoptant") // VOIR TOUS LES ADOPTANT [DONE]
+    public List<Adoptant> affichageAdoptant() {
+	return RepoAdop.findAll();
+    }
+
     // Regarder tous les animaux
 
-    @GetMapping("/animal")
+    @GetMapping("/animal") // VOIR TOUS LES ANIMAUX [DONE]
     public List<Animal> affichageAnimal() {
 	return AnimRepo.findAll();
     }
 
-    // AJOUTER UN ADOPTANT
-    @PostMapping()
-    private Adoptant AjouteAdoptant(@RequestBody Adoptant adoptant) {
+    // AJOUTER UN ADOPTANT [DONE]
+    @PostMapping("adoptant/add")
+    private @ResponseBody String AjouteAdoptant(Adoptant adoptant) {
 	RepoAdop.saveAndFlush(adoptant);
-	return adoptant;
+	return adoptant.toString();
     }
 
     // MODIFIER UN ADOPTANT

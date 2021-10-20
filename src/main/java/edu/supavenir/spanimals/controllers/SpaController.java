@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +14,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import com.sun.jdi.connect.spi.Connection;
 
 import edu.supavenir.spanimals.models.Espece;
 import edu.supavenir.spanimals.models.Refuge;
@@ -59,13 +58,24 @@ public class SpaController {
 	return test1;
     }
 
-}
-=======
-<<<<<<< HEAD
-
     @GetMapping("/login")
     private String LoginAction() {
 	return "login";
+    }
+
+    @GetMapping("/hello")
+    private String HelloAction() {
+	return "hello";
+    }
+
+    @GetMapping("/")
+    private String IndexAction() {
+	return "home";
+    }
+
+    @GetMapping("/home")
+    private String HomeAction() {
+	return "home";
     }
 
     @PostMapping("connecter")
@@ -78,18 +88,9 @@ public class SpaController {
     }
 
     @PostMapping("logout")
-    private @ResponseBody String addLogout(User user) {
-	if (user.getName() == "user" && user.getPassword() == "user") {
-	    return "success";
-	} else {
-	    return "marche pas";
-	}
+    private @ResponseBody String addLogout(HttpServletRequest request) {
+	HttpSession httpSession = request.getSession();
+	httpSession.invalidate();
+	return "home";
     }
 }
-<<<<<<< HEAD
-=======
-=======
-}
->>>>>>> 841303e52d685e7f69fc3617c4c4553e275ddc3b
->>>>>>> d256ccf1bf280848c0558c590d11bf89c876af14
->>>>>>> cb5b681755a948624980e4ebd0fd6909e7999ad3

@@ -17,9 +17,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(final HttpSecurity http) throws Exception {
 
-	http.authorizeRequests().antMatchers(HttpMethod.POST, "/login").hasRole("ADMIN") // Specific api method request
-											 // based on role.
-		.antMatchers("/home", "/").permitAll() // permited urls to guest users(without login).
+	http.authorizeRequests().antMatchers(HttpMethod.POST, "/login").hasRole("USER") // Specific api
+											// method
+		// request
+		// based on role.
+		.antMatchers("home", "/", "hello").permitAll() // permited urls to guest users(without login).
 		.anyRequest().authenticated().and().formLogin() // not specified form page to use default login page of
 								// spring security
 		.permitAll().and().logout().deleteCookies("JSESSIONID") // delete memory of browser after logout

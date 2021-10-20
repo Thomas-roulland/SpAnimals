@@ -59,11 +59,6 @@ public class SpaController {
 	test1 = "SELECT * FROM Animal WHERE " + test + ";";
 	return test1;
     }
-<<<<<<< HEAD
-
-}
-=======
-<<<<<<< HEAD
 
     @GetMapping("/login")
     private String LoginAction() {
@@ -79,7 +74,3 @@ public class SpaController {
 	}
     }
 }
-=======
-}
->>>>>>> 841303e52d685e7f69fc3617c4c4553e275ddc3b
->>>>>>> d256ccf1bf280848c0558c590d11bf89c876af14

@@ -70,12 +70,12 @@ public class SpaController {
 
     @GetMapping("/")
     private String IndexAction() {
-	return "home";
+	return "index";
     }
 
     @GetMapping("/home")
     private String HomeAction() {
-	return "home";
+	return "index";
     }
 
     @PostMapping("connecter")

@@ -3,7 +3,6 @@
 package edu.supavenir.spanimals.models;
 
 import java.io.Serializable;
-import java.sql.Clob;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
@@ -226,7 +225,7 @@ public class Refuge implements Serializable {
      *
      * @return the current value of description
      */
-    public Clob getDescription() {
+    public String getDescription() {
 	return description;
     }
 
@@ -235,7 +234,7 @@ public class Refuge implements Serializable {
      *
      * @param aDescription the new value for description
      */
-    public void setDescription(Clob aDescription) {
+    public void setDescription(String aDescription) {
 	description = aDescription;
     }
 

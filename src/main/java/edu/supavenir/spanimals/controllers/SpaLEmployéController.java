@@ -69,7 +69,7 @@ public class SpaLEmployéController {
 	return null;
     }
 
-    @PostMapping("/adoptant/edit/{id}")
+    @PostMapping("/employe/adoptant/edit/{id}")
     private RedirectView editAdoptant(@PathVariable int id, Adoptant adoptant) {
 	Adoptant AdoptBdd = RepoAdop.getById(id);
 	AdoptBdd.setAdoption(adoptant.getAdoption());
@@ -87,10 +87,8 @@ public class SpaLEmployéController {
 	AdoptBdd.setTelmobile(adoptant.getTelmobile());
 	AdoptBdd.setVille(adoptant.getVille());
 	RepoAdop.saveAndFlush(AdoptBdd);
-	return new RedirectView("/Adoptant/");
+	return new RedirectView("/employe/");
     }
-
-    // AJOUTER UN ANIMAL
 
     @PostMapping("/animal/add")
     private @ResponseBody String ajouteAnimal(Animal animal) {

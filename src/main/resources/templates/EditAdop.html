@@ -1,0 +1,55 @@
+{{> inc/header}}
+
+  <a class="ui primary button" href="/employe/"><i class="home icon"></i>Accueil Employe</a>
+  	{{#Adoptant}}
+<form class="ui form" action="/employe/adoptant/edit/{{id}}" method="post">
+  <div class="field">
+    <label>Complementad</label>
+    <input type="text" name="complementad" value="{{complementad}}">
+  </div>
+  <div class="field">
+    <label>CP</label>
+    <input type="text" name="cp" value="{{cp}}">
+  </div>
+   <div class="field">
+    <label>Info complementaires</label>
+    <input type="text" name="infocomplementaires" value="{{infocomplementaires}}">
+  </div>
+     <div class="field">
+    <label>LockFlag</label>
+    <input type="text" name="lockflag" value="{{lock_flag}}">
+  </div>
+     <div class="field">
+    <label>Mail</label>
+    <input type="text" name="mail" value="{{mail}}">
+  </div>
+     <div class="field">
+    <label>Nom</label>
+    <input type="text" name="nom" value="{{nom}}">
+  </div>
+     <div class="field">
+    <label>Numéro & Rue</label>
+    <input type="text" name="numeroetrue" value="{{numeroetrue}}">
+  </div>
+     <div class="field">
+    <label>Prénom</label>
+    <input type="text" name="prenom" value="{{prenom}}">
+  </div>
+     <div class="field">
+    <label>Tel.Fixe</label>
+    <input type="text" name="telfixe" value="{{telfixe}}">
+  </div>
+     <div class="field">
+    <label>Tel.Mobile</label>
+    <input type="text" name="telmobile" value="{{telmobile}}">
+  </div>
+     <div class="field">
+    <label>Ville</label>
+    <input type="text" name="ville" value="{{ville}}">
+  </div>
+    <button class="ui button" type="submit">Envoyer</button>
+
+</form>
+{{/Adoptant}}
+
+{{> inc/footer}}

@@ -3,7 +3,6 @@ package edu.supavenir.spanimals.controllers;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -13,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -49,12 +47,12 @@ public class SpaController {
 	return "animal";
     }
 
-    @GetMapping("employe/adoptant/edit/{id}")
-    public String ActionEditFormAdoptant(Model model, @PathVariable int id) {
+    @GetMapping("/employe")
+    public String AfficheAdoptant(Model model) {
 
-	Optional<Adoptant> Adoptant = RepoAdop.findById(id);
-	model.addAttribute("Adoptant", Adoptant);
-	return "EditAdop";
+	List<Adoptant> adoptant = RepoAdop.findAll();
+	model.addAttribute("adoptant", adoptant);
+	return "employe";
     }
 
     @GetMapping("recherche")
@@ -64,7 +62,7 @@ public class SpaController {
 
 	List<Refuge> refuges = repoR.findAll();
 	model.addAttribute("refuges", refuges);
-	return "recherche";
+	return "animal";
     }
 
     @PostMapping("search")

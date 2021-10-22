@@ -17,26 +17,23 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(final HttpSecurity http) throws Exception {
 
+	String[] staticResources = { "/css/**", "/images/**", "/fonts/**", "/scripts/**", };
+
 	http.authorizeRequests().antMatchers(HttpMethod.POST, "/login").hasRole("USER") // Specific api
 
 		// method
 		// request
 		// based on role.
-
-		.antMatchers("home", "/", "hello", "/console/**").permitAll() // permited urls to guest users(without
-									      // login).
-
-		.antMatchers("home", "/", "hello", "console/**", "/animal/**").permitAll() // permited urls to guest
-											   // users(without
+		.antMatchers("home", "/", "hello", "console/**", "/animal/**", "/images/**").permitAll() // permited
+													 // urls to
+													 // guest //
+		// users(without
 		// login).
-		.antMatchers("home", "/", "hello").permitAll() // permited urls to guest users(without
-							       // login).
 		.anyRequest().authenticated().and().formLogin() // not specified form page to use default login page of
 								// spring security
 		.permitAll().and().logout().deleteCookies("JSESSIONID") // delete memory of browser after logout
 
 		.and().rememberMe().key("uniqueAndSecret");
-	; // remember me check box enabled.
 
 	http.csrf().disable(); // ADD THIS CODE TO DISABLE CSRF IN PROJECT.**
 	http.headers().frameOptions().disable();

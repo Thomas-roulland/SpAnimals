@@ -45,14 +45,14 @@ public class RestEmployeController {
 	return repoE.findAll().toString();
     }
 
-    @GetMapping("/adoptant") // VOIR TOUS LES ADOPTANT [DONE]
+    // VOIR TOUS LES ADOPTANT [DONE]
+    @GetMapping("/adoptant")
     public List<Adoptant> affichageAdoptant() {
 	return RepoAdop.findAll();
     }
 
-    // Regarder tous les animaux
-
-    @GetMapping("/animal") // VOIR TOUS LES ANIMAUX [DONE]
+    // VOIR TOUS LES ANIMAUX [DONE]
+    @GetMapping("/animal")
     public List<Animal> affichageAnimal() {
 	return AnimRepo.findAll();
     }

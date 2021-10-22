@@ -10,7 +10,7 @@ import edu.supavenir.spanimals.models.Animal;
 import edu.supavenir.spanimals.repositories.AnimalRepository;
 
 @RestController
-public class SosController {
+public class SpaRestController {
 
     @Autowired
     private AnimalRepository repo;
@@ -19,5 +19,4 @@ public class SosController {
     public List<Animal> SosAnimal() {
 	return repo.findBySos(true);
     }
-
 }

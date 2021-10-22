@@ -2,37 +2,72 @@
 
 <h1>Animaux disponible</h1>
 
-{{#animaux}}
+<form method="post" action="search">
+<select class="ui dropdown" name="espece">
+  <option value="">espece</option>
+{{#especes}}
+  <option value="1">{{libelle}}</option>
+{{/especes}}
+</select>
 
+<div class="ui input">
+<input type="text" placeholder="race" name="race">
+</div>
+
+<select class="ui dropdown" name="refuge">
+  <option value="">Refuge</option>
+{{#refuges}}
+  <option value="1">{{nom}}</option>
+{{/refuges}}
+</select>
+
+<select class="ui dropdown">
+  <option value="">Sexe</option>
+  <option value="1">Male</option>
+  <option value="0">Femelle</option>
+</select>
+
+<div class="ui input">
+<input type="text" placeholder="Age" name="age">
+</div>
+
+<div class="ui input">
+<input type="text" placeholder="Nom" name="nom">
+</div>
+
+<button class="ui button">Rechercher</button>
+</form>
+
+<br>
+<p>Voir les animaux en detresse : </p><a class="negative ui button" href="/sos"> SOS <i class="heartbeat icon"></i></a>
+
+{{#animaux}}
 <div class="ui card">
+  <div class="image">
+    <img src="/images/chien.jpg">
+  </div>
   <div class="content">
-    <i class="right floated like icon"></i>
-    <i class="right floated star icon"></i>
-    <div class="header">{{nom}}</div>
-    <div class="description">
-    
+    <a class="header">{{nom}}</a>
+    <div class="meta">
     {{#espece}}
-   	 <p> Espece : {{libelle}} </p>
-   	 {{/espece}}
-   
-      <p>Couleur(s) : {{couleur}}</p>
-      <p>Description : {{description}}</p>
-      <p>Frais : {{frais}}</p>
+      <span class="date">{{libelle}}</span>
+     {{/espece}}
+    </div>
+    <div class="description">
+      {{#refuge}}
+      	Localisation : {{nom}}
+      {{/refuge}}
     </div>
   </div>
   <div class="extra content">
-    <span class="left floated like">
-      <i class="like icon"></i>
-      Like
-    </span>
-    <span class="right floated star">
-      <i class="star icon"></i>
-      Favorite
-    </span>
+    <a href="">
+      <i class="eye icon"></i>
+      Voir fiche animal
+    </a>
   </div>
 </div>
-
   {{/animaux}}
+
 
 
 {{> inc/footer }}

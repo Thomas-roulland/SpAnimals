@@ -18,8 +18,8 @@ public class SpaLController {
     @Autowired
     private AnimalRepository Repo;
 
-    @GetMapping("/animal")
-    public List<Animal> ListAnimal() {
+    @GetMapping("/rest/animal")
+    public List<Animal> AllAnimal() {
 
 	return Repo.findAll();
     }
@@ -28,5 +28,6 @@ public class SpaLController {
     private Optional<Animal> FicheAnimalAction(@PathVariable int id, Animal animal) {
 	return Repo.findById(id);
     }
+
 // LUCAS [↑]
 }

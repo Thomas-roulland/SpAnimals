@@ -18,13 +18,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(final HttpSecurity http) throws Exception {
 
 	http.authorizeRequests().antMatchers(HttpMethod.POST, "/login").hasRole("USER") // Specific api
-<<<<<<< HEAD
 
-=======
-											// method
+		// method
 		// request
 		// based on role.
->>>>>>> 6776f1d63768bacd271f1a49b9b512b882147ba0
+
 		.antMatchers("home", "/", "hello", "/console/**").permitAll() // permited urls to guest users(without
 									      // login).
 
@@ -42,10 +40,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	http.csrf().disable(); // ADD THIS CODE TO DISABLE CSRF IN PROJECT.**
 	http.headers().frameOptions().disable();
-<<<<<<< HEAD
-=======
 
->>>>>>> 6776f1d63768bacd271f1a49b9b512b882147ba0
     }
 
     @Bean

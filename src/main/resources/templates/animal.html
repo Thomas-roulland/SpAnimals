@@ -1,0 +1,38 @@
+{{> inc/header }}
+
+<h1>Animaux disponible</h1>
+
+{{#animaux}}
+
+<div class="ui card">
+  <div class="content">
+    <i class="right floated like icon"></i>
+    <i class="right floated star icon"></i>
+    <div class="header">{{nom}}</div>
+    <div class="description">
+    
+    {{#espece}}
+   	 <p> Espece : {{libelle}} </p>
+   	 {{/espece}}
+   
+      <p>Couleur(s) : {{couleur}}</p>
+      <p>Description : {{description}}</p>
+      <p>Frais : {{frais}}</p>
+    </div>
+  </div>
+  <div class="extra content">
+    <span class="left floated like">
+      <i class="like icon"></i>
+      Like
+    </span>
+    <span class="right floated star">
+      <i class="star icon"></i>
+      Favorite
+    </span>
+  </div>
+</div>
+
+  {{/animaux}}
+
+
+{{> inc/footer }}

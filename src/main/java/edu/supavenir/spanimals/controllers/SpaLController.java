@@ -5,7 +5,6 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -33,12 +32,5 @@ public class SpaLController {
 	return Repo.findById(id);
     }
 
-<<<<<<< HEAD
-    @GetMapping("/employe/adoptant/edit/{id}")
-    public String RedirecteditAction(Model model, @PathVariable int id) {
-	return "EditAdop";
-    }
-=======
->>>>>>> e474597944fee3df0651282eb2338a88724da73b
 // LUCAS [↑]
 }

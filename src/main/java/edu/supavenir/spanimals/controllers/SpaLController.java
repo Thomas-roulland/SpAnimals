@@ -22,8 +22,8 @@ public class SpaLController {
     @Autowired
     private AdoptantRepository RepoAdop;
 
-    @GetMapping("/animal")
-    public List<Animal> ListAnimal() {
+    @GetMapping("/rest/animal")
+    public List<Animal> AllAnimal() {
 
 	return Repo.findAll();
     }
@@ -33,9 +33,12 @@ public class SpaLController {
 	return Repo.findById(id);
     }
 
+<<<<<<< HEAD
     @GetMapping("/employe/adoptant/edit/{id}")
     public String RedirecteditAction(Model model, @PathVariable int id) {
 	return "EditAdop";
     }
+=======
+>>>>>>> e474597944fee3df0651282eb2338a88724da73b
 // LUCAS [↑]
 }

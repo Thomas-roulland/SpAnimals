@@ -18,9 +18,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(final HttpSecurity http) throws Exception {
 
 	http.authorizeRequests().antMatchers(HttpMethod.POST, "/login").hasRole("USER") // Specific api
-											// method
+
+		// method
 		// request
 		// based on role.
+
 		.antMatchers("home", "/", "hello", "/console/**").permitAll() // permited urls to guest users(without
 									      // login).
 

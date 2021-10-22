@@ -18,22 +18,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(final HttpSecurity http) throws Exception {
 
 	http.authorizeRequests().antMatchers(HttpMethod.POST, "/login").hasRole("USER") // Specific api
-											// method
-		// request
-		// based on role.
-<<<<<<< HEAD
+
 		.antMatchers("home", "/", "hello", "/console/**").permitAll() // permited urls to guest users(without
 									      // login).
-=======
-<<<<<<< HEAD
+
 		.antMatchers("home", "/", "hello", "console/**", "/animal/**").permitAll() // permited urls to guest
 											   // users(without
 		// login).
-=======
 		.antMatchers("home", "/", "hello").permitAll() // permited urls to guest users(without
 							       // login).
->>>>>>> d88e7b5db162903e386bd636b888066faafb533e
->>>>>>> 5bc4a4400c52ca241dc7ebb2bc52ad004d03bcf0
 		.anyRequest().authenticated().and().formLogin() // not specified form page to use default login page of
 								// spring security
 		.permitAll().and().logout().deleteCookies("JSESSIONID") // delete memory of browser after logout
@@ -43,14 +36,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	http.csrf().disable(); // ADD THIS CODE TO DISABLE CSRF IN PROJECT.**
 	http.headers().frameOptions().disable();
-<<<<<<< HEAD
-
-=======
-<<<<<<< HEAD
-=======
-
->>>>>>> d88e7b5db162903e386bd636b888066faafb533e
->>>>>>> 5bc4a4400c52ca241dc7ebb2bc52ad004d03bcf0
     }
 
     @Bean

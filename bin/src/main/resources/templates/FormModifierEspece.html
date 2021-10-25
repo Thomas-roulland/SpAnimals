@@ -1,0 +1,23 @@
+{{> inc/header}}
+
+{{#especes}}
+<form method="post" action="/admin/modifier/espece/{{id}}">
+
+<div class="ui input">
+<input type="text" value="{{frais}}" name="frais">
+</div>
+
+<div class="ui input">
+<input type="text" value="{{libelle}}" name="libelle">
+</div>
+
+<div class="ui input">
+<input type="text" value="{{lockFlag}}" name="lockFlag">
+</div>
+
+<button>Modifier</button>
+
+</form>
+{{/especes}}
+
+{{> inc/footer}}

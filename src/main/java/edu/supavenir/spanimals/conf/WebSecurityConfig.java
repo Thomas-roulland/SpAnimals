@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 
 @Configuration
 @EnableWebSecurity
@@ -17,14 +18,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(final HttpSecurity http) throws Exception {
 
-	String[] staticResources = { "/css/**", "/images/**", "/fonts/**", "/scripts/**", };
 
 	http.authorizeRequests().antMatchers(HttpMethod.POST, "/login").hasRole("USER") // Specific api
 
 		// method
 		// request
 		// based on role.
-		.antMatchers("home", "/", "hello", "console/**", "/animal/**", "/images/**").permitAll() // permited
+		.antMatchers("home", "/", "hello", "console/**", "/animal/**", "/css/**").permitAll() // permited
 													 // urls to
 													 // guest //
 		// users(without
@@ -40,10 +40,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     }
 
+    
+   
+    
     @Bean
     @Override
     public UserDetailsService userDetailsService() {
 	UserDetails user = User.withDefaultPasswordEncoder().username("user").password("user").roles("USER").build();
+	
+	
 
 	return new InMemoryUserDetailsManager(user);
     }

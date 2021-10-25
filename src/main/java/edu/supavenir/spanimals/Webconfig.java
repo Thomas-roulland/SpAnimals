@@ -5,12 +5,19 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
-@SuppressWarnings("deprecation")
+
 @Configuration
-@EnableWebMvc
 public class Webconfig extends WebMvcConfigurerAdapter {
 
     public void addRessourceHandlers(ResourceHandlerRegistry registry) {
 	registry.addResourceHandler("/images/**").addResourceLocations("classpath:/static/images/");
     }
+    
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry
+          .addResourceHandler("/webjars/**")
+          .addResourceLocations("/webjars/");
+    }
+    
 }

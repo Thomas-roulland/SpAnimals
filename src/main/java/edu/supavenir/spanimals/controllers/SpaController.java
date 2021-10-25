@@ -46,6 +46,11 @@ public class SpaController {
 	model.addAttribute("animaux", animaux);
 	return "animal";
     }
+    
+    @GetMapping("home")
+    public String ActionHome() {
+    	return ("home");
+    }
 
     @GetMapping("/employe")
     public String AfficheAdoptant(Model model) {
@@ -99,10 +104,6 @@ public class SpaController {
 	return "index";
     }
 
-    @GetMapping("/home")
-    private String HomeAction() {
-	return "index";
-    }
 
     @PostMapping("connecter")
     private @ResponseBody String addLogin(User user) {

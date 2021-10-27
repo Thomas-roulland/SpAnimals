@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -23,6 +24,7 @@ import edu.supavenir.spanimals.repositories.AdoptantRepository;
 import edu.supavenir.spanimals.repositories.AnimalRepository;
 import edu.supavenir.spanimals.repositories.EspeceRepository;
 import edu.supavenir.spanimals.repositories.RefugeRepository;
+import io.github.jeemv.springboot.vuejs.VueJS;
 
 @Controller
 public class SpaController {
@@ -47,10 +49,6 @@ public class SpaController {
 	return "animal";
     }
     
-    @GetMapping("home")
-    public String ActionHome() {
-    	return ("home");
-    }
 
     @GetMapping("/employe")
     public String AfficheAdoptant(Model model) {

@@ -1,13 +1,44 @@
 {{> inc/header }}
+<v-app>
+
+  	<v-card flat tile>
+    <v-toolbar extended  dark dense>
+      <v-app-bar-nav-icon></v-app-bar-nav-icon>
+
+      <v-toolbar-title>SpAniamals</v-toolbar-title>
+
+      <v-spacer></v-spacer>
+
+      <v-btn icon>
+        <v-icon>mdi-magnify</v-icon>
+      </v-btn>
+
+      <v-btn icon>
+        <v-icon>mdi-heart</v-icon>
+      </v-btn>
+
+      <v-btn icon>
+        <v-icon>mdi-dots-vertical</v-icon>
+      </v-btn>
+    </v-toolbar>
+    </v-card>
+  
+  <h1>salut</h1>
 
 
-<h1> test</h1>
+</v-app>
 
-
-      <div class="btn-group">
-            <button type="button" class="btn btn-success">This is a success button</button>
-            <button type="button" class="btn btn-warning">This is a warning button</button>
-            <button type="button" class="btn btn-danger">This is a danger button</button>
-     </div>
-
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vuetify/2.5.9/vuetify.min.js"></script>
+<script>
+	var app = new Vue({
+		  el: 'v-app',
+		  vuetify: new Vuetify(),
+		  data: {
+		  },
+		  delimiters: ['<%', '%>'],
+		  methods:{
+		  }
+		})
+</script>
 {{> inc/footer }}

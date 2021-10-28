@@ -136,7 +136,7 @@
 <template>
   <v-footer fixed padless dark  bottom>
   	<v-col class="grey">
-  		<template>
+  		<template class="">
   
 
       <v-row dense class="d-flex justify-center mt-3">
@@ -144,6 +144,7 @@
           v-for="card in cards"
           :key="card.title"
           :cols="card.flex"
+          class="mr-4"
         >
           <v-card>
             <v-img
@@ -158,16 +159,10 @@
             <v-card-actions class="d-flex justify-center">
  
               <v-btn icon>
-                <v-icon>mdi-heart</v-icon>
+                <v-icon>  mdi-arrow-right</v-icon>
               </v-btn>
 
-              <v-btn icon>
-                <v-icon>mdi-bookmark</v-icon>
-              </v-btn>
-
-              <v-btn icon>
-                <v-icon>mdi-share-variant</v-icon>
-              </v-btn>
+        
             </v-card-actions>
           </v-card>
         </v-col>
@@ -205,9 +200,9 @@
 			          },
 			        ],
 			        cards: [
-			            { title: 'ACUTALITES', src: 'https://cdn.vuetifyjs.com/images/cards/house.jpg', flex: 3  },
-			            { title: 'ADOPTEZ', src: 'https://cdn.vuetifyjs.com/images/cards/road.jpg', flex: 3 },
-			            { title: 'REJOINGNEZ-NOUS', src: 'https://cdn.vuetifyjs.com/images/cards/plane.jpg', flex: 3 },
+			            { title: 'ACUTALITES', src: 'https://www.astree.asso.fr/mediacenter/uploads/xxl/nos-actualites.png', flex: 3  },
+			            { title: 'ADOPTEZ', src: 'https://www.fonds-saint-bernard.com/images/age_animal2.jpg', flex: 3 },
+			            { title: 'REJOINGNEZ-NOUS', src: 'https://www.la-spa.fr/sites/default/files/documents/img_8691-ret_1.jpg', flex: 3 },
 			          ],
 			          icons: [
 			              'mdi-facebook',

@@ -1,8 +1,5 @@
 {{> inc/header }}
 <v-app>
-
-
- <template>
   <v-card flat tile>
   
     <v-toolbar  extended dark dense>
@@ -59,7 +56,7 @@
     >
     </v-sheet>
   </v-card>
-</template>
+
 
 
 <template>
@@ -72,23 +69,17 @@
   </v-carousel>
 </template>
 
-<v-divider class="mt-3"></v-divider>
 
-<template>
-  <v-card
-    class="mx-auto"
-    max-width="344"
-    dark
-  >
+
+<div class="mx-auto">
+
     <v-card-text>
-      <div>Word of the Day</div>
       <p class="text-h4 text--primary">
-        be•nev•o•lent
+       SpAnimals
       </p>
-      <p>adjective</p>
+      <p>Qui sommes-nous ?</p>
       <div class="text--primary">
-        well meaning and kindly.<br>
-        "a benevolent smile"
+       	Implente en Normandie, nous luttons contre l'abandon.
       </div>
     </v-card-text>
     <v-card-actions>
@@ -96,49 +87,96 @@
         text
         color="deep-purple accent-4"
       >
-        Learn More
+        Voir en detail
       </v-btn>
     </v-card-actions>
-  </v-card>
-</template>
+</div>
 
-<template>
-  <v-card
-    class="mx-auto"
-    max-width="344"
-    dark
-  >
-    <v-card-text>
-      <div>Word of the Day</div>
-      <p class="text-h4 text--primary">
-        be•nev•o•lent
-      </p>
-      <p>adjective</p>
-      <div class="text--primary">
-        well meaning and kindly.<br>
-        "a benevolent smile"
-      </div>
-    </v-card-text>
-    <v-card-actions>
+
+<v-divider class="mt-6 mb-6" ></v-divider>
+
+
+<div class="mx-auto mb-6">
+
+<h1 class="text-center">Comment adoptez ?</h1>
+
+  <v-row dense class="d-flex justify-center mt-3">
+        <v-col
+          v-for="card in test"
+          :key="card.title"
+          :cols="card.flex"
+          class="mr-6"
+        >
+          <v-card class="mr-2 ml-3"  
+            elevation="6"
+  			shaped 
+  			outlined>
+            <v-img
+              :src="card.src"
+              class="white--text align-end  "
+              gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
+              height="300px"
+            >
+            </v-img>
+             <v-card-title class="d-flex justify-center font-weight-bold" v-text="card.title"></v-card-title>
+
+            <v-card-actions class="d-flex justify-center">
+ 			<v-btn color="red lighten-1" text>En savoir plus</v-btn>
+
+      <v-spacer></v-spacer>
+
       <v-btn
-        text
-        color="deep-purple accent-4"
+        icon
+        @click="show = !show"
       >
-        Learn More
+        <v-icon>mdi-plus</v-icon>
       </v-btn>
     </v-card-actions>
-  </v-card>
-</template>
+
+    <v-expand-transition>
+      <div v-show="show">
+        <v-divider></v-divider>
+
+        <v-card-text v-text="card.test">
+          </v-card-text>
+      </div>
+    </v-expand-transition>
+
+        
+            </v-card-actions>
+          </v-card>
+        </v-col>
+      </v-row>
+      
+</div>
+
+
+<v-card dark tile>
+	<v-card-title>Abonnez-vous a la NewSletter</v-card-title>
+	
+	<v-card-subtitle>Abonnez-vous a nos newsletters et soyez les premiers informes des nouvelles arrivees !</v-card-subtitle>
+	<v-card-text>
+	 <v-form v-model="valid">
+          <v-text-field
+          	prepend-inner-icon="mdi-at"
+          	outlined
+            v-model="email"
+            :rules="nameRules"
+            :counter="50"
+            label="Email"
+            required
+          ></v-text-field>
+        </v-col>
+        <div class="d-flex justify-center"> <v-btn>S'inscrire</v-btn></div>
+       
+  	</v-form>
+  </v-card-text>
+</v-card>
 
 
 
-
-
-  <v-footer fixed padless dark  bottom>
+  <v-footer  padless dark  bottom>
   	<v-col class="grey">
-  		<template class="">
-  
-
       <v-row dense class="d-flex justify-center mt-3">
         <v-col
           v-for="card in cards"
@@ -167,8 +205,6 @@
           </v-card>
         </v-col>
       </v-row>
-   
-</template>
   	</v-col>
     <v-col class="text-center" cols="12">
       2021 - <strong>Footer SpAnimals</strong>
@@ -187,6 +223,12 @@
 		  vuetify: new Vuetify(),
 		  data () {
 			  return {
+				  show:false,
+				  test: [
+			            { title: 'Voir les animaux', src: 'https://www.la-spa.fr/sites/default/files/articles/principales/spa_fa18_native_1200x628_1_0_0_0.jpg', flex: 2, test :"lol"  },
+			            { title: 'Inscription + reservation', src: 'https://napoleon-storage.s3.eu-west-3.amazonaws.com/blog/images/comment-annuler-la-reservation-dun-chiot-conseils-polytrans-5c5017e27ed13.jpeg', flex: 2, test :"mdr"  },
+			            { title: 'Venez le chercher', src: 'https://lvdneng.rosselcdn.net/sites/default/files/dpistyles_v2/ena_16_9_extra_big/2019/06/08/node_595812/40343170/public/2019/06/08/B9719855399Z.1_20190608162603_000%2BGDTDQ0VV0.1-0.jpg?itok=ZdkIzjMc1560009004', flex: 2,test :"ptdr"  },
+			          ],
 			        items: [
 			          {
 			            src: 'https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg',

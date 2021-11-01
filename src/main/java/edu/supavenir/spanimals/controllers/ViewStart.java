@@ -19,10 +19,9 @@ public class ViewStart {
             return this.vue;
         }
 	
-	@GetMapping("home")
+	@GetMapping("/")
 	public String index(ModelMap model) {
-		vue.addData("test", "Hello world!");
 		
-		return "home";
+		return "index";
 	}
 }

@@ -97,12 +97,6 @@ public class SpaController {
 	return "hello";
     }
 
-    @GetMapping("/")
-    private String IndexAction() {
-	return "index";
-    }
-
-
     @PostMapping("connecter")
     private @ResponseBody String addLogin(User user) {
 	if (user.getName() == "user" && user.getPassword() == "user") {

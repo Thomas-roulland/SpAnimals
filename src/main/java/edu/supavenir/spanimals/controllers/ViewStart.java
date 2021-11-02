@@ -24,4 +24,10 @@ public class ViewStart {
 		
 		return "index";
 	}
+	
+	@GetMapping("/board")
+	public String indexDash(ModelMap model) {
+		
+		return "board";
+	}
 }

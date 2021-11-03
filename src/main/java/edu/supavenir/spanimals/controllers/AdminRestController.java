@@ -1,8 +1,10 @@
 package edu.supavenir.spanimals.controllers;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,8 +14,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.supavenir.spanimals.models.Espece;
+import edu.supavenir.spanimals.models.Race;
 import edu.supavenir.spanimals.models.Refuge;
 import edu.supavenir.spanimals.repositories.EspeceRepository;
+import edu.supavenir.spanimals.repositories.RaceRepository;
 import edu.supavenir.spanimals.repositories.RefugeRepository;
 
 @RequestMapping("/admin")
@@ -23,6 +27,8 @@ public class AdminRestController {
     private EspeceRepository repoE;
     @Autowired
     private RefugeRepository repoR;
+    @Autowired
+    private RaceRepository repor;
 
     @GetMapping("/list/espece")
     private String listEspece() {
@@ -52,10 +58,52 @@ public class AdminRestController {
 	repoE.save(espece);
 	return espece.toString();
     }
-
+    
+    
+    
     @PostMapping("add/refuge")
     private @ResponseBody String ajouteRefuge(Refuge refuge) {
 	repoR.saveAndFlush(refuge);
 	return refuge.toString();
+    }
+    
+    @PostMapping("/modifier/Refuge/{id}")
+    private String AdminRefugeAction(Refuge refuge) {
+    	repoR.save(refuge);
+		return refuge.toString();
+    }
+    
+    @DeleteMapping("/delete/Refuge/{id}")
+    public Refuge deleteRefugeAction(@PathVariable int id) {
+	Optional<Refuge> refuge = repoR.findById(id);
+	if (refuge.isPresent()) {
+	    Refuge model = refuge.get();
+	    repoE.deleteById(id);
+	    return model;
+	}
+	return null;
+    }
+    
+    @PostMapping("add/Race")
+    private @ResponseBody String ajouteRace(Race race) {
+	repor.saveAndFlush(race);
+	return race.toString();
+    }
+    
+    @PostMapping("/modifier/Race/{id}")
+    private String AdminRaceAction(Race race) {
+    	repoR.save(race);
+		return race.toString();
+    }
+    
+    @DeleteMapping("/delete/Race/{id}")
+    public Race deleteRaceAction(@PathVariable int id) {
+	Optional<Race> race = repor.findById(id);
+	if (race.isPresent()) {
+	    Race model = race.get();
+	    repoE.deleteById(id);
+	    return model;
+	}
+	return null;
     }
 }

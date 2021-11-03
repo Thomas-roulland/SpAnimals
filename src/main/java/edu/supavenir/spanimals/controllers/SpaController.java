@@ -40,14 +40,6 @@ public class SpaController {
 
     @Autowired
     private AdoptantRepository RepoAdop;
-
-    @GetMapping("animal")
-    public String ActionAnimal(Model model) {
-
-	List<Animal> animaux = Repo.findAll();
-	model.addAttribute("animaux", animaux);
-	return "animal";
-    }
     
 
     @GetMapping("/employe")
@@ -58,10 +50,13 @@ public class SpaController {
 	return "employe";
     }
 
-    @GetMapping("recherche")
+    @GetMapping("/animal")
     private String ContactAction(Model model) {
 	List<Espece> especes = repo.findAll();
 	model.addAttribute("especes", especes);
+	
+	List<Animal> animaux = Repo.findAll();
+	model.addAttribute("animaux", animaux);
 
 	List<Refuge> refuges = repoR.findAll();
 	model.addAttribute("refuges", refuges);

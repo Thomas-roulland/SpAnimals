@@ -1,0 +1,39 @@
+{{> inc/header}}
+
+{{#especes}}
+<form method="post" action="/admin/modifier/refuge/{{id}}">
+
+<div class="ui input">
+<input type="text" value="{{complementad}}" name="complementad">
+</div>
+
+<div class="ui input">
+<input type="text" value="{{libelle}}" name="libelle">
+</div>
+
+<div class="ui input">
+<input type="text" value="{{lockFlag}}" name="lockFlag">
+</div>
+
+<div class="ui input">
+<input type="text" value="{{nom}}" name="nom">
+</div>
+
+<div class="ui input">
+<input type="text" value="{{cp}}" name="cp">
+</div>
+
+<div class="ui input">
+<input type="text" value="{{description}}" name="description">
+</div>
+
+<div class="ui input">
+<input type="text" value="{{localisation}}" name="localisation">
+</div>
+
+<button>Modifier</button>
+
+</form>
+{{/especes}}
+
+{{> inc/footer}}

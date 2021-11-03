@@ -12,9 +12,9 @@
         <v-icon>mdi-magnify</v-icon>
       </v-btn>
 
-      <v-btn icon>
+      <a href="/board" icon>
         <v-icon>mdi-login</v-icon>
-      </v-btn>
+      </a>
 
       <v-menu
         bottom
@@ -36,7 +36,7 @@
             v-for="(item, i) in icons"
             :key="i"
           >
-            <v-list-item-title><v-icon>{{ item.title }}</v-icon></v-list-item-title>
+            <v-list-item-title><v-icon v-text="item.title"></v-icon></v-list-item-title>
           </v-list-item>
         </v-list>
       </v-menu>

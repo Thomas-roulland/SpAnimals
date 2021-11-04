@@ -14,83 +14,96 @@ import org.springframework.web.bind.annotation.RestController;
 
 import edu.supavenir.spanimals.models.Adoptant;
 import edu.supavenir.spanimals.models.Animal;
+import edu.supavenir.spanimals.models.Espece;
+import edu.supavenir.spanimals.models.Race;
+import edu.supavenir.spanimals.models.Refuge;
 import edu.supavenir.spanimals.repositories.AdoptantRepository;
 import edu.supavenir.spanimals.repositories.AnimalRepository;
 import edu.supavenir.spanimals.repositories.EspeceRepository;
 import edu.supavenir.spanimals.repositories.RaceRepository;
+import edu.supavenir.spanimals.repositories.RefugeRepository;
 
 @RequestMapping("/employe")
 @RestController
 
 public class RestEmployeController {
 
-    @Autowired
-    private AdoptantRepository RepoAdop;
-    @Autowired
-    private AnimalRepository AnimRepo;
+	@Autowired
+	private AdoptantRepository RepoAdop;
 
-    @Autowired
-    private EspeceRepository repoE;
+	@Autowired
+	private AnimalRepository AnimRepo;
 
-    @Autowired
-    private RaceRepository repoR;
+	@Autowired
+	private EspeceRepository repoE;
 
-    @GetMapping("/race")
-    public String AffichageRace() {
-	return repoR.findAll().toString();
-    }
+	@Autowired
+	private RaceRepository repoR;
 
-    @GetMapping("/espece")
-    public String AffichageEspece() {
-	return repoE.findAll().toString();
-    }
+	@Autowired
+	private RefugeRepository repor;
 
-    // VOIR TOUS LES ADOPTANT [DONE]
-    @GetMapping("/adoptant")
-    public List<Adoptant> affichageAdoptant() {
-	return RepoAdop.findAll();
-    }
-
-    // VOIR TOUS LES ANIMAUX [DONE]
-    @GetMapping("/animal")
-    public List<Animal> affichageAnimal() {
-	return AnimRepo.findAll();
-    }
-
-    // REGARDER LA FICHE ADOPTANT [DONE]
-    @GetMapping("/adoptant/{id}")
-    private Optional<Adoptant> FicheAdoptant(@PathVariable int id) {
-	return RepoAdop.findById(id);
-    }
-
-    // REGARDER LA FICHE ANIMAL [DONE]
-    @GetMapping("/animal/{id}")
-    private Optional<Animal> FicheAnimalAction(@PathVariable int id) {
-	return AnimRepo.findById(id);
-    }
-
-    // AJOUTER UN ADOPTANT [DONE]
-    @PostMapping("adoptant/add")
-    private @ResponseBody String AjouteAdoptant(Adoptant adoptant) {
-	RepoAdop.saveAndFlush(adoptant);
-	return adoptant.toString();
-    }
-
-    // AJOUTER UN ANIMAL [DONE]
-    @PostMapping("animal/add")
-    private @ResponseBody String ajouteAnimal(Animal animal) {
-	AnimRepo.save(animal);
-	return animal.toString();
-    }
-
-    // MODIFIER UN ADOPTANT
-    @PutMapping("{id}")
-    private Adoptant EditAdoptant(@PathVariable int id, Adoptant adoptant) {
-	if (RepoAdop.existsById(id)) {
-	    RepoAdop.save(adoptant);
-	    return adoptant;
+	@GetMapping("/race")
+	public List<Race> AffichageRace() {
+		return repoR.findAll();
 	}
-	return null;
-    }
+
+	@GetMapping("/espece")
+	public List<Espece> AffichageEspece() {
+		return repoE.findAll();
+	}
+
+	@GetMapping("/refuge")
+	public List<Refuge> indexAction() {
+		return repor.findAll();
+	}
+
+	// VOIR TOUS LES ADOPTANT [DONE]
+	@GetMapping("/adoptant")
+	public List<Adoptant> affichageAdoptant() {
+		return RepoAdop.findAll();
+	}
+
+	// VOIR TOUS LES ANIMAUX [DONE]
+	@GetMapping("/animal")
+	public List<Animal> affichageAnimal() {
+		return AnimRepo.findAll();
+	}
+
+	// REGARDER LA FICHE ADOPTANT [DONE]
+	@GetMapping("/adoptant/{id}")
+	private Optional<Adoptant> FicheAdoptant(@PathVariable int id) {
+		return RepoAdop.findById(id);
+	}
+
+	// REGARDER LA FICHE ANIMAL [DONE]
+	@GetMapping("/animal/{id}")
+	private Optional<Animal> FicheAnimalAction(@PathVariable int id) {
+		return AnimRepo.findById(id);
+	}
+
+	// AJOUTER UN ADOPTANT [DONE]
+	@PostMapping("/adoptant/add")
+	private @ResponseBody String AjouteAdoptant(Adoptant adoptant) {
+		RepoAdop.saveAndFlush(adoptant);
+		return adoptant.toString();
+	}
+
+	// AJOUTER UN ANIMAL [DONE]
+	@PostMapping("/add/animal")
+	private @ResponseBody String ajouteAnimal(Animal animal) {
+		AnimRepo.save(animal);
+		return animal.toString();
+	}
+
+	// MODIFIER UN ADOPTANT
+	@PutMapping("{id}")
+	private Adoptant EditAdoptant(@PathVariable int id, Adoptant adoptant) {
+		if (RepoAdop.existsById(id)) {
+			RepoAdop.save(adoptant);
+			return adoptant;
+		}
+		return null;
+	}
 
 }

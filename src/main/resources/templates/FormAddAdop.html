@@ -1,0 +1,86 @@
+{{> inc/header}}
+
+<v-app >
+<a class="ui primary flat button" href="/employe/"><i class="home icon"></i>Accueil Employe</a>
+
+  <v-form ref="form" action="/employe/add/adoptant" v-model="valid" lazy-validation>
+
+    <v-text-field v-model="Mail" :rules="emailRules" label="Email"  required ></v-text-field>
+    
+    <v-text-field v-model="nom" :rules="Rules" label="nom"  required ></v-text-field>
+    
+    <v-text-field v-model="prenom" :rules="Rules" label="prenom"  required ></v-text-field>
+    
+    <v-text-field v-model="datenaiss" :rules="Rules" label="Date Naissance (YY-MM-DD)"  required ></v-text-field>
+    
+    <v-text-field v-model="ville" :rules="Rules" label="ville"  required ></v-text-field>
+    
+    <v-text-field v-model="cp" :rules="CpRules" label="cp"  required ></v-text-field>
+    
+    <v-text-field v-model="numeroetrue" :rules="Rules" label="Numero et rue"  required ></v-text-field>
+    
+    <v-text-field v-model="complementad" :counter="100" :rules="Rules" label="complementad"  required></v-text-field>
+	
+	<v-text-field v-model="telfixe" :rules="TelRules" label="Téléphone Fixe"  required ></v-text-field>
+	
+	<v-text-field v-model="telmobile" :rules="TelRules" label="Téléphone mobile"  required ></v-text-field>
+
+	<v-text-field v-model="infocomplementaires" :rules="Rules" label="info Complementaires"  required ></v-text-field>
+
+    <v-btn :disabled="!valid" color="success" class="mr-4" @click="validate" > Validate </v-btn>
+
+    <v-btn color="error" class="mr-4" @click="reset">Reset Form</v-btn>
+
+    <v-btn color="warning" @click="resetValidation">Reset Validation</v-btn>
+  </v-form>
+
+</v-app>
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vuetify/2.5.9/vuetify.min.js"></script>
+<script>
+
+var app = new Vue({
+	  el: 'v-app',
+	  vuetify: new Vuetify(),
+		    data: () => ({
+		    	valid: true,
+		    	CpRules: '',
+			      CpRules: [
+			        v => !!v || 'champ obligatoire',
+			        v => (v && v.length <= 5 && v.length >4) || 'le Code Postal doit être égal à 5 caractères',
+			      ],
+			      email: '',
+			      emailRules: [
+			        v => !!v || 'champ obligatoire',
+			        v => /.+@.+\..+/.test(v) || 'E-mail doit être valide ',
+			      ],
+			      TelRules: [
+				        v => !!v || 'champ obligatoire',
+				        v => (v && v.length <= 10 && v.length >9) || 'le numéro de téléphone doit être égal à 10 caractères',
+				      ],
+				  Rules: [
+					    v => !!v || 'champ obligatoire',
+					  ],
+			      checkbox: false,
+		  
+		    }),
+		    
+		    methods: {
+		        validate () {
+		          this.$refs.form.validate()
+		        },
+		        reset () {
+		          this.$refs.form.reset()
+		        },
+		        resetValidation () {
+		          this.$refs.form.resetValidation()
+		        },
+		      },
+		      
+	  delimiters: ['<%', '%>'],
+	})
+</script>
+
+{{> inc/footer}}

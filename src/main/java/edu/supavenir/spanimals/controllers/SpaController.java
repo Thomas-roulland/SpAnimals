@@ -42,14 +42,9 @@ public class SpaController {
 
     @Autowired
     private AdoptantRepository RepoAdop;
-<<<<<<< HEAD
     
     @Autowired
     private RaceRepository RepoRace;
-
-   
-=======
->>>>>>> dd0c702c1ef82096297154c130b42aa06060d533
     
 
     @GetMapping("/employe")
@@ -70,9 +65,6 @@ public class SpaController {
 
 	List<Refuge> refuges = repoR.findAll();
 	model.addAttribute("refuges", refuges);
-	
-	List<Animal> animaux = Repo.findAll();
-	model.addAttribute("animaux", animaux);
 	
 	List<Race> race= RepoRace.findAll();
 	model.addAttribute("race", race);

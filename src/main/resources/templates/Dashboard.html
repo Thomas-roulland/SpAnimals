@@ -35,7 +35,7 @@
         <v-list-item
           v-for="item in items"
           :key="item.title"
-          link
+          :link="item.link"
         >
           <v-list-item-icon>
             <v-icon v-text="item.icon"></v-icon>
@@ -315,9 +315,12 @@
 				        ],
 				        drawer: true,
 				        items: [
-				          { title: 'Home', icon: 'mdi-home-city' },
-				          { title: 'My Account', icon: 'mdi-account' },
-				          { title: 'Users', icon: 'mdi-account-group-outline' },
+				          { title: 'Home', icon: 'mdi-home-city',link: '/admin/add/Refuge' },
+				          { title: 'My Account', icon: 'mdi-account',link: '/admin/add/Refuge' },
+				          { title: 'Users', icon: 'mdi-account-group-outline',link: '/admin/add/Refuge' },
+				          { title: 'Ajout', icon: 'mdi-plus-outline',link: '/admin/add/Refuge' },
+				          { title: 'Modifier', icon: 'mdi-pencil-outline',link: '/admin/add/Refuge' },
+				          { title: 'Supression', icon: 'mdi-delete-outline',link: '/admin/add/Refuge'},
 				        ],
 				        value: [
 				            423,

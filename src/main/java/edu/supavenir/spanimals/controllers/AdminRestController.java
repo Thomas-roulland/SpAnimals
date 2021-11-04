@@ -1,5 +1,6 @@
 package edu.supavenir.spanimals.controllers;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,9 +29,19 @@ public class AdminRestController {
 	@Autowired
 	private RaceRepository repor;
 
-	@GetMapping("/list/espece")
-	private String listEspece() {
-		return repoE.findAll().toString();
+	@GetMapping("/refuge")
+	public List<Refuge> indexAction() {
+		return repoR.findAll();
+	}
+
+	@GetMapping("/espece")
+	private List<Espece> listEspece() {
+		return repoE.findAll();
+	}
+
+	@GetMapping("/race")
+	private List<Race> listRace() {
+		return repor.findAll();
 	}
 
 	@PostMapping("/add/espece")
@@ -57,19 +68,19 @@ public class AdminRestController {
 		return espece.toString();
 	}
 
-	@PostMapping("add/refuge")
+	@PostMapping("/add/refuge")
 	private @ResponseBody String ajouteRefuge(Refuge refuge) {
 		repoR.saveAndFlush(refuge);
 		return refuge.toString();
 	}
 
-	@PostMapping("/modifier/Refuge/{id}")
+	@PostMapping("/modifier/refuge/{id}")
 	private String AdminRefugeAction(Refuge refuge) {
 		repoR.save(refuge);
 		return refuge.toString();
 	}
 
-	@DeleteMapping("/delete/Refuge/{id}")
+	@DeleteMapping("/delete/refuge/{id}")
 	public Refuge deleteRefugeAction(@PathVariable int id) {
 		Optional<Refuge> refuge = repoR.findById(id);
 		if (refuge.isPresent()) {
@@ -80,7 +91,7 @@ public class AdminRestController {
 		return null;
 	}
 
-	@PostMapping("add/Race")
+	@PostMapping("add/race")
 	private @ResponseBody String ajouteRace(Race race) {
 		repor.saveAndFlush(race);
 		return race.toString();

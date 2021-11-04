@@ -1,45 +1,109 @@
 {{> inc/header }}
 
-<h1>Animaux disponible</h1>
 
-<form method="post" action="search">
-<select class="ui dropdown" name="espece">
-  <option value="0">espece</option>
-{{#especes}}
-  <option value="1">{{libelle}}</option>
-{{/especes}}
-</select>
+<v-app>
 
-<select class="ui dropdown" name="espece">
-  <option value="">Race</option>
-{{#race}}
-  <option value="1">{{libelle}}</option>
-{{/race}}
-</select>
+<v-card flat tile>
+<v-toolbar  extended dark dense >
 
-<select class="ui dropdown" name="refuge">
-  <option value="">Refuge</option>
-{{#refuges}}
-  <option value="1">{{nom}}</option>
-{{/refuges}}
-</select>
+      <v-toolbar-title>SpAnimals</v-toolbar-title>
 
-<select class="ui dropdown">
-  <option value="">Sexe</option>
-  <option value="1">Male</option>
-  <option value="0">Femelle</option>
-</select>
+      <v-spacer></v-spacer>
 
-<div class="ui input">
-<input type="text" placeholder="Age" name="age">
-</div>
+      <v-btn icon>
+        <v-icon>mdi-magnify</v-icon>
+      </v-btn>
 
-<div class="ui input">
-<input type="text" placeholder="Nom" name="nom">
-</div>
+      <a href="/board" icon>
+        <v-icon>mdi-login</v-icon>
+      </a>
+
+      <v-menu
+        bottom
+        left
+      >
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn
+            icon
+            color="yellow"
+            v-bind="attrs"
+            v-on="on"
+          >
+            <v-icon>mdi-dots-vertical</v-icon>
+          </v-btn>
+        </template>
+
+        <v-list>
+          <v-list-item
+            v-for="(item, i) in icons"
+            :key="i"
+          >
+            <v-list-item-title><v-icon v-text="item.title"></v-icon></v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-menu>
+
+      <template v-slot:extension>
+        <v-tabs >
+          <v-tab><a href="/animal">Adopter</a></v-tab>
+          <v-tab>Informations</v-tab>
+          <v-tab>Nous contacter</v-tab>
+        </v-tabs>
+      </template>
+    </v-toolbar>
+
+
+<v-card class="mt-16" elevation="24">
+
+<v-card-title><h2>Animaux disponible</h2></v-card-title>
+
+<v-form method="post" action="search" >
+	<v-container fluid>
+		<v-row>
+		<v-col cols="1">
+	{{#especes}}
+	<v-select items="{{libelle}}" placeholder="especes" name="espece" filled>
+	</v-select>
+	{{/especes}} 
+	</v-col>
+	
+	<v-col cols="1">
+	{{#race}}
+	<v-select items="{{libelle}}" placeholder="races" name="race" filled>
+	</v-select>
+	{{/race}} 
+	</v-col>
+	
+	<v-col cols="1">
+	{{#refuges}}
+	<v-select items="{{nom}}" placeholder="refuges" name="espece" filled>
+	</v-select>
+	{{/refuges}} 
+	</v-col>
+	
+	<v-col cols="1">
+	{{#animaux}}
+	<v-select items="{{sexe}}" placeholder="espece" name="espece" filled>
+	</v-select>
+	{{/animaux}} 
+	</v-col>
+	
+	<v-col cols="1">
+		 <v-text-field
+            v-model="nom"
+            label="nom"
+          ></v-text-field>
+	</v-col>
+	
+	<v-col cols="1">
+		 <v-text-field
+            v-model="age"
+            label="age"
+          ></v-text-field>
+	</v-col>
 
 <button class="ui button">Rechercher</button>
-</form>
+</v-form>
 
 <br>
 <p>Voir les animaux en detresse : </p><a class="negative ui button" href="/sos"> SOS <i class="heartbeat icon"></i></a>
@@ -70,7 +134,27 @@
   </div>
 </div>
   {{/animaux}}
+<v-card>
 
+</v-app>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vuetify/2.5.9/vuetify.min.js"></script>
+<script>
+var app = new Vue({
+	  el: 'v-app',
+	  vuetify: new Vuetify(),
+		    data: () => ({
+		    	  icons: [
+		              'mdi-facebook',
+		              'mdi-twitter',
+		              'mdi-linkedin',
+		              'mdi-instagram',
+		            ],
+		    }),
+	  delimiters: ['<%', '%>'],
+	})
+
+</script>
 
 
 {{> inc/footer }}

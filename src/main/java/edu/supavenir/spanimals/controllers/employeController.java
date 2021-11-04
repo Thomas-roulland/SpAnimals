@@ -7,11 +7,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import edu.supavenir.spanimals.models.Adoptant;
 import edu.supavenir.spanimals.repositories.AdoptantRepository;
 import edu.supavenir.spanimals.repositories.AnimalRepository;
-
+@RequestMapping("/employe")
 @Controller
 public class employeController {
 
@@ -21,21 +22,21 @@ public class employeController {
     private AdoptantRepository RepoAdop;
 
     // AJOUTER UN ANIMAL
-    @GetMapping("/employe/animal/add")
+    @GetMapping("/add/animal")
     public String addAnimal() {
-	return "addAni";
+	return "FormAddAni";
     }
 
-    @GetMapping("/employe/adoptant/add")
+    @GetMapping("/add/adoptant")
     public String addAdoptant() {
-	return "addAdop";
+	return "FormAddAdop";
     }
 
-    @GetMapping("employe/adoptant/edit/{id}")
+    @GetMapping("/edit/adoptant/{id}")
     public String ActionEditFormAdoptant(Model model, @PathVariable int id) {
 
 	Optional<Adoptant> Adoptant = RepoAdop.findById(id);
 	model.addAttribute("Adoptant", Adoptant);
-	return "EditAdop";
+	return "FormEditAdop";
     }
 }

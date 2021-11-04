@@ -43,18 +43,10 @@ public class SpaController {
 
     @Autowired
     private AdoptantRepository RepoAdop;
-<<<<<<< HEAD
-    
-    @Autowired
-    private RaceRepository RepoRace;
-=======
-
     
     @Autowired
     private RaceRepository RepoRace;
 
-   
-<<<<<<< HEAD
     @Autowired
 	private VueJS vue;
 
@@ -74,10 +66,7 @@ public class SpaController {
 		
 		return "board";
 	}
-=======
->>>>>>> 98bc4a19956d67429de7d61bbd950f10bccf12b0
-    
->>>>>>> a8bf1d724586ab85f237ebe04effc3405d36786f
+
 
     @GetMapping("/employe")
     public String AfficheAdoptant(Model model) {

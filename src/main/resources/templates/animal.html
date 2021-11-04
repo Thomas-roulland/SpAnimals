@@ -53,57 +53,73 @@
     </v-toolbar>
 
 
-<v-card class="mt-16" elevation="24">
+  <v-alert
+      prominent
+      type="error"
+      class=" text-justify"
+    >
+       <div class="ml-16">
+	      <h2>LES ADOPTIONS RESPONSABLES </h2>
+	      <v-row>
+	      <v-col cols="10">
+	     <p>Vous souhaitez adopter un animal à la SPA ? Votre décision est mûrement réfléchie ? Vous pouvez consulter la liste de nos candidats à l’adoption en identifiant le refuge le plus proche de votre domicile. Repérez le ou les profils d’animaux qui vous correspondent, en fonction de votre mode de vie et de la composition de votre foyer.</p>
+		 <p>Ensuite, le meilleur moyen de rentrer en contact avec le refuge est de lui adresser un e-mail à l’adresse que vous trouverez sur notre site la-spa.fr, en renseignant votre démarche d’adoption responsable et le profil d’animaux qui vous correspondrait. Nous vous conseillons d’indiquer votre numéro de téléphone pour qu’on vous rappelle plus rapidement. </p>
+		 <p>Bonne chance dans votre démarche d’adoption responsable !</p>
+		 <p class="font-weight-bold">OFFREZ-LEUR LA VIE QU'ILS MÉRITENT</p>
+		 </v-col>
+		 </v-row>   
+	 </div>
+   	 </v-alert>
+
+<v-card  elevation="24">
 
 <v-card-title><h2>Animaux disponible</h2></v-card-title>
 
+<v-card-text>
 <v-form method="post" action="search" >
 	<v-container fluid>
 		<v-row>
 		<v-col cols="1">
-	{{#especes}}
-	<v-select items="{{libelle}}" placeholder="especes" name="espece" filled>
-	</v-select>
-	{{/especes}} 
-	</v-col>
+			<v-select :items="espece" item-text="libelle" placeholder="especes" name="espece" filled return-object></v-select>
+		</v-col>
 	
-	<v-col cols="1">
-	{{#race}}
-	<v-select items="{{libelle}}" placeholder="races" name="race" filled>
-	</v-select>
-	{{/race}} 
-	</v-col>
+		<v-col cols="1">
+			<v-select :items="race" item-text="libelle" placeholder="races" name="race" filled return-object>
+		</v-select>
+		</v-col>
 	
-	<v-col cols="1">
-	{{#refuges}}
-	<v-select items="{{nom}}" placeholder="refuges" name="espece" filled>
-	</v-select>
-	{{/refuges}} 
-	</v-col>
+		<v-col cols="1">
+			<v-select :items="refuges" item-text="nom" placeholder="refuges" name="refuges" filled return-object></v-select>
+		</v-col>
 	
-	<v-col cols="1">
-	{{#animaux}}
-	<v-select items="{{sexe}}" placeholder="espece" name="espece" filled>
-	</v-select>
-	{{/animaux}} 
-	</v-col>
+		<v-col cols="1">
+			<v-select :items="sexe" item-text="Sexe" placeholder="espece" name="sexe" filled return-object> </v-select>
+		</v-col>
 	
-	<v-col cols="1">
+		<v-col cols="1">
 		 <v-text-field
             v-model="nom"
             label="nom"
           ></v-text-field>
-	</v-col>
+		</v-col>
 	
-	<v-col cols="1">
+		<v-col cols="1">
 		 <v-text-field
             v-model="age"
             label="age"
           ></v-text-field>
-	</v-col>
-
-<button class="ui button">Rechercher</button>
+		</v-col>
+		
+		<v-col cols="1">
+		<v-button class="ui button">Rechercher</v-button>
+		</v-col>
+		</v-row>
+		</v-container>
 </v-form>
+<v-card-text>
+
+	
+
 
 <br>
 <p>Voir les animaux en detresse : </p><a class="negative ui button" href="/sos"> SOS <i class="heartbeat icon"></i></a>
@@ -138,6 +154,7 @@
 
 </v-app>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vuetify/2.5.9/vuetify.min.js"></script>
 <script>
 var app = new Vue({
@@ -150,7 +167,45 @@ var app = new Vue({
 		              'mdi-linkedin',
 		              'mdi-instagram',
 		            ],
+		            animal:[],
+					refuges:[],
+					espece:[],
+					race:[],
+					Sexe: [
+						'male',
+						'femelle'
+					],
+				
 		    }),
+		    mounted(){
+				this.loadRefuges();
+				this.loadEspece();
+				this.loadRace();
+				this.loadAnimal();
+			},
+		    
+		    methods: {
+				loadAnimal(){
+						this.$http.get('/employe/animal').then((response)=>{
+							this.animal=response.data;
+							})
+						},
+		    	loadRefuges(){
+					  this.$http.get('/employe/refuge').then((response)=>{
+						  this.refuge=response.data;
+					  })
+				  },
+				  loadEspece(){
+					  this.$http.get('/employe/espece').then((response)=>{
+						  this.espece=response.data;
+					  })
+				  },	
+				  loadRace(){
+					this.$http.get('/employe/race').then((response)=>{
+						this.race=response.data;
+					})
+				},
+		    },
 	  delimiters: ['<%', '%>'],
 	})
 

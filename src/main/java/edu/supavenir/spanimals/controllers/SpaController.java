@@ -42,9 +42,18 @@ public class SpaController {
 
     @Autowired
     private AdoptantRepository RepoAdop;
+<<<<<<< HEAD
     
     @Autowired
     private RaceRepository RepoRace;
+=======
+
+    
+    @Autowired
+    private RaceRepository RepoRace;
+
+   
+>>>>>>> 98bc4a19956d67429de7d61bbd950f10bccf12b0
     
 
     @GetMapping("/employe")

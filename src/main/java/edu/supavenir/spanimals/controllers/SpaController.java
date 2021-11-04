@@ -19,10 +19,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import edu.supavenir.spanimals.models.Adoptant;
 import edu.supavenir.spanimals.models.Animal;
 import edu.supavenir.spanimals.models.Espece;
+import edu.supavenir.spanimals.models.Race;
 import edu.supavenir.spanimals.models.Refuge;
 import edu.supavenir.spanimals.repositories.AdoptantRepository;
 import edu.supavenir.spanimals.repositories.AnimalRepository;
 import edu.supavenir.spanimals.repositories.EspeceRepository;
+import edu.supavenir.spanimals.repositories.RaceRepository;
 import edu.supavenir.spanimals.repositories.RefugeRepository;
 import io.github.jeemv.springboot.vuejs.VueJS;
 
@@ -40,14 +42,11 @@ public class SpaController {
 
     @Autowired
     private AdoptantRepository RepoAdop;
+    
+    @Autowired
+    private RaceRepository RepoRace;
 
-    @GetMapping("animal")
-    public String ActionAnimal(Model model) {
-
-	List<Animal> animaux = Repo.findAll();
-	model.addAttribute("animaux", animaux);
-	return "animal";
-    }
+   
     
 
     @GetMapping("/employe")
@@ -58,13 +57,19 @@ public class SpaController {
 	return "employe";
     }
 
-    @GetMapping("recherche")
+    @GetMapping("/animal")
     private String ContactAction(Model model) {
 	List<Espece> especes = repo.findAll();
 	model.addAttribute("especes", especes);
 
 	List<Refuge> refuges = repoR.findAll();
 	model.addAttribute("refuges", refuges);
+	
+	List<Animal> animaux = Repo.findAll();
+	model.addAttribute("animaux", animaux);
+	
+	List<Race> race= RepoRace.findAll();
+	model.addAttribute("race", race);
 	return "animal";
     }
 

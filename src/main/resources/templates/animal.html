@@ -4,15 +4,18 @@
 
 <form method="post" action="search">
 <select class="ui dropdown" name="espece">
-  <option value="">espece</option>
+  <option value="0">espece</option>
 {{#especes}}
   <option value="1">{{libelle}}</option>
 {{/especes}}
 </select>
 
-<div class="ui input">
-<input type="text" placeholder="race" name="race">
-</div>
+<select class="ui dropdown" name="espece">
+  <option value="">Race</option>
+{{#race}}
+  <option value="1">{{libelle}}</option>
+{{/race}}
+</select>
 
 <select class="ui dropdown" name="refuge">
   <option value="">Refuge</option>

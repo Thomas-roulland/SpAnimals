@@ -77,7 +77,7 @@
 
     
     <v-container fluid class="pt-5" >
-      <v-row class="d-flex justify-center "   >
+      <v-row class="d-flex justify-center ">
         <v-col
           v-for="card in cards"
           :key="card.title"
@@ -103,9 +103,8 @@
     
     
     <v-container fluid class="pt-16" >
-     
-     <div class="d-flex justify-center">
- 		<div class="d-inline-flex justify-center">
+      <v-layout row wrap class="d-flex justify-center">
+	<v-flex xs12 sm6 mg4 lg10  class="d-flex justify-center">
     <v-card class=" text-center "
     dark
 	elevation="24"
@@ -166,7 +165,7 @@
       By Kaishi l'admin de folie
     </v-card-subtitle>
 
-    <v-card-text class="text--primary">
+    <v-card-text class="text--primary" xs12 sm6 mg4 lg6 >
       <div>CRUD (create, read, update, delete) (creer, lire, mettre a jour, supprimer) est un acronyme pour les facons dont on peut fonctionner sur des donnees stockees. C'est un moyen mnemotechnique pour les quatre fonctions de base du stockage persistant.</div>
     </v-card-text>
 
@@ -175,6 +174,7 @@
 
     </v-card-actions>
   </v-card>
+
   
   <v-card class="ml-10" width="50vh" height="42vh"  elevation="24">
   <v-card-title class="d-flex justify-center">Types de visites</v-card-title>
@@ -189,9 +189,7 @@
     
      <v-row justify="center">
     <v-col
-      cols="2"
-      sm="8"
-      class=""
+    
     >
       <v-list>
           <v-list-item>
@@ -228,22 +226,21 @@
     </v-col>
   </v-row>
 </div>
-
-        
-    </v-container>
+</v-flex>
+</v-layout>
+ </v-container>
     
      <v-container fluid class="pt-16">
-     <div class="d-flex justify-center">
- 		<div class="d-inline-flex justify-center">
+     <v-layout row wrap class="d-flex justify-center">
+	<v-flex xs12 sm5 md4 lg12  class="d-flex justify-center">
+   
     <v-card 
-     width="90vh"
-    height="27vh"
     elevation="24">
  
         <v-img
-        max-height="27vh"
+        max-height="37vh"
         class="white--text title "
-        max-width="90vh"
+       
         src="https://c.wallhere.com/photos/27/50/road_red_summer_sky_blackandwhite_cloud_mountain_black-612021.jpg!d"
         gradient="to top right, rgba(100,115,201,.33), rgba(50,32,72,.7)"
       >
@@ -259,10 +256,10 @@
       </v-img>
       </v-image>
     </v-card>
+   
     
- 
-      <v-card  width="70vh"
-    height="27vh"
+  
+      <v-card  
     class="ml-10"
     elevation="24">
      <v-toolbar
@@ -312,14 +309,19 @@
   
         </v-list>
       </v-card>
+      </v-flex>
     </v-col>
   </v-row>
 </template>
     </div>
     </div>
+    </v-flex>
+    </v-layout>
     </v-container>
-    
-</div>
+
+
+
+
 </v-app>
 
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -368,8 +370,17 @@
 				                subtitle:
 				                  '<span class="font-weight-bold">Kaishi</span> &mdash; DashBoard done',
 				              },
+				              {
+					                avatar: 'https://images7.alphacoders.com/871/thumb-1920-871169.png',
+					                title: `<span class="font-weight-bold">EVERYONE</span>`,
+					                subtitle:
+					                  '<span class="font-weight-bold">Kaishi</span> &mdash; Responsive done',
+					              },
+				            ],
+				            team: [
+				            	{name: 'The Net Ninja', role: 'Web developer'},
+				            	{name: 'Ryu', role: 'Graphic designer'},
 				            
-				           
 				            ],
 				        mini: true,
 			  

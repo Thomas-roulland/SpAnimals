@@ -1,0 +1,33 @@
+{{> inc/header}}
+
+
+<form method="post" action="/admin/add/Race">
+
+<div class="ui input">
+<input type="text" placeholder="descriptif" name="descriptif">
+</div>
+
+<div class="ui input">
+<input type="text" placeholder="libelle" name="libelle">
+</div>
+
+<div class="ui input">
+<input type="text" placeholder="lockflag" name="lockflag">
+</div>
+
+<div class="ui input">
+<input type="text" placeholder="prerequis" name="prerequis">
+</div>
+
+<select class="ui dropdown" name="espece">
+  <option value="">race</option>
+{{#race}}
+  <option value="1">{{id}}</option>
+{{/race}}
+</select>
+
+<button>Ajoute</button>
+</form>
+
+
+{{> inc/footer}}

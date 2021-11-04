@@ -1,5 +1,5 @@
 {{> inc/header }}
-<v-app >
+<v-app id="">
  
     <v-navigation-drawer
       v-model="drawer"
@@ -33,16 +33,39 @@
 
       <v-list dense>
         <v-list-item
-          v-for="item in items"
-          :key="item.title"
-          link
         >
           <v-list-item-icon>
-            <v-icon v-text="item.icon"></v-icon>
+            <v-icon >mdi-home-city</v-icon>
           </v-list-item-icon>
 
           <v-list-item-content>
-            <v-list-item-title v-text="item.title"></v-list-item-title>
+           <a href="/board" ><v-list-item-title >Home</v-list-item-title></a>
+          </v-list-item-content>
+        </v-list-item>
+        
+         <v-list-item
+        >
+          <v-list-item-icon>
+            <v-icon >mdi-circle-edit-outline</v-icon>
+          </v-list-item-icon>
+
+          <v-list-item-content>
+           <a href="/admin/add/Refuge" ><v-list-item-title >CRUD animal</v-list-item-title></a>
+            <a href="/admin/add/Refuge" ><v-list-item-title >CRUD adoptant</v-list-item-title></a>
+             <a href="/admin/add/Refuge" ><v-list-item-title >CRUD refuge</v-list-item-title></a>
+              <a href="/admin/add/Refuge" ><v-list-item-title >CRUD race</v-list-item-title></a>
+               <a href="/admin/add/Refuge" ><v-list-item-title >CRUD espece</v-list-item-title></a>
+          </v-list-item-content>
+        </v-list-item>
+        
+         <v-list-item
+        >
+          <v-list-item-icon>
+            <v-icon >mdi-account</v-icon>
+          </v-list-item-icon>
+
+          <v-list-item-content>
+           <a href="/admin/add/Refuge" ><v-list-item-title >Gestion user</v-list-item-title></a>
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -315,9 +338,9 @@
 				        ],
 				        drawer: true,
 				        items: [
-				          { title: 'Home', icon: 'mdi-home-city' },
-				          { title: 'My Account', icon: 'mdi-account' },
-				          { title: 'Users', icon: 'mdi-account-group-outline' },
+				          { title: 'Home', icon: 'mdi-home-city', href:'/admin/add/Refuge' },
+				          { title: 'My Account', icon: 'mdi-account', href:'/admin/add/Refuge' },
+				          { title: 'Users', icon: 'mdi-account-group-outline', href:'/admin/add/Refuge' },
 				        ],
 				        value: [
 				            423,

@@ -1,14 +1,171 @@
 {{> inc/header }}
 
-<h2>salut</h2>
-
-{{#animalTest}}
-	<h1>{{nom}}</h1>
-{{/animalTest}}
-
 <v-app>
+<v-card flat tile>
+<v-toolbar  extended dark dense >
 
+      <v-toolbar-title>SpAnimals</v-toolbar-title>
 
+      <v-spacer></v-spacer>
+
+      <v-btn icon>
+        <v-icon>mdi-magnify</v-icon>
+      </v-btn>
+
+      <a href="/board" icon>
+        <v-icon>mdi-login</v-icon>
+      </a>
+
+      <v-menu
+        bottom
+        left
+      >
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn
+            icon
+            color="yellow"
+            v-bind="attrs"
+            v-on="on"
+          >
+            <v-icon>mdi-dots-vertical</v-icon>
+          </v-btn>
+        </template>
+
+        <v-list>
+          <v-list-item
+            v-for="(item, i) in icons"
+            :key="i"
+          >
+            <v-list-item-title><v-icon v-text="item.title"></v-icon></v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-menu>
+
+      <template v-slot:extension>
+        <v-tabs >
+          <v-tab><a href="/animal">Adopter</a></v-tab>
+          <v-tab>Informations</v-tab>
+          <v-tab>Nous contacter</v-tab>
+        </v-tabs>
+      </template>
+    </v-toolbar>
+    </v-card>
+    
+{{#animalTest}}
+	 <v-container class="pt-5" >
+     <v-layout row wrap class="d-flex justify-center">
+     	<v-flex xs10 sm5 >
+     		<v-card elevation="24">
+				<v-card tile >
+				<v-img src="{{img}}"></v-img>
+				<v-card-title class="font-weight-bold text-uppercase">{{nom}}</v-card-title>
+				<v-card-text class="text--primary">
+				{{#refuge}}
+					<v-row >
+						<v-col>
+							{{#espece}}
+							<p>Espece : {{libelle}}</p>
+							{{/espece}}
+						</v-col>
+						<v-col>
+							<p>Se trouve dans le refuge : {{nom}}</p>
+						</v-col>
+						</v-row>
+						<v-row>
+						<v-col>
+							{{#race}}
+								<p>Race : {{libelle}}</p>
+							{{/race}}
+						</v-col>
+						<v-col>
+							<p>Ville : {{ville}}, {{cp}}</p>
+						</v-col>
+						</v-row>
+						<v-row>
+							<v-col>
+								<p>Sexe : {{sexe}}</p>
+							</v-col>
+							<v-col>
+								<p>Date de Naissance : {{dnaissance}}</p>
+							</v-col>
+						</v-row>
+					{{/refuge}}
+				
+				<v-divider></v-divider>
+					
+					<p class="mt-5">{{description}}</p>
+					</v-card-text>
+				</v-card>
+				
+			<div class="grey lighten-3 ">
+				<v-card-title class="d-flex jusititfy-center">
+				 	<h2>Je souhaite adopter <span class="orange--text text-uppercase">{{nom}} :</span></h2>
+				 </v-card-title>
+				 <div class="d-flex justify-center">
+				 <v-btn width="50%" class="mb-3">Adopter</v-btn>
+				 </div>
+			</div>
+			
+			<v-card-text class="grey lighten-2">
+				<h2 class="text--primary">Les conditions d'adoption</h2>
+				<v-row>
+					<v-col cols="8">
+					<p>En adoptant a la SPA, vous acceptez de participer aux frais engendres par la prise en charge de l animal dans le cadre d une adoption responsable dont les soins, l hebergement, la nourriture, la vaccination, la sterilisation, l'education...
+					 Vous trouverez aussi aupres de nos equipes des professionnels capables de vous donner les meilleurs conseils pour accueillir votre nouveau compagnon.</p>
+					 </v-col>
+				</v-row>
+				<v-row>
+					<v-col  cols="8">
+					 <p>Par votre participation financiere, vous continuerez a faire grandir notre mouvement de solidarite envers les animaux abandonnes et maltraites.</p>
+					</v-col>
+				</v-row>
+			
+			<v-card class="grey lighten-3 ">
+			
+				<v-card-text>
+				<h5 class="text--primary">Participation : </h5>
+					<v-row>
+					
+					<v-col class="d-flex justify-center align-center" >
+						
+						<h1 class="font-weight-black text--primary">150 euros</h1>
+					</v-col>
+					<v-divider vertical></v-divider>
+					<v-col>
+						<h5 class="text--primary">N'oubliez pas d'apporter avec vous :</h5>
+						 <v-list dense class="grey lighten-3 ">
+
+						        <v-list-item
+						          v-for="(item, i) in items"
+						          :key="i"
+						          
+						        >
+						          <v-list-item-icon>
+						            <v-icon v-text="item.icon"></v-icon>
+						          </v-list-item-icon>
+						          <v-list-item-content>
+						            <v-list-item-title v-text="item.text"></v-list-item-title>
+						          </v-list-item-content>
+						        </v-list-item>
+						      
+						   </v-list>
+					</v-col>
+					</v-row>
+				</v-card-text>
+			
+			</v-card>
+				
+			</v-card-text>
+			
+			
+				
+			
+			
+			</v-card>
+		</v-flex>
+	</v-layout>
+	</v-container>
+	{{/animalTest}}
 
 </v-app>
 
@@ -22,7 +179,12 @@ var app = new Vue({
 	  el: 'v-app',
 	  vuetify: new Vuetify(),
 		    data: () => ({
-
+		    	 selectedItem: 1,
+		         items: [
+		           { text: 'Piece d identite', icon: 'mdi-card-search' },
+		           { text: 'Justificatif de domicile', icon: 'mdi-home-city-outline' },
+		           { text: 'Justificatif de revenus', icon: 'mdi-currency-usd' },
+		         ],
 		    }),
 		    mounted(){
 			},

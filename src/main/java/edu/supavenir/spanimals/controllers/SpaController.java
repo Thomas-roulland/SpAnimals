@@ -74,8 +74,8 @@ public class SpaController {
 	
 	@GetMapping("/animal/{id}")
 	private String FicheAnimalAction(@PathVariable int id, Model model) {
-		Animal animalTest = AnimRepo.getById(id);
-		model.addAttribute("animalTest", animalTest);
+		Optional<Animal> animal = AnimRepo.findById(id);
+		model.addAttribute("animalTest", animal.get());
 		return "FicheAnimal";
 	}
 	

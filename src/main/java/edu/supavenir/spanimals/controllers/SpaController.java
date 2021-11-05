@@ -3,6 +3,7 @@ package edu.supavenir.spanimals.controllers;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -14,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -39,7 +41,7 @@ public class SpaController {
     private RefugeRepository repoR;
 
     @Autowired
-    private AnimalRepository Repo;
+    private AnimalRepository AnimRepo;
 
     @Autowired
     private AdoptantRepository RepoAdop;
@@ -64,9 +66,16 @@ public class SpaController {
 	@GetMapping("/board")
 	public String indexDash(ModelMap model) {
 		
-		return "board";
+		return "Dashboard";
 	}
-
+	
+	@GetMapping("/animal/{id}")
+	private String FicheAnimalAction(@PathVariable int id, Model model) {
+		Animal animalTest = AnimRepo.getById(id);
+		model.addAttribute("animalTest", animalTest);
+		return "FicheAnimal";
+	}
+	
 
     @GetMapping("/employe")
     public String AfficheAdoptant(Model model) {
@@ -81,7 +90,7 @@ public class SpaController {
 	List<Espece> especes = repo.findAll();
 	model.addAttribute("especes", especes);
 	
-	List<Animal> animaux = Repo.findAll();
+	List<Animal> animaux = AnimRepo.findAll();
 	model.addAttribute("animaux", animaux);
 
 	List<Refuge> refuges = repoR.findAll();

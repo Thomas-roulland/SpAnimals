@@ -77,10 +77,7 @@ public class RestEmployeController {
 	}
 
 	// REGARDER LA FICHE ANIMAL [DONE]
-	@GetMapping("/animal/{id}")
-	private Optional<Animal> FicheAnimalAction(@PathVariable int id) {
-		return AnimRepo.findById(id);
-	}
+	
 
 	// AJOUTER UN ADOPTANT [DONE]
 	@PostMapping("/adoptant/add")

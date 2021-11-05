@@ -59,9 +59,19 @@ public class Animal implements Serializable {
     private int id;
     @Column(name = "DNAISSANCE")
     private LocalDate dnaissance;
+    @Column(name = "img")
+    private String img;
     @Column(name = "SIMILAIRE")
     private String similaire;
-    @Column(name = "SEXE", length = 50)
+    public String getImg() {
+		return img;
+	}
+
+	public void setImg(String img) {
+		this.img = img;
+	}
+
+	@Column(name = "SEXE", length = 50)
     private String sexe;
     @Column(name = "NOM", length = 50)
     private String nom;

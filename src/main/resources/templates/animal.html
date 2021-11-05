@@ -56,7 +56,7 @@
   <v-alert
       prominent
       type="error"
-      class=" text-justify"
+      class=" text-justify mt-3"
     >
        <div class="ml-16">
 	      <h2>LES ADOPTIONS RESPONSABLES </h2>
@@ -116,42 +116,39 @@
 		</v-row>
 		</v-container>
 </v-form>
+<v-container fluid>
+	<v-row>
+	<v-col >
+	Voir les animaux en detresse : <a class="negative ui button" href="/sos"> SOS <i class="heartbeat icon"></i></a>
+	</v-col>
+	</v-row>
+	</v-container>
 <v-card-text>
 
-	
 
-
-<br>
-<p>Voir les animaux en detresse : </p><a class="negative ui button" href="/sos"> SOS <i class="heartbeat icon"></i></a>
-
-{{#animaux}}
-<div class="ui card">
-  <div class="image">
-    <img src="/images/chien.jpg">
-  </div>
-  <div class="content">
-    <a class="header">{{nom}}</a>
-    <div class="meta">
-    {{#espece}}
-      <span class="date">{{libelle}}</span>
-     {{/espece}}
-    </div>
-    <div class="description">
-      {{#refuge}}
-      	Localisation : {{nom}}
-      {{/refuge}}
-    </div>
-  </div>
-  <div class="extra content">
-    <a href="">
-      <i class="eye icon"></i>
-      Voir fiche animal
-    </a>
-  </div>
-</div>
-  {{/animaux}}
-<v-card>
-
+	{{#animaux}}
+	 <v-container class="pt-5" >
+     <v-layout row wrap class="d-flex justify-center">
+     	<v-flex xs10 sm5 >
+			<v-card elevation="24">
+			<v-img src="{{img}}"></v-img>
+			<v-card-title class="font-weight-bold text-uppercase">{{nom}}</v-card-title>
+			<v-card-text>
+				{{#refuge}}
+				<p>Se trouve dans le refuge : {{nom}}</p>
+				<p>{{ville}}, {{cp}}</p>
+				{{/refuge}}
+			</v-card-text>
+			<v-divider></v-divider>
+			<v-card-action>
+			<v-icon class="ml-2">mdi-eye</v-icon>
+					<a href="/animal/{{id}}" class="font-weight-bold ml-2">Voir la fiche animal</a>
+				</v-card-action>
+			</v-card>
+		</v-flex>
+	</v-layout>
+	</v-container>
+	{{/animaux}}
 </v-app>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

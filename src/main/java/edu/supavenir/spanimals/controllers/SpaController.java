@@ -14,8 +14,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -33,6 +35,7 @@ import io.github.jeemv.springboot.vuejs.VueJS;
 
 @Controller
 public class SpaController {
+
 
     @Autowired
     private EspeceRepository repo;
@@ -85,65 +88,66 @@ public class SpaController {
 	return "employe";
     }
 
-    @GetMapping("/animal")
-    private String ContactAction(Model model) {
-	List<Espece> especes = repo.findAll();
-	model.addAttribute("especes", especes);
-	
-	List<Animal> animaux = AnimRepo.findAll();
-	model.addAttribute("animaux", animaux);
 
-	List<Refuge> refuges = repoR.findAll();
-	model.addAttribute("refuges", refuges);
-	
-	List<Race> race= RepoRace.findAll();
-	model.addAttribute("race", race);
-	return "animal";
-    }
+	@GetMapping("/animal")
+	private String ContactAction(Model model) {
+		List<Espece> especes = repo.findAll();
+		model.addAttribute("especes", especes);
 
-    @PostMapping("search")
-    public @ResponseBody String addAction(HttpServletRequest request) throws SQLException {
+		List<Animal> animaux = AnimRepo.findAll();
+		model.addAttribute("animaux", animaux);
 
-	Map<String, String[]> map = request.getParameterMap();
-	String s = "";
-	String test = "";
-	String test1 = "";
+		List<Refuge> refuges = repoR.findAll();
+		model.addAttribute("refuges", refuges);
 
-	for (Map.Entry<String, String[]> entry : map.entrySet()) {
-	    s += ("Key = " + entry.getKey() + ", Value = " + entry.getValue()[0]) + "<br>";
-	    if (entry.getValue() != null) {
-		test += entry.getKey() + "= :" + entry.getKey();
-	    }
-
-	}
-	test1 = "SELECT * FROM Animal WHERE " + test + ";";
-	return test1;
-    }
-
-    @GetMapping("/login")
-    private String LoginAction() {
-	return "login";
-    }
-
-    @GetMapping("/hello")
-    private String HelloAction() {
-	return "hello";
-    }
-
-    @PostMapping("connecter")
-    private @ResponseBody String addLogin(User user) {
-	if (user.getName() == "user" && user.getPassword() == "user") {
-	    return "success";
-	} else {
-	    return "marche pas";
+		List<Race> race = RepoRace.findAll();
+		model.addAttribute("race", race);
+		return "animal";
 	}
 
-    }
+	@PostMapping("search")
+	public @ResponseBody String addAction(HttpServletRequest request) throws SQLException {
 
-    @PostMapping("logout")
-    private @ResponseBody String addLogout(HttpServletRequest request) {
-	HttpSession httpSession = request.getSession();
-	httpSession.invalidate();
-	return "home";
-    }
+		Map<String, String[]> map = request.getParameterMap();
+		String s = "";
+		String test = "";
+		String test1 = "";
+
+		for (Map.Entry<String, String[]> entry : map.entrySet()) {
+			s += ("Key = " + entry.getKey() + ", Value = " + entry.getValue()[0]) + "<br>";
+			if (entry.getValue() != null) {
+				test += entry.getKey() + "= :" + entry.getKey();
+			}
+
+		}
+		test1 = "SELECT * FROM Animal WHERE " + test + ";";
+		return test1;
+	}
+
+	@GetMapping("/login")
+	private String LoginAction() {
+		return "login";
+	}
+
+	@GetMapping("/hello")
+	private String HelloAction() {
+		return "hello";
+	}
+
+	@PostMapping("connecter")
+	private @ResponseBody String addLogin(User user) {
+		if (user.getName() == "user" && user.getPassword() == "user") {
+			return "success";
+		} else {
+			return "marche pas";
+		}
+
+	}
+
+	@PostMapping("logout")
+	private @ResponseBody String addLogout(HttpServletRequest request) {
+		HttpSession httpSession = request.getSession();
+		httpSession.invalidate();
+		return "home";
+	}
 }

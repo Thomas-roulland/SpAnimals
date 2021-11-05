@@ -1,34 +1,86 @@
 {{> inc/header}}
 
+<v-app >
+ <a class="ui primary flat button" href="/employe/"><i class="home icon"></i>Accueil Employe</a>
+<v-form ref="form" v-model="valid" lazy-validation>
+  	
+  	<v-text-field v-model="newRefuge.complementad" name="complementad" :rules="Rules" label="complementad"  required ></v-text-field>
+  	
+  	<v-text-field v-model="newRefuge.libelle" name="libelle" :rules="Rules" label="libelle"  required ></v-text-field>
+  	
+  	<v-text-field v-model="newRefuge.nom" name="nom" :rules="Rules" label="nom"  required ></v-text-field>
+  	
+  	<v-text-field v-model="newRefuge.cp" name="cp" :rules="Rules" label="cp"  required ></v-text-field>
 
-<form method="post" action="/admin/add/refuge">
+	<v-text-field v-model="newRefuge.description" name="description" :rules="Rules" label="description"  required ></v-text-field>
+	
+	<v-text-field v-model="newRefuge.localisation" name="localisation" :rules="Rules" label="localisation"  required ></v-text-field>
 
-<div class="ui input">
-<input type="text" placeholder="complementad" name="complementad">
-</div>
+    <v-btn :disabled="!valid" color="success" class="mr-4" @click="validate" @click="dialog = false" > Validate </v-btn>
 
-<div class="ui input">
-<input type="text" placeholder="libelle" name="libelle">
-</div>
+    <v-btn color="error" class="mr-4" @click="reset">Reset Form</v-btn>
 
-<div class="ui input">
-<input type="text" placeholder="nom" name="nom">
-</div>
+    <v-btn color="warning" @click="resetValidation">Reset Validation</v-btn>
+  </v-form>
 
-<div class="ui input">
-<input type="text" placeholder="cp" name="cp">
-</div>
+  
+</v-app>
 
-<div class="ui input">
-<input type="text" placeholder="Description" name="desciption">
-</div>
 
-<div class="ui input">
-<input type="text" placeholder="localisation" name="localisation">
-</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vuetify/2.5.9/vuetify.min.js"></script>
+<script>
+Vue.prototype.$http = axios;
+var app = new Vue({
+	  el: 'v-app',
+	  vuetify: new Vuetify(),
+		    data: () => ({
+				refuge:[],
+		    	dialog: {visible:false, mode:0},
+		    	newRefuge: {complementad:"",libelle:"",nom:"",cp:"",description:"",localisation:""},
+		    	valid: true,
+				  Rules: [
+					    v => !!v || 'champ obligatoire',
+					  ],
+			    checkbox: false,
+		  
+		    }),
+		    mounted(){
+				this.loadRefuge();
+			},
+		    
+			methods: {
+				loaRefuge(){
+					  this.$http.get('/admin/refuge').then((response)=>{
+						  this.refuge=response.data;
+					  })
+				  },	
+				 validate(){
+					  if(this.dialog.mode==0){
+						  this.$http.post('/admin/add/refuge', this.newRefuge).then((response)=>{
+							  this.refuge.push(response.data);
+						  })
+					  }else{
+						  this.$http.put('/admin/modifier/refuge/{id}'+this.newRefuge.id, this.newRefuge).then((response)=>{
+							  let index=this.refuge.findIndex((item)=>item.id==this.newRefuge.id);
+							  if(index!=-1){
+								  this.refuge[index]=this.newRefuge;
+							  }
+					  	  })
+					  }
+				  },
 
-<button>Ajoute</button>
-</form>
-
+		        reset () {
+		          this.$refs.form.reset()
+		        },
+		        resetValidation () {
+		          this.$refs.form.resetValidation()
+		        },
+		      },
+		      
+	  delimiters: ['<%', '%>'],
+	})
+</script>
 
 {{> inc/footer}}

@@ -1,18 +1,81 @@
 {{> inc/header}}
 
+<v-app >
+<a class="ui primary flat button" href="/employe/"><i class="home icon"></i>Accueil Employe</a>
 
-<form method="post" action="/admin/add/espece">
+  <v-form ref="form" action="/employe/add/adoptant" v-model="valid" lazy-validation>
 
-<div class="ui input">
-<input type="text" placeholder="frais" name="frais">
-</div>
+    <v-text-field v-model="Frais" :rules="Rules" label="frais"  required ></v-text-field>
+    
+    <v-text-field v-model="libelle" :rules="Rules" label="libelle"  required ></v-text-field>
 
-<div class="ui input">
-<input type="text" placeholder="libelle" name="libelle">
-</div>
+    <v-btn :disabled="!valid" color="success" class="mr-4" @click="validate" > Validate </v-btn>
 
-<button>Ajoute</button>
-</form>
+    <v-btn color="error" class="mr-4" @click="reset">Reset Form</v-btn>
+
+    <v-btn color="warning" @click="resetValidation">Reset Validation</v-btn>
+  </v-form>
+
+</v-app>
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vuetify/2.5.9/vuetify.min.js"></script>
+<script>
+Vue.prototype.$http = axios;
+var app = new Vue({
+	  el: 'v-app',
+	  vuetify: new Vuetify(),
+		    data: () => ({
+				espece:[],
+		    	dialog: {visible:false, mode:0},
+		    	newEspece: {Frais:"",libelle:""},
+		    	valid: true,
+				  Rules: [
+					    v => !!v || 'champ obligatoire',
+					  ],
+			
+				
+			      checkbox: false,
+		  
+		    }),
+		    mounted(){
+				this.loadEspece();
+			},
+		    
+		    methods: {
+				  loadEspece(){
+					  this.$http.get('/employe/espece').then((response)=>{
+						  this.espece=response.data;
+					  })
+				  },	
+				 validate(){
+					  if(this.dialog.mode==0){
+						  this.$http.post('/admin/add/espece', this.newEspece).then((response)=>{
+							  this.espece.push(response.data);
+						  })
+					  }else{
+						  this.$http.put('/admin/modifier/espece/{id}'+this.newEspece.id, this.newEspece).then((response)=>{
+							  let index=this.espece.findIndex((item)=>item.id==this.newEspece.id);
+							  if(index!=-1){
+								  this.espece[index]=this.newEspece;
+							  }
+					  	  })
+					  }
+				  },
+
+		        reset () {
+		          this.$refs.form.reset()
+		        },
+		        resetValidation () {
+		          this.$refs.form.resetValidation()
+		        },
+		      },
+		      
+	  delimiters: ['<%', '%>'],
+	})
+</script>
 
 
 {{> inc/footer}}

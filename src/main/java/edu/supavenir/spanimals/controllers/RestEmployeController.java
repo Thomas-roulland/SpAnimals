@@ -16,12 +16,10 @@ import edu.supavenir.spanimals.models.Adoptant;
 import edu.supavenir.spanimals.models.Animal;
 import edu.supavenir.spanimals.models.Espece;
 import edu.supavenir.spanimals.models.Race;
-import edu.supavenir.spanimals.models.Refuge;
 import edu.supavenir.spanimals.repositories.AdoptantRepository;
 import edu.supavenir.spanimals.repositories.AnimalRepository;
 import edu.supavenir.spanimals.repositories.EspeceRepository;
 import edu.supavenir.spanimals.repositories.RaceRepository;
-import edu.supavenir.spanimals.repositories.RefugeRepository;
 
 @RequestMapping("/employe")
 @RestController
@@ -40,9 +38,6 @@ public class RestEmployeController {
 	@Autowired
 	private RaceRepository repoR;
 
-	@Autowired
-	private RefugeRepository repor;
-
 	@GetMapping("/race")
 	public List<Race> AffichageRace() {
 		return repoR.findAll();
@@ -51,11 +46,6 @@ public class RestEmployeController {
 	@GetMapping("/espece")
 	public List<Espece> AffichageEspece() {
 		return repoE.findAll();
-	}
-
-	@GetMapping("/refuge")
-	public List<Refuge> indexAction() {
-		return repor.findAll();
 	}
 
 	// VOIR TOUS LES ADOPTANT [DONE]

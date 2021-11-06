@@ -52,9 +52,12 @@
     </v-card>
     
 {{#animalTest}}
+ 
 	 <v-container class="pt-5" >
      <v-layout row wrap class="d-flex justify-center">
-     	<v-flex xs10 sm5 >
+     	<v-flex xs12 sm5 >
+     		<v-row>
+     			<v-col>
      		<v-card elevation="24">
 				<v-card tile >
 				<v-img src="{{img}}"></v-img>
@@ -68,7 +71,7 @@
 							{{/espece}}
 						</v-col>
 						<v-col>
-							<p>Se trouve dans le refuge : {{nom}}</p>
+							<p>Date de Naissance : {{dnaissance}}</p>
 						</v-col>
 						</v-row>
 						<v-row>
@@ -78,16 +81,16 @@
 							{{/race}}
 						</v-col>
 						<v-col>
-							<p>Ville : {{ville}}, {{cp}}</p>
+							
 						</v-col>
 						</v-row>
 						<v-row>
 							<v-col>
 								<p>Sexe : {{sexe}}</p>
 							</v-col>
-							<v-col>
-								<p>Date de Naissance : {{dnaissance}}</p>
-							</v-col>
+						
+								
+							
 						</v-row>
 					{{/refuge}}
 				
@@ -154,17 +157,13 @@
 				</v-card-text>
 			
 			</v-card>
-				
-			</v-card-text>
-			
-			
-				
-			
 			
 			</v-card>
+			
 		</v-flex>
 	</v-layout>
 	</v-container>
+
 	{{/animalTest}}
 
 </v-app>

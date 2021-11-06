@@ -97,13 +97,13 @@ public class AdminRestController {
 		return race.toString();
 	}
 
-	@PostMapping("/modifier/Race/{id}")
+	@PostMapping("/modifier/race/{id}")
 	private String AdminRaceAction(Race race) {
 		repoR.save(race);
 		return race.toString();
 	}
 
-	@DeleteMapping("/delete/Race/{id}")
+	@DeleteMapping("/delete/race/{id}")
 	public Race deleteRaceAction(@PathVariable int id) {
 		Optional<Race> race = repor.findById(id);
 		if (race.isPresent()) {

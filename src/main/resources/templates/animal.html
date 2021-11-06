@@ -52,11 +52,12 @@
       </template>
     </v-toolbar>
 
-
+<div class="d-flex justify-center">
   <v-alert
       prominent
       type="error"
-      class=" text-justify mt-3"
+      class=" text-justify mt-3 "
+  	width="90%"
     >
        <div class="ml-16">
 	      <h2>LES ADOPTIONS RESPONSABLES </h2>
@@ -70,8 +71,9 @@
 		 </v-row>   
 	 </div>
    	 </v-alert>
-
-<v-card  elevation="24">
+</div>
+<div class="">
+<v-card  elevation="24" >
 
 <v-card-title><h2>Animaux disponible</h2></v-card-title>
 
@@ -129,7 +131,7 @@
 	{{#animaux}}
 	 <v-container class="pt-5" >
      <v-layout row wrap class="d-flex justify-center">
-     	<v-flex xs10 sm5 >
+     	<v-flex xs10 sm3 >
 			<v-card elevation="24">
 			<v-img src="{{img}}"></v-img>
 			<v-card-title class="font-weight-bold text-uppercase">{{nom}}</v-card-title>
@@ -148,6 +150,8 @@
 		</v-flex>
 	</v-layout>
 	</v-container>
+	
+</div>
 	{{/animaux}}
 </v-app>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>

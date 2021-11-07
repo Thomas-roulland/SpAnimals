@@ -42,10 +42,23 @@ public class CrudAnimal {
 		vue.addData("animal", repo.findAll());
 		vue.addDataRaw("headers",
 			"[{text:'ID', value:'id'},{text:'Adopte', value:'adopte'},{text:'Couleur', value:'couleur'},{text:'Description', value:'description'},{text:'Date Naissance', value:'dnaissance'},{text:'Frais', value:'frais'}"
-			+ ",{text:'Lock_Flag', value:'Lock_flag'} ,{text:'Nom', value:'nom'}, ,{text:'Sexe', value:'sexe'},{text:'Similaire', value:'similaire'}, ,{text:'Sos', value:'sos'}, ,{text:'Espece', value:'idespece'},"
-			+ ",{text:'Race', value:'idrace'}, ,{text:'Refuge', value:'idrefuge'}, ,{text:'Image', value:'img'}]");
+			+ ",{text:'Lock_Flag', value:'Lock_flag'} ,{text:'Nom', value:'nom'}, ,{text:'Sexe', value:'sexe'},{text:'Similaire', value:'similaire'}, ,{text:'Sos', value:'sos'}, ,{text:'Espece', value:'espece.libelle'},"
+			+ ",{text:'Race', value:'race.libelle'}, ,{text:'Refuge', value:'refuge.nom'}, ,{text:'Image', value:'img'}]");
 		vue.addData("dialog", false);
 		vue.addData("dialogDelete", false);
+		vue.addData("editedIndex", -1);
+		vue.addData("editedIndex", "{name: '',\r\n"
+				+ "        calories: 0,\r\n"
+				+ "        fat: 0,\r\n"
+				+ "        carbs: 0,\r\n"
+				+ "        protein: 0,}");
+		vue.addData("defaultItem", " {name: '',\r\n"
+				+ "        calories: 0,\r\n"
+				+ "        fat: 0,\r\n"
+				+ "        carbs: 0,\r\n"
+				+ "        protein: 0,}");
+		
+		
 		vue.addComputed("formTitle",
 			" return this.editedIndex === -1 ? 'Nouvelle animal' : 'modifier animal'");
 		vue.addData("editedIndex", -1);
@@ -62,6 +75,9 @@ public class CrudAnimal {
 				+ "          this.editedIndex = -1\r\n" + "        })");
 		vue.addMethod("deleteItemConfirm",
 			" this.animal.splice(this.editedIndex, 1)\r\n" + "        this.closeDelete()");
+		vue.addMethod("deleteItem(item)", "this.editedIndex = this.animal.indexOf(item)\r\n"
+				+ "        this.editedItem = Object.assign({}, item)\r\n"
+				+ "        this.dialogDelete = true");
 
 		return "crudanimal";
 	    }

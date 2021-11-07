@@ -40,7 +40,7 @@ public class CrudRace {
 		vue.addData("draw", true);
 		vue.addData("race", repo.findAll());
 		vue.addDataRaw("headers",
-			"[{text:'ID', value:'id'},{text:'Descriptif', value:'descriptif'},{text:'libelle', value:'libelle'},{text:'Lock_flag', value:'lock_flag'},{text:'Prerequis', value:'prerequis'},{text:'idEspece', value:'idespece'}]");
+			"[{text:'ID', value:'id'},{text:'Descriptif', value:'descriptif'},{text:'libelle', value:'libelle'},{text:'Lock_flag', value:'lock_flag'},{text:'Prerequis', value:'prerequis'},{text:'idEspece', value:'espece.libelle'}]");
 		vue.addData("dialog", false);
 		vue.addData("dialogDelete", false);
 		vue.addComputed("formTitle",

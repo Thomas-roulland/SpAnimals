@@ -71,6 +71,16 @@ public class SpaController {
 		return "contact";
 	}
 	
+	@GetMapping("/mentionsLegales")
+	public String mentions() {
+		return "mentions";
+	}
+	
+	@GetMapping("/missions")
+	public String mission() {
+		return "informations";
+	}
+	
 	@GetMapping("/board")
 	public String indexDash(ModelMap model) {
 		
@@ -146,7 +156,6 @@ public class SpaController {
 		} else {
 			return "marche pas";
 		}
-
 	}
 
 	@PostMapping("logout")

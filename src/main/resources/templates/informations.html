@@ -1,0 +1,175 @@
+{{> inc/header }}
+
+
+<v-app>
+<div 
+style="background-color:#e3e3e1;">
+
+  <v-card flat tile>
+  
+    <v-toolbar dark  extended  dense>
+
+      <v-toolbar-title><a class="white--text" href="/">SpAnimals</a></v-toolbar-title>
+
+      <v-spacer></v-spacer>
+
+   
+
+      <template v-slot:extension>
+        <v-tabs >
+        <v-tab><a class="white--text" href="/"><v-icon>mdi-home</v-icon></a></v-tab>
+          <v-tab><a class="white--text" href="/animal">Adopter</a></v-tab>
+           <v-tab><a class="white--text"  href="/missions">Missions</a></v-tab>
+           <v-tab><a class="white--text"  href="/contact">Contact</a></v-tab>
+        </v-tabs>
+      
+      </template>
+    </v-toolbar>
+    <v-sheet
+      id="scrolling-techniques-4"
+      class="overflow-y-auto"
+      max-height="600"
+    >
+    </v-sheet>
+  </v-card >
+ 
+
+  	<h2 class="px-16">Nos Missions</h2>
+  	
+  
+<div class="d-flex justify-center pb-10">
+
+  <v-card width="50%" class="px-5 pt-5">
+  	
+  	<v-img src="https://www.la-spa.fr/sites/default/files/pages/principales/2014-06-29-canicourse-189_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0_0.jpg"></v-img>
+  	
+  	<v-card-text>
+  		<p class="text--primary">SpAnimals est une association de protection animale en France. Créée en 2021, elle a été reconnue d'utilité publique. </p>
+  		
+  		<h3>Ses missions consistent à : </h3>
+  			
+  	<v-list-item
+  		v-for="list in text">
+      <v-list-item-content>
+        <v-list-item-title v-text="list.title"></v-list-item-title>
+      </v-list-item-content>
+    </v-list-item>
+    
+    <h3>SpAnimals agit grâce à : </h3>
+  			
+  	<v-list-item
+  		v-for="list in texts">
+      <v-list-item-content>
+        <v-list-item-title v-text="list.title"></v-list-item-title>
+      </v-list-item-content>
+    </v-list-item>
+    
+    
+    <h3>SpAnimals combat toutes formes de maltraitance animale sur des sujets tels que : </h3>
+  			
+  	<v-list-item
+  		v-for="list in combatSpa">
+      <v-list-item-content>
+        <v-list-item-title v-text="list.title"></v-list-item-title>
+      </v-list-item-content>
+    </v-list-item>
+    
+   
+    
+    
+    
+  	</v-card-text>
+  	 </v-card>
+</div>
+  
+  
+
+<v-footer  padless dark bottom>
+  	<v-col class="grey">
+      <v-row dense class="d-flex justify-center">
+        <v-col
+          v-for="card in cards"
+          :key="card.title"
+          :cols="card.flex"
+          class="mr-8"
+        >
+        <v-hover close-delay="111" open-delay="76">
+			<template v-slot:default="{ hover }">
+          <v-card :class="`elevation-${hover ? 24 : 6}`">
+            <v-img
+              :src="card.src"
+              class="white--text align-end  "
+              gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
+              height="300px"
+            >
+            <v-card-title v-text="card.title"></v-card-title>
+            </v-img>
+
+            <v-card-actions class="d-flex justify-center">
+ 
+              <v-btn icon>
+              <a :href="card.href" class="white--text"><v-icon>  mdi-arrow-right</v-icon></a>
+               </v-btn>
+
+        
+            </v-card-actions>
+          </v-card>
+          </template>
+</v-hover>
+        </v-col>
+      </v-row>
+  	</v-col>
+    <v-col class="text-center" cols="12">
+     <strong> 2021 - SpAnimals</strong>
+     <a>lol</a>
+    </v-col>
+  </v-footer>
+  </div>
+</v-app>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vuetify/2.5.9/vuetify.min.js"></script>
+<script>
+var app = new Vue({
+	  el: 'v-app',
+	  vuetify: new Vuetify(),
+		    data: () => ({
+		    	   cards: [
+			            { title: 'ACUTALITES', src: 'https://www.astree.asso.fr/mediacenter/uploads/xxl/nos-actualites.png', flex: 3, href :"/actualites" },
+			            { title: 'ADOPTEZ', src: 'https://www.fonds-saint-bernard.com/images/age_animal2.jpg', flex: 3, href :"/animal"  },
+			            { title: 'CONTACTEZ-NOUS', src: 'https://www.la-spa.fr/sites/default/files/documents/img_8691-ret_1.jpg', flex: 3, href :"/contact"  },
+			          ],
+			          
+			          text: [
+				            { title: ' - Lutter contre la maltraitance et les abandons',  },
+				            { title: '- Recueillir et héberger les animaux abandonnés, perdus ou maltraités et leur trouver un foyer' },
+				            { title: '- Soigner les animaux des propriétaires démunis ' },
+				            { title: '- Sensibiliser le grand public et en particulier les jeunes à la protection animale  ' },
+				            { title: '- Responsabiliser les propriétaires d animaux ' },
+				           	{ title: '- S engager auprès des pouvoirs publics pour faire évoluer la cause animale  ' },
+				            
+				          ],
+				          texts: [
+					            { title : '- 4098 donateurs fidèles',  },
+					            { title: '- 2000 adhérents' },
+					            { title: '- 20 salariés, 100 bénévoles, 1 Inspecteurs et 50 Délégués-enquêteurs ' },
+					            { title: '- 20 refuges et Maisons SPA partout en France pour accueillir les animaux et renseigner le grand public (dont le Grand Refuge pour les équidés) ' },
+					            { title: '- 12 dispensaires pour soigner les animaux des propriétaires démunis ' },
+					           	{ title: '- Une Cellule Anti-Trafic pour démanteler les élevages clandestins' },
+					           	{ title: '- 24 Clubs Jeunes pour sensibiliser les adolescents à la protection animale'},
+					            
+					          ],
+					          combatSpa: [
+						            { title : '- La corrida',  },
+						            { title: '- L’abattage sans étourdissement' },
+						            { title: '- L’expérimentation animale ' },
+						            { title: '- Le cirque ' },
+						            { title: '- La fourrure ' },
+
+						          ],
+		    }),
+	  delimiters: ['<%', '%>'],
+	})
+
+</script>
+{{> inc/footer }}

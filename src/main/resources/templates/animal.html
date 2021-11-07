@@ -128,12 +128,12 @@
 <v-card-text>
 
 
-	{{#animaux}}
-	 <v-container class="pt-5" >
-     <v-layout row wrap class="d-flex justify-center">
-     	<v-flex xs10 sm3 >
+<v-container class="pt-5" >
+     	<v-row >
+     		{{#animaux}}
+     			<v-col cols="6">
 			<v-card elevation="24">
-			<v-img src="{{img}}"></v-img>
+			<v-img src="{{img}}" max-height="500"></v-img>
 			<v-card-title class="font-weight-bold text-uppercase">{{nom}}</v-card-title>
 			<v-card-text>
 				{{#refuge}}
@@ -147,12 +147,15 @@
 					<a href="/animal/{{id}}" class="font-weight-bold ml-2">Voir la fiche animal</a>
 				</v-card-action>
 			</v-card>
-		</v-flex>
-	</v-layout>
+			</v-col>
+				{{/animaux}}
+			</v-row>
 	</v-container>
+
+
 	
 </div>
-	{{/animaux}}
+	
 </v-app>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

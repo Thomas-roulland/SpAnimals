@@ -51,13 +51,14 @@
     </v-toolbar>
     </v-card>
     
-{{#animalTest}}
+    
+    
+
  
 	 <v-container class="pt-5" >
-     <v-layout row wrap class="d-flex justify-center">
-     	<v-flex xs12 sm5 >
-     		<v-row>
-     			<v-col>
+	 	 <v-row dense class="d-flex justify-center">
+  		 {{#animalTest}}
+  		   <v-col cols="6">
      		<v-card elevation="24">
 				<v-card tile >
 				<v-img src="{{img}}"></v-img>
@@ -105,7 +106,7 @@
 				 	<h2>Je souhaite adopter <span class="orange--text text-uppercase">{{nom}} :</span></h2>
 				 </v-card-title>
 				 <div class="d-flex justify-center">
-				 <v-btn width="50%" class="mb-3">Adopter</v-btn>
+				 <v-btn width="50%" class="mb-3">Message</v-btn>
 				 </div>
 			</div>
 			
@@ -155,13 +156,31 @@
 					</v-col>
 					</v-row>
 				</v-card-text>
-			
 			</v-card>
-			
 			</v-card>
-			
-		</v-flex>
-	</v-layout>
+			</v-col>
+			<v-col cols="3">
+			<div absolute right> 
+				<v-card >
+					<v-card-title class=" text-uppercase"><h2> Ou trouver <span class="orange--text"> {{nom}}  </span>? </h2></v-card-title>
+					<v-divider></v-divider>
+					<v-card-text>
+					<v-row>
+						<v-col cols="1" class="d-flex justify-center align-center">
+							<v-icon color="orange " x-large>mdi-map-marker</v-icon>
+						</v-col>
+						<v-col>
+					 {{#refuge}}
+						<p>{{nom}}</p>
+						<p>{{numeroetrue}}</p>
+						<p>{{cp}} {{ville}}</p>
+					{{/refuge}}
+						</v-col>
+					</v-card-text>
+				</v-card>
+				</div>
+			</v-col>
+			</v-row>
 	</v-container>
 
 	{{/animalTest}}

@@ -24,7 +24,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		// method
 		// request
 		// based on role.
-		.antMatchers( "/", "hello", "console/**", "/animal/**").permitAll() // permited
+		.antMatchers( "/", "hello", "console/**", "/animal/**", "/missions", "/contact").permitAll() // permited
 													 // urls to
 													 // guest //
 		// users(without
@@ -46,7 +46,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     @Override
     public UserDetailsService userDetailsService() {
-	UserDetails user = User.withDefaultPasswordEncoder().username("user").password("user").roles("USER").build();
+	UserDetails user = User.withDefaultPasswordEncoder().username("admin").password("adminLeCrabe").roles("USER").build();
 	
 	
 

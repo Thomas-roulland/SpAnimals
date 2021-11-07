@@ -66,6 +66,11 @@ public class SpaController {
 		return "index";
 	}
 	
+	@GetMapping("/contact")
+	public String contatc() {
+		return "contact";
+	}
+	
 	@GetMapping("/board")
 	public String indexDash(ModelMap model) {
 		

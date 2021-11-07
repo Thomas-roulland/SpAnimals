@@ -1,54 +1,31 @@
 {{> inc/header }}
 <v-app color="grey lighten-1">
 <div 
-style="background-color:#9E9E9E;">
+style="background-color:#e3e3e1;">
   <v-card flat tile>
   
     <v-toolbar dark  extended  dense>
 
-      <v-toolbar-title>SpAnimals</v-toolbar-title>
+      <v-toolbar-title><a class="white--text" href="/">SpAnimals</a></v-toolbar-title>
 
       <v-spacer></v-spacer>
 
-      <v-btn icon>
-        <v-icon>mdi-magnify</v-icon>
-      </v-btn>
-
-      <a href="/board" icon>
-        <v-icon>mdi-login</v-icon>
-      </a>
-
-      <v-menu
-        bottom
-        left
-      >
-        <template v-slot:activator="{ on, attrs }">
-          <v-btn
-            icon
-            color="yellow"
-            v-bind="attrs"
-            v-on="on"
-          >
-            <v-icon>mdi-dots-vertical</v-icon>
-          </v-btn>
-        </template>
-
-        <v-list>
-          <v-list-item
-            v-for="(item, i) in icons"
-            :key="i"
-          >
-            <v-list-item-title><v-icon v-text="item.title"></v-icon></v-list-item-title>
-          </v-list-item>
-        </v-list>
-      </v-menu>
+    
+     
 
       <template v-slot:extension>
         <v-tabs >
-          <v-tab><a href="/animal">Adopter</a></v-tab>
-          <v-tab>Informations</v-tab>
-          <v-tab>Nous contacter</v-tab>
+        <v-tab><a class="white--text" href="/"><v-icon>mdi-home</v-icon></a></v-tab>
+          <v-tab><a class="white--text"  href="/animal">Adopter</a></v-tab>
+           <v-tab><a class="white--text"  href="/informations">Informations</a></v-tab>
+           <v-tab><a class="white--text"  href="/contact">Contact</a></v-tab>
         </v-tabs>
+        <v-sheet
+      id="scrolling-techniques-3"
+      class="overflow-y-auto"
+      max-height="600"
+    >
+    </v-sheet>
       </template>
     </v-toolbar>
     <v-sheet
@@ -88,7 +65,7 @@ style="background-color:#9E9E9E;">
         >
        <v-hover close-delay="111" open-delay="76">
         <template v-slot:default="{ hover }">
-          <v-card :class="`elevation-${hover ? 24 : 0}`" class="mr-2 ml-3"  
+          <v-card elevation="24" class="mr-2 ml-3"  
   			shaped 
   			outlined>
             <v-img
@@ -101,7 +78,7 @@ style="background-color:#9E9E9E;">
              <v-card-title class="d-flex justify-center font-weight-bold" v-text="card.title"></v-card-title>
 
             <v-card-actions class="d-flex justify-center">
- 			<v-btn color="red lighten-1" text>Voir</v-btn>
+ 		
 		
 		      <v-spacer></v-spacer>
 		
@@ -135,8 +112,8 @@ style="background-color:#9E9E9E;">
 <v-divider class="mt-6 mb-6" ></v-divider>
 
 <v-hover close-delay="111" open-delay="76">
-<template v-slot:default="{ hover }">
-<div style="width:900px;margin-left:auto;margin-right:auto;" :class="`elevation-${hover ? 24 : 3}`">
+<template v-slot:default="{ hover }" >
+<div style="width:900px;margin-left:auto;margin-right:auto;" :class="`elevation-${hover ? 24 : 3}`" class="mb-6">
   <v-card
     class="mx-auto"
     max-width="900"
@@ -150,38 +127,29 @@ style="background-color:#9E9E9E;">
     </v-img>
 
 
-   <v-card-title>L’ABANDON, L’ENNEMI INVISIBLE</v-card-title>
+   <v-card-title>Lâ€™ABANDON, Lâ€™ENNEMI INVISIBLE</v-card-title>
     <v-card-subtitle class="pb-0">
-      Le drame qui se rejoue chaque année
+      Le drame qui se rejoue chaque annÃ©e
     </v-card-subtitle>
 
     <v-card-text class="text--primary">
-      <div>
-		Avec deux ans d’emprisonnement et 30.000 euros d'amende à la clé, l’abandon d’un animal domestique n’est pas censé être pris à la légère.
-		Et pourtant…
+      <p>
+		Avec deux ans dâ€™emprisonnement et 30.000 euros d'amende Ã  la clÃ©, lâ€™abandon dâ€™un animal domestique nâ€™est pas censÃ© Ãªtre pris Ã  la lÃ©gÃ¨re.
+		Et pourtantâ€¦
 		
-		On l’aura compris, l’acte d’abandon est tristement banal. Tellement banal en fait, qu’on croit en connaître par cœur les ressorts. L’acte est honteux, mais il reste avant tout le problème de quelqu’un d’autre. Ce qu’on oublie pourtant souvent, c’est qu’avant d’être pris en charge par des associations et des refuges, ces êtres vivants sensibles sont laissés seuls, livrés à eux-mêmes, en terrain hostile ; sans protection, sans nutrition, ils sont sous le joug des blessures, des maladies et des mauvaises rencontres.
+		On lâ€™aura compris, lâ€™acte dâ€™abandon est tristement banal. Tellement banal en fait, quâ€™on croit en connaÃ®tre par cÅ“ur les ressorts. Lâ€™acte est honteux, mais il reste avant tout le problÃ¨me de quelquâ€™un dâ€™autre. Ce quâ€™on oublie pourtant souvent, câ€™est quâ€™avant dâ€™Ãªtre pris en charge par des associations et des refuges, ces Ãªtres vivants sensibles sont laissÃ©s seuls, livrÃ©s Ã  eux-mÃªmes, en terrain hostile ; sans protection, sans nutrition, ils sont sous le joug des blessures, des maladies et des mauvaises rencontres.
 		
-		Ces animaux — qui nous ont offert leur confiance et leur tendresse, sans hésiter —, certains les abandonnent sans scrupules à l’abri des regards.
+		Ces animaux â€” qui nous ont offert leur confiance et leur tendresse, sans hÃ©siter â€”, certains les abandonnent sans scrupules Ã  lâ€™abri des regards.
 		
-		Cet été, ce ne sont pas nos récits humains et les tristes anecdotes de vacances que l’on veut raconter : c’est leur drame qui se rejoue chaque année.
-	  </div>
+		Cet Ã©tÃ©, ce ne sont pas nos rÃ©cits humains et les tristes anecdotes de vacances que lâ€™on veut raconter : câ€™est leur drame qui se rejoue chaque annÃ©e.
+	  </p>
     </v-card-text>
-
-    <v-card-actions>
-      <v-btn
-        color="red"
-        text
-      >
-        Explore
-      </v-btn>
-    </v-card-actions>
   </v-card>
 </div>
 </template>
 </v-hover>
 
-<v-divider class="mt-6 mb-6" ></v-divider>
+
 
 
 </div>
@@ -209,8 +177,8 @@ style="background-color:#9E9E9E;">
             <v-card-actions class="d-flex justify-center">
  
               <v-btn icon>
-                <v-icon>  mdi-arrow-right</v-icon>
-              </v-btn>
+              <a :href="card.href" class="white--text"><v-icon>  mdi-arrow-right</v-icon></a>
+               </v-btn>
 
         
             </v-card-actions>
@@ -240,10 +208,10 @@ style="background-color:#9E9E9E;">
 			  return {
 				  show:false,
 				  test: [
-			            { title: 'Voir les animaux', src: 'https://www.la-spa.fr/sites/default/files/articles/principales/spa_fa18_native_1200x628_1_0_0_0.jpg', flex: 2, test :"lol"  },
-			            { title: 'Inscription + reservation', src: 'https://napoleon-storage.s3.eu-west-3.amazonaws.com/blog/images/comment-annuler-la-reservation-dun-chiot-conseils-polytrans-5c5017e27ed13.jpeg', flex: 2, test :"mdr"  },
-			            {title: 'Venez le chercher', src: 'https://lvdneng.rosselcdn.net/sites/default/files/dpistyles_v2/ena_16_9_extra_big/2019/06/08/node_595812/40343170/public/2019/06/08/B9719855399Z.1_20190608162603_000%2BGDTDQ0VV0.1-0.jpg?itok=ZdkIzjMc1560009004', flex: 2,test :"ptdr"  },
-			            { title: 'Inscription + reservation', src: 'https://napoleon-storage.s3.eu-west-3.amazonaws.com/blog/images/comment-annuler-la-reservation-dun-chiot-conseils-polytrans-5c5017e27ed13.jpeg', flex: 2, test :"mdr"  },
+			            { title: 'Choisir un animal', src: 'https://www.la-spa.fr/sites/default/files/articles/principales/spa_fa18_native_1200x628_1_0_0_0.jpg', flex: 2, test :"Choisissez parmi tous les animaux disponibles, ils attendent qu'une chose trouvÃ©e une famille qui prenne soin d'eux." },
+			            { title: 'Contactez-nous', src: 'https://napoleon-storage.s3.eu-west-3.amazonaws.com/blog/images/comment-annuler-la-reservation-dun-chiot-conseils-polytrans-5c5017e27ed13.jpeg', flex: 2, test :"Une fois votre animal choisi, veuillez contacter le refuge afin de prendre rendez-vous pour aller voir votre champion sÃ©lectionnÃ©." },
+			            {title: 'Venez le chercher', src: 'https://lvdneng.rosselcdn.net/sites/default/files/dpistyles_v2/ena_16_9_extra_big/2019/06/08/node_595812/40343170/public/2019/06/08/B9719855399Z.1_20190608162603_000%2BGDTDQ0VV0.1-0.jpg?itok=ZdkIzjMc1560009004', flex: 2,test :"Simple, efficace. Maintenant il faut venir le chercher et bien s'occuper de lui." },
+			        
 			           
 			         
 			            ],
@@ -276,9 +244,9 @@ style="background-color:#9E9E9E;">
 			            },
 			          ],
 			        cards: [
-			            { title: 'ACUTALITES', src: 'https://www.astree.asso.fr/mediacenter/uploads/xxl/nos-actualites.png', flex: 3  },
-			            { title: 'ADOPTEZ', src: 'https://www.fonds-saint-bernard.com/images/age_animal2.jpg', flex: 3 },
-			            { title: 'REJOINGNEZ-NOUS', src: 'https://www.la-spa.fr/sites/default/files/documents/img_8691-ret_1.jpg', flex: 3 },
+			            { title: 'ACUTALITES', src: 'https://www.astree.asso.fr/mediacenter/uploads/xxl/nos-actualites.png', flex: 3, href :"/actualites" },
+			            { title: 'ADOPTEZ', src: 'https://www.fonds-saint-bernard.com/images/age_animal2.jpg', flex: 3, href :"/animal"  },
+			            { title: 'CONTACTEZ-NOUS', src: 'https://www.la-spa.fr/sites/default/files/documents/img_8691-ret_1.jpg', flex: 3, href :"/contact"  },
 			          ],
 			          articles: [
 				            { title: 'Update Home', flex: 5, text :"amelioration home page", profil:"Thomas", src:"data:image/jpeg;base64,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"  },

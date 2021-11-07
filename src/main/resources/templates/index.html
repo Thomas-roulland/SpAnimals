@@ -1,8 +1,10 @@
 {{> inc/header }}
 <v-app color="grey lighten-1">
+<div 
+style="background-color:#9E9E9E;">
   <v-card flat tile>
   
-    <v-toolbar  extended dark dense>
+    <v-toolbar dark  extended  dense>
 
       <v-toolbar-title>SpAnimals</v-toolbar-title>
 
@@ -58,50 +60,18 @@
   </v-card>
 
 
-
-<template>
-  <v-carousel hide-delimiters>
-    <v-carousel-item
+<v-hover close-delay="111" open-delay="76">
+<template v-slot:default="{ hover }">
+  <v-carousel :class="`elevation-${hover ? 24 : 6}`"
+           height="379"  :show-arrows="false" rounded-lg hide-delimiter-background style="margin-top:100px;margin-right:auto;margin-left:auto; width:940px;">
+    <v-carousel-item style="width:940px;margin-right:auto;margin-left:auto;"
       v-for="(test,i) in items"
       :key="i"
       :src="test.src"
     ></v-carousel-item>
   </v-carousel>
 </template>
-
-<div class="mt-12">
-  <v-card
-    class="mx-auto"
-    max-width="900"
-    
-  >
-    <v-img
-      max-height="450"
-		class="white--text align-end"
-      src="https://www.defendonslesanimaux.fr/wp-content/themes/defenseanimal/asset/images/chien.jpg"
-    >  <v-card-title>LUTTONS CONTRE L'ABANDON</v-card-title>
-    </v-img>
-
-
-   <v-card-title>SpAnimals</v-card-title>
-    <v-card-subtitle class="pb-0">
-      Qui sommes-nous ?
-    </v-card-subtitle>
-
-    <v-card-text class="text--primary">
-      <div>Nous sommes des crabes ( a faire )</div>
-    </v-card-text>
-
-    <v-card-actions>
-      <v-btn
-        color="red"
-        text
-      >
-        Explore
-      </v-btn>
-    </v-card-actions>
-  </v-card>
-</div>
+</v-hover>
 <v-divider class="mt-6 mb-6" ></v-divider>
 
 
@@ -116,8 +86,9 @@
           :cols="card.flex"
           class="mr-6"
         >
-          <v-card class="mr-2 ml-3"  
-            elevation="6"
+       <v-hover close-delay="111" open-delay="76">
+        <template v-slot:default="{ hover }">
+          <v-card :class="`elevation-${hover ? 24 : 0}`" class="mr-2 ml-3"  
   			shaped 
   			outlined>
             <v-img
@@ -131,136 +102,101 @@
 
             <v-card-actions class="d-flex justify-center">
  			<v-btn color="red lighten-1" text>Voir</v-btn>
-
-      <v-spacer></v-spacer>
-
-      <v-btn
-        icon
-        @click="show = !show"
-      >
-        <v-icon>mdi-plus</v-icon>
-      </v-btn>
-    </v-card-actions>
-
-    <v-expand-transition>
-      <div v-show="show">
-        <v-divider></v-divider>
-
-        <v-card-text v-text="card.test">
-          </v-card-text>
-      </div>
-    </v-expand-transition>
-
-        
+		
+		      <v-spacer></v-spacer>
+		
+		      <v-btn
+		        icon
+		        @click="show = !show"
+		      >
+		        <v-icon>mdi-plus</v-icon>
+		      </v-btn>
+		     </v-card-actions>
+		
+		     <v-expand-transition>
+		      <div v-show="show">
+		        <v-divider></v-divider>
+		
+		        <v-card-text v-text="card.test">
+		          </v-card-text>
+		      </div>
+		      </v-expand-transition>
+		
+		        
             </v-card-actions>
           </v-card>
+          </template>
+		</v-hover>
         </v-col>
       </v-row>
       
 </div>
 
+<v-divider class="mt-6 mb-6" ></v-divider>
 
-<v-divider class="" ></v-divider>
-
-<h1 class="text-center">Derniers articles </h1>
-
-<div class="mb-6">
-<v-row dense class="d-flex justify-center mt-3">
-<v-col 
-    v-for="card in articles"
-    :key="card.title"
-    :cols="card.flex">
+<v-hover close-delay="111" open-delay="76">
+<template v-slot:default="{ hover }">
+<div style="width:900px;margin-left:auto;margin-right:auto;" :class="`elevation-${hover ? 24 : 3}`">
   <v-card
-    class="mx-auto mr-6"
-   
-    dark
- 	
+    class="mx-auto"
+    max-width="900"
+    
   >
-    <v-card-title>
-      <v-icon
-        large
-        left
-      >
-      mdi-paperclip
-      </v-icon>
-      <span class="text-h6 font-weight-light" v-text="card.title"></span>
-    </v-card-title>
+    <v-img
+      max-height="450"
+		class="white--text align-end"
+      src="https://www.defendonslesanimaux.fr/wp-content/themes/defenseanimal/asset/images/chien.jpg"
+    >  <v-card-title>LUTTONS CONTRE L'ABANDON</v-card-title>
+    </v-img>
 
-    <v-card-text class="text-h5 font-weight-bold" v-text="card.text">
-      "Turns out semicolon-less style is easier and safer in TS because most gotcha edge cases are type invalid as well."
+
+   <v-card-title>L’ABANDON, L’ENNEMI INVISIBLE</v-card-title>
+    <v-card-subtitle class="pb-0">
+      Le drame qui se rejoue chaque année
+    </v-card-subtitle>
+
+    <v-card-text class="text--primary">
+      <div>
+		Avec deux ans d’emprisonnement et 30.000 euros d'amende à la clé, l’abandon d’un animal domestique n’est pas censé être pris à la légère.
+		Et pourtant…
+		
+		On l’aura compris, l’acte d’abandon est tristement banal. Tellement banal en fait, qu’on croit en connaître par cœur les ressorts. L’acte est honteux, mais il reste avant tout le problème de quelqu’un d’autre. Ce qu’on oublie pourtant souvent, c’est qu’avant d’être pris en charge par des associations et des refuges, ces êtres vivants sensibles sont laissés seuls, livrés à eux-mêmes, en terrain hostile ; sans protection, sans nutrition, ils sont sous le joug des blessures, des maladies et des mauvaises rencontres.
+		
+		Ces animaux — qui nous ont offert leur confiance et leur tendresse, sans hésiter —, certains les abandonnent sans scrupules à l’abri des regards.
+		
+		Cet été, ce ne sont pas nos récits humains et les tristes anecdotes de vacances que l’on veut raconter : c’est leur drame qui se rejoue chaque année.
+	  </div>
     </v-card-text>
 
     <v-card-actions>
-      <v-list-item class="grow">
-        <v-list-item-avatar color="grey darken-3">
-          <v-img
-            class="elevation-6"
-            alt=""
-            :src="card.src"
-          ></v-img>
-        </v-list-item-avatar>
-
-        <v-list-item-content>
-          <v-list-item-title v-text="card.profil"></v-list-item-title>
-        </v-list-item-content>
-
-        <v-row
-          align="center"
-          justify="end"
-        >
-          <v-icon class="mr-1">
-            mdi-heart
-          </v-icon>
-          <span class="subheading mr-2">0</span>
-         
-          <v-icon class="mr-1">
-            mdi-share-variant
-          </v-icon>
-          <span class="subheading">0</span>
-        </v-row>
-      </v-list-item>
+      <v-btn
+        color="red"
+        text
+      >
+        Explore
+      </v-btn>
     </v-card-actions>
-    </v-col>
-    </v-row>
   </v-card>
 </div>
+</template>
+</v-hover>
+
+<v-divider class="mt-6 mb-6" ></v-divider>
 
 
-
-<v-card dark tile>
-	<v-card-title>Abonnez-vous a la NewSletter</v-card-title>
-	
-	<v-card-subtitle>Abonnez-vous a nos newsletters et soyez les premiers informes des nouvelles arrivees !</v-card-subtitle>
-	<v-card-text>
-	 <v-form v-model="valid">
-          <v-text-field
-          	prepend-inner-icon="mdi-at"
-          	outlined
-            v-model="email"
-            :rules="nameRules"
-            :counter="50"
-            label="Email"
-            required
-          ></v-text-field>
-        </v-col>
-        <div class="d-flex justify-center"> <v-btn>S'inscrire</v-btn></div>
-       
-  	</v-form>
-  </v-card-text>
-</v-card>
-
-
-
-  <v-footer  padless dark  bottom>
+</div>
+<v-footer  padless dark bottom>
   	<v-col class="grey">
-      <v-row dense class="d-flex justify-center mt-3">
+      <v-row dense class="d-flex justify-center">
         <v-col
           v-for="card in cards"
           :key="card.title"
           :cols="card.flex"
-          class="mr-4"
+          class="mr-8"
         >
-          <v-card>
+        <v-hover close-delay="111" open-delay="76">
+			<template v-slot:default="{ hover }">
+          <v-card :class="`elevation-${hover ? 24 : 6}`">
             <v-img
               :src="card.src"
               class="white--text align-end  "
@@ -279,11 +215,13 @@
         
             </v-card-actions>
           </v-card>
+          </template>
+</v-hover>
         </v-col>
       </v-row>
   	</v-col>
     <v-col class="text-center" cols="12">
-      2021 - <strong>Footer SpAnimals</strong>
+     <strong> 2021 - SpAnimals</strong>
     </v-col>
   </v-footer>
 
@@ -311,16 +249,16 @@
 			            ],
 			        items: [
 			          {
-			            src: 'https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg',
+			            src: 'https://www.la-spa.fr/sites/default/files/articles/principales/header_article_jpeg_1_0_1_1_0.jpg',
 			          },
 			          {
-			            src: 'https://cdn.vuetifyjs.com/images/carousel/sky.jpg',
+			            src: 'https://www.la-spa.fr/sites/default/files/articles/principales/noeldesanimaux2017paris_chien_1_0_0.jpg',
 			          },
 			          {
-			            src: 'https://cdn.vuetifyjs.com/images/carousel/bird.jpg',
+			            src: 'https://www.la-spa.fr/sites/default/files/articles/principales/3_1_0_0.png',
 			          },
 			          {
-			            src: 'https://cdn.vuetifyjs.com/images/carousel/planet.jpg',
+			            src: 'https://www.la-spa.fr/sites/default/files/articles/principales/01_couvfacebook_noeldesanimaux2019_1_0_0_0_0.jpg',
 			          },
 			        ],
 			        cardspa: [

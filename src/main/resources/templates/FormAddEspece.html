@@ -5,9 +5,9 @@
 
   <v-form ref="form" action="/employe/add/adoptant" v-model="valid" lazy-validation>
 
-    <v-text-field v-model="Frais" :rules="Rules" label="frais"  required ></v-text-field>
+    <v-text-field v-model="newEspece.frais" :rules="Rules" label="frais"  required ></v-text-field>
     
-    <v-text-field v-model="libelle" :rules="Rules" label="libelle"  required ></v-text-field>
+    <v-text-field v-model="newEspece.libelle" :rules="Rules" label="libelle"  required ></v-text-field>
 
     <v-btn :disabled="!valid" color="success" class="mr-4" @click="validate" > Validate </v-btn>
 
@@ -30,7 +30,7 @@ var app = new Vue({
 		    data: () => ({
 				espece:[],
 		    	dialog: {visible:false, mode:0},
-		    	newEspece: {Frais:"",libelle:""},
+		    	newEspece: {frais:"",libelle:"",},
 		    	valid: true,
 				  Rules: [
 					    v => !!v || 'champ obligatoire',

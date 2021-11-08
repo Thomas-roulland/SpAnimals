@@ -48,8 +48,10 @@ public class crudRace {
 		vue.addData("editedIndex", -1);
 		vue.addData("editedItem", new Race());
 		vue.addData("DefaultItem", new Race());
+		
 		vue.addMethod("remove",
 			"let self=this;" + Http.delete("'/admin/delete/race/'+race.id", JsArray.remove("self.race", "race"), "race"));
+		
 		vue.addMethod("close", "this.dialog=false; editedIndex=-1;");
 		vue.addMethod("save", "if (this.editedIndex > -1) {\r\n"
 			+ "          Object.assign(this.orgas[this.editedIndex], this.editedItem)\r\n" + "        } else {\r\n"
@@ -60,14 +62,16 @@ public class crudRace {
 				+ "          this.editedIndex = -1\r\n" + "        })");
 		vue.addMethod("deleteItemConfirm",
 			" this.race.splice(this.editedIndex, 1)\r\n" + "        this.closeDelete()");
-		vue.addMethod("deleteItem(item)", " this.editedIndex = this.race.indexOf(item)\r\n"
+		
+		vue.addMethod("deleteItem", "this.editedIndex = this.race.indexOf(item)\r\n"
 				+ "        this.editedItem = Object.assign({}, item)\r\n"
-				+ "        this.dialogDelete = true");
-		vue.addMethod("editItem(item)", "this.editedIndex = this.race.indexOf(item)\r\n"
+				+ "        this.dialogDelete = true","item");
+		
+		vue.addMethod("editItem", "this.editedIndex = this.race.indexOf(item)\r\n"
 				+ "        this.editedItem = Object.assign({}, item)\r\n"
-				+ "        this.dialog = true");
-		vue.addWatcher("dialog(val)", " val || this.close()");
-		vue.addWatcher("dialogDelete(val)", " val || this.closeDelete()");
+				+ "        this.dialog = true", "item");
+		vue.addWatcher("dialog", " val || this.close()");
+		vue.addWatcher("dialogDelete", " val || this.closeDelete()");
 
 		return "crudrace";
 	    }

@@ -3,29 +3,29 @@
 <v-app >
 <a class="ui primary flat button" href="/employe/"><i class="home icon"></i>Accueil Employe</a>
 
-  <v-form ref="form" action="/employe/add/adoptant" v-model="valid" lazy-validation>
+  <v-form ref="form"  v-model="valid" lazy-validation>
 
-    <v-text-field v-model="Mail" :rules="emailRules" label="Email"  required ></v-text-field>
+    <v-text-field v-model="newAdoptant.mail" :rules="emailRules" label="mail"  required ></v-text-field>
     
-    <v-text-field v-model="nom" :rules="Rules" label="nom"  required ></v-text-field>
+    <v-text-field v-model="newAdoptant.nom" :rules="Rules" label="nom"  required ></v-text-field>
     
-    <v-text-field v-model="prenom" :rules="Rules" label="prenom"  required ></v-text-field>
+    <v-text-field v-model="newAdoptant.prenom" :rules="Rules" label="prenom"  required ></v-text-field>
     
-    <v-text-field v-model="datenaiss" :rules="Rules" label="Date Naissance (YY-MM-DD)"  required ></v-text-field>
+    <v-text-field v-model="newAdoptant.datenaiss" :rules="Rules" label="Date Naissance (YY-MM-DD)"  required ></v-text-field>
     
-    <v-text-field v-model="ville" :rules="Rules" label="ville"  required ></v-text-field>
+    <v-text-field v-model="newAdoptant.ville" :rules="Rules" label="ville"  required ></v-text-field>
     
-    <v-text-field v-model="cp" :rules="CpRules" label="cp"  required ></v-text-field>
+    <v-text-field v-model="newAdoptant.cp" :rules="CpRules" label="cp"  required ></v-text-field>
     
-    <v-text-field v-model="numeroetrue" :rules="Rules" label="Numero et rue"  required ></v-text-field>
+    <v-text-field v-model="newAdoptant.numeroetrue" :rules="Rules" label="Numero et rue"  required ></v-text-field>
     
-    <v-text-field v-model="complementad" :counter="100" :rules="Rules" label="complementad"  required></v-text-field>
+    <v-text-field v-model="newAdoptant.complementad" :counter="100" :rules="Rules" label="complementad"  required></v-text-field>
 	
-	<v-text-field v-model="telfixe" :rules="TelRules" label="Téléphone Fixe"  required ></v-text-field>
+	<v-text-field v-model="newAdoptant.telfixe" :rules="TelRules" label="Téléphone Fixe"  required ></v-text-field>
 	
-	<v-text-field v-model="telmobile" :rules="TelRules" label="Téléphone mobile"  required ></v-text-field>
+	<v-text-field v-model="newAdoptant.telmobile" :rules="TelRules" label="Téléphone mobile"  required ></v-text-field>
 
-	<v-text-field v-model="infocomplementaires" :rules="Rules" label="info Complementaires"  required ></v-text-field>
+	<v-text-field v-model="newAdoptant.infocomplementaires" :rules="Rules" label="info Complementaires"  required ></v-text-field>
 
     <v-btn :disabled="!valid" color="success" class="mr-4" @click="validate" > Validate </v-btn>
 
@@ -38,13 +38,17 @@
 
 
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vuetify/2.5.9/vuetify.min.js"></script>
 <script>
-
+Vue.prototype.$http = axios;
 var app = new Vue({
 	  el: 'v-app',
 	  vuetify: new Vuetify(),
 		    data: () => ({
+		    	adoptant:[],
+		    	dialog: {visible:false, mode:0},
+		    	newAdoptant: {mail:"",nom:"",prenom:"",datenaiss:"",ville:"",cp:"",numeroetrue:"",complementad:"",telfixe:"",telmobile:"",infocomplementaires:""},
 		    	valid: true,
 		    	CpRules: '',
 			      CpRules: [
@@ -66,11 +70,30 @@ var app = new Vue({
 			      checkbox: false,
 		  
 		    }),
+		    mounted(){
+				this.loadAdoptant();
+			},
 		    
 		    methods: {
-		        validate () {
-		          this.$refs.form.validate()
-		        },
+		    	loadEspece(){
+					  this.$http.get('/employe/adoptant').then((response)=>{
+						  this.adoptant=response.data;
+					  })
+				  },	
+				  validate(){
+					  if(this.dialog.mode==0){
+						  this.$http.post('/employe/add/adoptant', this.newAdoptant).then((response)=>{
+							  this.adoptant.push(response.data);
+						  })
+					  }else{
+					  this.$http.put('/employe/modifier/adoptant/{id}'+this.newAdoptant.id, this.newAdoptant).then((response)=>{
+							  let index=this.adoptant.findIndex((item)=>item.id==this.newAdoptant.id);
+							  if(index!=-1){
+								  this.adoptant[index]=this.newAdoptant;
+							  }
+					  	  })
+					}
+				},
 		        reset () {
 		          this.$refs.form.reset()
 		        },

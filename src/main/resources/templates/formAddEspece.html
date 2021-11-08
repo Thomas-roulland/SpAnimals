@@ -3,7 +3,7 @@
 <v-app >
 <a class="ui primary flat button" href="/employe/"><i class="home icon"></i>Accueil Employe</a>
 
-  <v-form ref="form" action="/employe/add/adoptant" v-model="valid" lazy-validation>
+  <v-form ref="form" v-model="valid" lazy-validation>
 
     <v-text-field v-model="newEspece.frais" :rules="Rules" label="frais"  required ></v-text-field>
     

@@ -5,9 +5,9 @@
  {{#Adoptant}}
   <v-form ref="form" v-model="valid" lazy-validation>
 
-    <v-text-field v-model="Mail" :rules="emailRules" label="Email" value="{{mail}}" required ></v-text-field>
+    <v-text-field v-model="Mail" :rules="emailRules" label="Email" :items="Adoptant" item-text="mail" item-value="mail"  required ></v-text-field>
     
-    <v-text-field v-model="nom" :rules="Rules" label="nom" value="{{nom}}" required ></v-text-field>
+    <v-text-field v-model="nom" :rules="Rules" label="nom" value="{{adoptant.nom}}" required ></v-text-field>
     
     <v-text-field v-model="prenom" :rules="Rules" label="prenom" value="{{prenom}}" required ></v-text-field>
     
@@ -43,6 +43,9 @@ var app = new Vue({
 	  el: 'v-app',
 	  vuetify: new Vuetify(),
 		    data: () => ({
+		    	adoptant:[],
+		    	dialog: {visible:false, mode:0},
+		    	newAdoptant: {mail:"",nom:"",prenom:"",datenaiss:"",ville:"",cp:"",numeroetrue:"",complementad:"",telfixe:"",telmobile:"",infocomplementaires:""},
 		    	valid: true,
 		    	CpRules: '',
 			      CpRules: [
@@ -64,11 +67,30 @@ var app = new Vue({
 			      checkbox: false,
 		  
 		    }),
+		    mounted(){
+				this.loadAdoptant();
+			},
 		    
 		    methods: {
-		        validate () {
-		          this.$refs.form.validate()
-		        },
+		    	loadEspece(){
+					  this.$http.get('/employe/adoptant').then((response)=>{
+						  this.adoptant=response.data;
+					  })
+				  },	
+				  validate(){
+					  if(this.dialog.mode==0){
+						  this.$http.post('/employe/add/adoptant', this.newAdoptant).then((response)=>{
+							  this.adoptant.push(response.data);
+						  })
+					  }else{
+					  this.$http.put('/employe/modifier/adoptant/{id}'+this.newAdoptant.id, this.newAdoptant).then((response)=>{
+							  let index=this.adoptant.findIndex((item)=>item.id==this.newAdoptant.id);
+							  if(index!=-1){
+								  this.adoptant[index]=this.newAdoptant;
+							  }
+					  	  })
+					}
+				},
 		        reset () {
 		          this.$refs.form.reset()
 		        },

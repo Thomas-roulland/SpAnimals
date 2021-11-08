@@ -30,57 +30,6 @@
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vuetify/2.5.9/vuetify.min.js"></script>
-<script>
-Vue.prototype.$http = axios;
-var app = new Vue({
-	  el: 'v-app',
-	  vuetify: new Vuetify(),
-		    data: () => ({
-				refuge:[],
-		    	dialog: {visible:false, mode:0},
-		    	newRefuge: {complementad:"",libelle:"",nom:"",cp:"",description:"",localisation:""},
-		    	valid: true,
-				  Rules: [
-					    v => !!v || 'champ obligatoire',
-					  ],
-			    checkbox: false,
-		  
-		    }),
-		    mounted(){
-				this.loadRefuge();
-			},
-		    
-			methods: {
-				loaRefuge(){
-					  this.$http.get('/admin/refuge').then((response)=>{
-						  this.refuge=response.data;
-					  })
-				  },	
-				 validate(){
-					  if(this.dialog.mode==0){
-						  this.$http.post('/admin/add/refuge', this.newRefuge).then((response)=>{
-							  this.refuge.push(response.data);
-						  })
-					  }else{
-						  this.$http.put('/admin/modifier/refuge/{id}'+this.newRefuge.id, this.newRefuge).then((response)=>{
-							  let index=this.refuge.findIndex((item)=>item.id==this.newRefuge.id);
-							  if(index!=-1){
-								  this.refuge[index]=this.newRefuge;
-							  }
-					  	  })
-					  }
-				  },
-
-		        reset () {
-		          this.$refs.form.reset()
-		        },
-		        resetValidation () {
-		          this.$refs.form.resetValidation()
-		        },
-		      },
-		      
-	  delimiters: ['<%', '%>'],
-	})
-</script>
+{{{vue}}}
 
 {{> inc/footer}}

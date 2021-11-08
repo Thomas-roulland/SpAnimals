@@ -73,11 +73,7 @@ public class adminRestController {
 	}
 
 	@PostMapping("/add/refuge")
-<<<<<<< HEAD
-	private @ResponseBody String ajouteRefuge( Refuge refuge) {
-=======
 	private @ResponseBody String ajouteRefuge(@RequestBody Refuge refuge) {
->>>>>>> 7c61a6816f674e24d6b5923596b7186dc78f6713
 		repoR.saveAndFlush(refuge);
 		return refuge.toString();
 	}

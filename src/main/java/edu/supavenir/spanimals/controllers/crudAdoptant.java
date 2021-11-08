@@ -42,7 +42,7 @@ public class crudAdoptant {
 		vue.addData("adoptant", repo.findAll());
 		vue.addDataRaw("headers",
 			"[{text:'ID', value:'id'},{text:'Complement Adresse', value:'complementad'},{text:'Code Postal', value:'cp'},{text:'Date Naissance', value:'datenaiss'},{text:'Infos', value:'infoscomplementaires'},{text:'Lock_Flag', value:'lock_flag'}"
-			+ ",{text:'Mail', value:'mail'},{text:'nom', value:'nom'},{text:'numeroetrue', value:'numeroetrue'} ,{text:'prenom', value:'prenom'},{text:'telfixe', value:'telfixe'},{text:'telmobile', value:'telmobile'},,{text:'ville', value:'ville'}]");
+			+ ",{text:'Mail', value:'mail'},{text:'nom', value:'nom'},{text:'numeroetrue', value:'numeroetrue'} ,{text:'prenom', value:'prenom'},{text:'telfixe', value:'telfixe'},{text:'telmobile', value:'telmobile'},,{text:'ville', value:'ville'}, { text: 'Actions', value: 'actions', sortable: false }]");
 		vue.addData("dialog", false);
 		vue.addData("dialogDelete", false);
 		vue.addComputed("formTitle",

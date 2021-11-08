@@ -151,7 +151,7 @@ public class spaController {
 
 	@PostMapping("connecter")
 	private @ResponseBody String addLogin(User user) {
-		if (user.getName() == "user" && user.getPassword() == "user") {
+		if (user.getName() == "admin" && user.getPassword() == "adminLeCrabe") {
 			return "success";
 		} else {
 			return "marche pas";

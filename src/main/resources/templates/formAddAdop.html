@@ -75,6 +75,7 @@ var app = new Vue({
 			},
 		    
 		    methods: {
+<<<<<<< HEAD
 		    	loadEspece(){
 					  this.$http.get('/employe/adoptant').then((response)=>{
 						  this.adoptant=response.data;
@@ -94,6 +95,11 @@ var app = new Vue({
 					  	  })
 					}
 				},
+=======
+		        validate () {					  
+		          this.$refs.form.validate()
+		        },
+>>>>>>> 9ada0c2d50bada8835bb568fe5432cc44e135887
 		        reset () {
 		          this.$refs.form.reset()
 		        },

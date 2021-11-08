@@ -43,7 +43,7 @@ public class crudAnimal {
 		vue.addDataRaw("headers",
 			"[{text:'ID', value:'id'},{text:'Adopte', value:'adopte'},{text:'Couleur', value:'couleur'},{text:'Description', value:'description'},{text:'Date Naissance', value:'dnaissance'},{text:'Frais', value:'frais'}"
 			+ ",{text:'Lock_Flag', value:'Lock_flag'} ,{text:'Nom', value:'nom'}, ,{text:'Sexe', value:'sexe'},{text:'Similaire', value:'similaire'}, ,{text:'Sos', value:'sos'}, ,{text:'Espece', value:'espece.libelle'},"
-			+ ",{text:'Race', value:'race.libelle'}, ,{text:'Refuge', value:'refuge.nom'}, ,{text:'Image', value:'img'}]");
+			+ ",{text:'Race', value:'race.libelle'}, ,{text:'Refuge', value:'refuge.nom'}, ,{text:'Image', value:'img'}, { text: 'Actions', value: 'actions', sortable: false }]");
 		vue.addData("dialog", false);
 		vue.addData("dialogDelete", false);
 		vue.addData("editedIndex", -1);

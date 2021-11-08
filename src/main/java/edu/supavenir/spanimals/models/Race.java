@@ -7,6 +7,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -60,7 +61,7 @@ public class Race implements Serializable {
     private String descriptif;
     @Column(name = "PREREQUIS", length = 50)
     private String prerequis;
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false,cascade = CascadeType.ALL)
     @JoinColumn(name = "IDESPECE", nullable = false)
     private Espece espece;
     @OneToMany(mappedBy = "race")

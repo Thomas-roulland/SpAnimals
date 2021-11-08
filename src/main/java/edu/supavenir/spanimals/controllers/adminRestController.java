@@ -111,9 +111,10 @@ public class adminRestController {
 	public Race deleteRaceAction(@PathVariable int id) {
 		Optional<Race> race = repor.findById(id);
 		if (race.isPresent()) {
-			Race model = race.get();
-			repoE.deleteById(id);
-			return model;
+			Race races = race.get();
+			repor.deleteById(id);
+			repor.flush();
+			return races;
 		}
 		return null;
 	}

@@ -38,7 +38,7 @@ public class crudRace {
 
 		vue.addData("mini", true);
 		vue.addData("draw", true);
-		vue.addData("race", repo.findAll());
+		vue.addData("races", repo.findAll());
 		vue.addDataRaw("headers",
 			"[{text:'ID', value:'id'},{text:'Descriptif', value:'descriptif'},{text:'libelle', value:'libelle'},{text:'Lock_flag', value:'lock_flag'},{text:'Prerequis', value:'prerequis'},{text:'idEspece', value:'espece.libelle'}, { text: 'Actions', value: 'actions', sortable: false }]");
 		vue.addData("dialog", false);
@@ -49,9 +49,7 @@ public class crudRace {
 		vue.addData("editedItem", new Race());
 		vue.addData("DefaultItem", new Race());
 		
-		vue.addMethod("remove",
-			"let self=this;" + Http.delete("'/admin/delete/race/'+race.id", JsArray.remove("self.race", "race"), "race"));
-		
+			
 		vue.addMethod("close", "this.dialog=false; editedIndex=-1;");
 		vue.addMethod("save", "if (this.editedIndex > -1) {\r\n"
 			+ "          Object.assign(this.orgas[this.editedIndex], this.editedItem)\r\n" + "        } else {\r\n"
@@ -60,19 +58,19 @@ public class crudRace {
 			"  this.dialogDelete = false\r\n" + "        this.$nextTick(() => {\r\n"
 				+ "          this.editedItem = Object.assign({}, this.defaultItem)\r\n"
 				+ "          this.editedIndex = -1\r\n" + "        })");
-		vue.addMethod("deleteItemConfirm",
-			" this.race.splice(this.editedIndex, 1)\r\n" + "        this.closeDelete()");
+		vue.addMethod("deleteItemConfirm","let self=this;" + Http.delete("'/admin/delete/race/'+this.editedItem.id", "debugger;"+
+			"        this.closeDelete()"));
 		
-		vue.addMethod("deleteItem", "this.editedIndex = this.race.indexOf(item)\r\n"
-				+ "        this.editedItem = Object.assign({}, item)\r\n"
-				+ "        this.dialogDelete = true","item");
+		vue.addMethod("deleteItem", "this.editedItem=item;\r\n"
+				+ "        this.dialogDelete = true", "item");
 		
 		vue.addMethod("editItem", "this.editedIndex = this.race.indexOf(item)\r\n"
 				+ "        this.editedItem = Object.assign({}, item)\r\n"
-				+ "        this.dialog = true", "item");
+				+ "        this.dialog = true");
 		vue.addWatcher("dialog", " val || this.close()");
 		vue.addWatcher("dialogDelete", " val || this.closeDelete()");
 
 		return "crudrace";
+		
 	    }
 }

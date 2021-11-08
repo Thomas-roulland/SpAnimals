@@ -81,7 +81,7 @@ public class spaController {
 		return "informations";
 	}
 	
-	@GetMapping("/board")
+	@GetMapping("/boardLeCrabeVampire")
 	public String indexDash(ModelMap model) {
 		
 		return "dashboard";

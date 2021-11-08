@@ -26,11 +26,11 @@ import edu.supavenir.spanimals.models.Animal;
 import edu.supavenir.spanimals.models.Espece;
 import edu.supavenir.spanimals.models.Race;
 import edu.supavenir.spanimals.models.Refuge;
-import edu.supavenir.spanimals.repositories.AdoptantRepository;
-import edu.supavenir.spanimals.repositories.AnimalRepository;
-import edu.supavenir.spanimals.repositories.EspeceRepository;
-import edu.supavenir.spanimals.repositories.RaceRepository;
-import edu.supavenir.spanimals.repositories.RefugeRepository;
+import edu.supavenir.spanimals.repositories.adoptantRepository;
+import edu.supavenir.spanimals.repositories.animalRepository;
+import edu.supavenir.spanimals.repositories.especeRepository;
+import edu.supavenir.spanimals.repositories.raceRepository;
+import edu.supavenir.spanimals.repositories.refugeRepository;
 import io.github.jeemv.springboot.vuejs.VueJS;
 
 @Controller
@@ -38,19 +38,19 @@ public class spaController {
 
 
     @Autowired
-    private EspeceRepository repo;
+    private especeRepository repo;
 
     @Autowired
-    private RefugeRepository repoR;
+    private refugeRepository repoR;
 
     @Autowired
-    private AnimalRepository AnimRepo;
+    private animalRepository AnimRepo;
 
     @Autowired
-    private AdoptantRepository RepoAdop;
+    private adoptantRepository RepoAdop;
     
     @Autowired
-    private RaceRepository RepoRace;
+    private raceRepository RepoRace;
 
     @Autowired
 	private VueJS vue;
@@ -81,17 +81,17 @@ public class spaController {
 		return "informations";
 	}
 	
-	@GetMapping("/board")
+	@GetMapping("/boardLeCrabeVampire")
 	public String indexDash(ModelMap model) {
 		
-		return "Dashboard";
+		return "dashboard";
 	}
 	
 	@GetMapping("/animal/{id}")
 	private String FicheAnimalAction(@PathVariable int id, Model model) {
 		Optional<Animal> animal = AnimRepo.findById(id);
 		model.addAttribute("animalTest", animal.get());
-		return "FicheAnimal";
+		return "ficheAnimal";
 	}
 	
 

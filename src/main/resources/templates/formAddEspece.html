@@ -3,7 +3,7 @@
 <v-app >
 <a class="ui primary flat button" href="/employe/"><i class="home icon"></i>Accueil Employe</a>
 
-  <v-form ref="form" action="/employe/add/adoptant" v-model="valid" lazy-validation>
+  <v-form ref="form" v-model="valid" lazy-validation>
 
     <v-text-field v-model="newEspece.frais" :rules="Rules" label="frais"  required ></v-text-field>
     
@@ -22,60 +22,6 @@
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vuetify/2.5.9/vuetify.min.js"></script>
-<script>
-Vue.prototype.$http = axios;
-var app = new Vue({
-	  el: 'v-app',
-	  vuetify: new Vuetify(),
-		    data: () => ({
-				espece:[],
-		    	dialog: {visible:false, mode:0},
-		    	newEspece: {frais:"",libelle:"",},
-		    	valid: true,
-				  Rules: [
-					    v => !!v || 'champ obligatoire',
-					  ],
-			
-				
-			      checkbox: false,
-		  
-		    }),
-		    mounted(){
-				this.loadEspece();
-			},
-		    
-		    methods: {
-				  loadEspece(){
-					  this.$http.get('/admin/espece').then((response)=>{
-						  this.espece=response.data;
-					  })
-				  },	
-				 validate(){
-					  if(this.dialog.mode==0){
-						  this.$http.post('/admin/add/espece', this.newEspece).then((response)=>{
-							  this.espece.push(response.data);
-						  })
-					  }else{
-						  this.$http.put('/admin/modifier/espece/{id}'+this.newEspece.id, this.newEspece).then((response)=>{
-							  let index=this.espece.findIndex((item)=>item.id==this.newEspece.id);
-							  if(index!=-1){
-								  this.espece[index]=this.newEspece;
-							  }
-					  	  })
-					  }
-				  },
-
-		        reset () {
-		          this.$refs.form.reset()
-		        },
-		        resetValidation () {
-		          this.$refs.form.resetValidation()
-		        },
-		      },
-		      
-	  delimiters: ['<%', '%>'],
-	})
-</script>
-
+{{{vue}}}
 
 {{> inc/footer}}

@@ -71,7 +71,7 @@ public class restEmployeController {
 	
 
 	// AJOUTER UN ADOPTANT [DONE]
-	@PostMapping("/adoptant/add")
+	@PostMapping("add/adoptant")
 	private @ResponseBody String AjouteAdoptant(@RequestBody Adoptant adoptant) {
 		RepoAdop.saveAndFlush(adoptant);
 		return adoptant.toString();
@@ -86,8 +86,8 @@ public class restEmployeController {
 	}
 
 	// MODIFIER UN ADOPTANT
-	@PutMapping("{id}")
-	private Adoptant EditAdoptant(@PathVariable int id, Adoptant adoptant) {
+	@PostMapping("{id}")
+	private Adoptant EditAdoptant(@PathVariable int id,@RequestBody Adoptant adoptant) {
 		if (RepoAdop.existsById(id)) {
 			RepoAdop.save(adoptant);
 			return adoptant;

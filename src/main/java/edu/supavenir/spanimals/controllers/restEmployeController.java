@@ -71,7 +71,7 @@ public class restEmployeController {
 	
 
 	// AJOUTER UN ADOPTANT [DONE]
-	@PostMapping("/adoptant/add")
+	@PostMapping("/add/adoptant")
 	private @ResponseBody String AjouteAdoptant(@RequestBody Adoptant adoptant) {
 		RepoAdop.saveAndFlush(adoptant);
 		return adoptant.toString();
@@ -80,13 +80,8 @@ public class restEmployeController {
 	// AJOUTER UN ANIMAL [DONE]
 	@PostMapping("/add/animal")
 	private @ResponseBody String ajouteAnimal(@RequestBody Animal animal) {
-<<<<<<< HEAD
 		AnimRepo.saveAndFlush(animal);
-		return animal.toString();	
-=======
-		AnimRepo.save(animal);
 		return animal.toString();
->>>>>>> 7c61a6816f674e24d6b5923596b7186dc78f6713
 	}
 
 	// MODIFIER UN ADOPTANT

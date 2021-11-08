@@ -40,7 +40,7 @@ public class crudEspece {
 		vue.addData("draw", true);
 		vue.addData("espece", repo.findAll());
 		vue.addDataRaw("headers",
-			"[{text:'ID', value:'id'},{text:'Frais', value:'frais'},{text:'Libelle', value:'libelle'},{text:'Lock_flag', value:'lock_flag'}]");
+			"[{text:'ID', value:'id'},{text:'Frais', value:'frais'},{text:'Libelle', value:'libelle'},{text:'Lock_flag', value:'lock_flag'}, { text: 'Actions', value: 'actions', sortable: false }]");
 		vue.addData("dialog", false);
 		vue.addData("dialogDelete", false);
 		vue.addComputed("formTitle",

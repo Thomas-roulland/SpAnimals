@@ -41,7 +41,7 @@ public class crudRefuge {
 		vue.addData("refuge", repo.findAll());
 		vue.addDataRaw("headers",
 			"[{text:'ID', value:'id'},{text:'Complement Adresse', value:'complementad'},{text:'Code Postal', value:'cp'},{text:'Description', value:'description'},{text:'Localisation', value:'localisation'}"
-			+ ",{text:'lock_flag', value:'lock_flag'}, ,{text:'nom', value:'nom'},{text:'Numero et Rue', value:'numeroetrue'},{text:'Telephone', value:'tel'},{text:'ville', value:'ville'}]");
+			+ ",{text:'lock_flag', value:'lock_flag'}, ,{text:'nom', value:'nom'},{text:'Numero et Rue', value:'numeroetrue'},{text:'Telephone', value:'tel'},{text:'ville', value:'ville'}, { text: 'Actions', value: 'actions', sortable: false }]");
 		vue.addData("dialog", false);
 		vue.addData("dialogDelete", false);
 		vue.addComputed("formTitle",

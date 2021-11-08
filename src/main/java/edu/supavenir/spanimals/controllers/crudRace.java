@@ -40,15 +40,16 @@ public class crudRace {
 		vue.addData("draw", true);
 		vue.addData("race", repo.findAll());
 		vue.addDataRaw("headers",
-			"[{text:'ID', value:'id'},{text:'Descriptif', value:'descriptif'},{text:'libelle', value:'libelle'},{text:'Lock_flag', value:'lock_flag'},{text:'Prerequis', value:'prerequis'},{text:'idEspece', value:'espece.libelle'}]");
+			"[{text:'ID', value:'id'},{text:'Descriptif', value:'descriptif'},{text:'libelle', value:'libelle'},{text:'Lock_flag', value:'lock_flag'},{text:'Prerequis', value:'prerequis'},{text:'idEspece', value:'espece.libelle'}, { text: 'Actions', value: 'actions', sortable: false }]");
 		vue.addData("dialog", false);
 		vue.addData("dialogDelete", false);
 		vue.addComputed("formTitle",
 			" return this.editedIndex === -1 ? 'Nouvelle race' : 'modifier race'");
 		vue.addData("editedIndex", -1);
+		vue.addData("editedItem", new Race());
+		vue.addData("DefaultItem", new Race());
 		vue.addMethod("remove",
 			"let self=this;" + Http.delete("'/admin/delete/race/'+race.id", JsArray.remove("self.race", "race"), "race"));
-		vue.addData("editedItem", new Race());
 		vue.addMethod("close", "this.dialog=false; editedIndex=-1;");
 		vue.addMethod("save", "if (this.editedIndex > -1) {\r\n"
 			+ "          Object.assign(this.orgas[this.editedIndex], this.editedItem)\r\n" + "        } else {\r\n"
@@ -59,6 +60,14 @@ public class crudRace {
 				+ "          this.editedIndex = -1\r\n" + "        })");
 		vue.addMethod("deleteItemConfirm",
 			" this.race.splice(this.editedIndex, 1)\r\n" + "        this.closeDelete()");
+		vue.addMethod("deleteItem(item)", " this.editedIndex = this.race.indexOf(item)\r\n"
+				+ "        this.editedItem = Object.assign({}, item)\r\n"
+				+ "        this.dialogDelete = true");
+		vue.addMethod("editItem(item)", "this.editedIndex = this.race.indexOf(item)\r\n"
+				+ "        this.editedItem = Object.assign({}, item)\r\n"
+				+ "        this.dialog = true");
+		vue.addWatcher("dialog(val)", " val || this.close()");
+		vue.addWatcher("dialogDelete(val)", " val || this.closeDelete()");
 
 		return "crudrace";
 	    }

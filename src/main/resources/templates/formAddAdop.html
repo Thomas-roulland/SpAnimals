@@ -5,9 +5,15 @@
 
   <v-form ref="form"  v-model="valid" lazy-validation>
 
+<<<<<<< HEAD
+  <v-text-field v-model="newAdoptant.mail" :rules="emailRules" label="Email"  required ></v-text-field>
+    
+   <v-text-field v-model="newAdoptant.nom" :rules="Rules" label="nom"  required ></v-text-field>
+=======
     <v-text-field v-model="newAdoptant.mail" :rules="emailRules" label="mail"  required ></v-text-field>
     
     <v-text-field v-model="newAdoptant.nom" :rules="Rules" label="nom"  required ></v-text-field>
+>>>>>>> 0122bde548877454242a547ee7b16e935669d003
     
     <v-text-field v-model="newAdoptant.prenom" :rules="Rules" label="prenom"  required ></v-text-field>
     
@@ -15,7 +21,11 @@
     
     <v-text-field v-model="newAdoptant.ville" :rules="Rules" label="ville"  required ></v-text-field>
     
+<<<<<<< HEAD
+  	<v-text-field v-model="newAdoptant.cp" :rules="CPRules" label="cp"  required ></v-text-field>
+=======
     <v-text-field v-model="newAdoptant.cp" :rules="CpRules" label="cp"  required ></v-text-field>
+>>>>>>> 0122bde548877454242a547ee7b16e935669d003
     
     <v-text-field v-model="newAdoptant.numeroetrue" :rules="Rules" label="Numero et rue"  required ></v-text-field>
     
@@ -36,10 +46,12 @@
 
 </v-app>
 
-
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vuetify/2.5.9/vuetify.min.js"></script>
+<<<<<<< HEAD
+{{{vue}}}
+=======
 <script>
 Vue.prototype.$http = axios;
 var app = new Vue({
@@ -112,4 +124,6 @@ var app = new Vue({
 	})
 </script>
 
+>>>>>>> 0122bde548877454242a547ee7b16e935669d003
 {{> inc/footer}}
+

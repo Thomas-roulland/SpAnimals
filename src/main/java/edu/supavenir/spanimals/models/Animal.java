@@ -10,6 +10,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -88,8 +89,8 @@ public class Animal implements Serializable {
     @ManyToOne(optional = true)
     @JoinColumn(name = "IDRACE", nullable = true)
     private Race race;
-    @ManyToOne(optional = true)
-    @JoinColumn(name = "IDESPECE", nullable = true)
+    @ManyToOne(optional = false,cascade = CascadeType.ALL)
+    @JoinColumn(name = "IDESPECE", nullable = false)
     private Espece espece;
     @ManyToOne(optional = true)
     @JoinColumn(name = "IDREFUGE", nullable = true)

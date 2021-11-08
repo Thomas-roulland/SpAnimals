@@ -19,7 +19,7 @@
   	
   	<v-text-field v-model="newAnimal.frais" :rules="Rules" label="Frais"  required ></v-text-field>
   	
-  	<v-select v-model="newAnimal.espece" name="espece" :items="espece" item-text="libelle" label="Selectionner une espece" return-object required ></v-select>
+  	<v-select v-model="newAnimal.espece" name="espece" :items="especes" item-text="libelle" label="Selectionner une espece" return-object required ></v-select>
   	
    	<v-select v-model="newAnimal.race" name="race" :items="race" item-text="libelle" label="Selectionner une race" return-object required ></v-select>
   	
@@ -40,112 +40,6 @@
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vuetify/2.5.9/vuetify.min.js"></script>
-<script>
-Vue.prototype.$http = axios;
-var app = new Vue({
-	  el: 'v-app',
-	  vuetify: new Vuetify(),
-		    data: () => ({
-				animal:[],
-				refuge:[],
-				espece:[],
-				race:[],
-		    	dialog: {visible:false, mode:0},
-		    	newAnimal: {datenaiss:"",description:"", couleur:"",sos:"",adopte:"",nom:"",frais:"",espece:"",race:"",refuge:"",sexe:""},
-		    	valid: true,
-		    	CpRules: '',
-			      CpRules: [
-			        v => !!v || 'champ obligatoire',
-			        v => (v && v.length <= 5 && v.length >4) || 'le Code Postal doit être égal à 5 caractères',
-			      ],
-			      email: '',
-			      emailRules: [
-			        v => !!v || 'champ obligatoire',
-			        v => /.+@.+\..+/.test(v) || 'E-mail doit être valide ',
-			      ],
-			      TelRules: [
-				        v => !!v || 'champ obligatoire',
-				        v => (v && v.length <= 10 && v.length >9) || 'le numéro de téléphone doit être égal à 10 caractères',
-				      ],
-				  Rules: [
-					    v => !!v || 'champ obligatoire',
-					  ],
-				select: null,
-				Alerte: [
-			        { value: false,  sos: 'Non' },
-			        { value: true,  sos: 'Oui' }
-			      ],
-			    Adopte: [
-				    { value: false,  adopte: 'Non' },
-				    { value: true,  adopte: 'Oui' }
-				  ],
-				Sexe: [
-					'male',
-					'femelle'
-				],
-			
-				
-			      checkbox: false,
-		  
-		    }),
-		    mounted(){
-				this.loadRefuge();
-				this.loadEspece();
-				this.loadRace();
-				this.loadAnimal();
-			},
-		    
-		    methods: {
-				loadAnimal(){
-						this.$http.get('/employe/animal').then((response)=>{
-							this.animal=response.data;
-							})
-						},
-		    	loadRefuge(){
-					  this.$http.get('/admin/refuge').then((response)=>{
-						  this.refuge=response.data;
-					  })
-				  },
-				  loadEspece(){
-					  this.$http.get('/employe/espece').then((response)=>{
-						  this.espece=response.data;
-					  })
-				  },	
-				  loadRace(){
-					this.$http.get('/employe/race').then((response)=>{
-						this.race=response.data;
-					})
-				},
-				
-				 validate(){
-					  if(this.dialog.mode==0){
-						  this.$http.post('/employe/add/animal', this.newAnimal).then((response)=>{
-							  this.animal.push(response.data);
-						  })
-					  }else{
-						  this.$http.put('/employe/edit/animal/{id}'+this.newAnimal.id, this.newAnimal).then((response)=>{
-							  let index=this.animal.findIndex((item)=>item.id==this.newAnimal.id);
-							  if(index!=-1){
-								  this.animal[index]=this.newAnimal;
-							  }
-					  })
-					  }
-				  },
-				
-				 // validate () {
-			       //   this.$refs.form.validate()
-			       // },
-		        reset () {
-		          this.$refs.form.reset()
-		        },
-		        resetValidation () {
-		          this.$refs.form.resetValidation()
-		        },
-		      },
-		      
-	  delimiters: ['<%', '%>'],
-	})
-</script>
-
+{{{vue}}}
 
 {{> inc/footer}}

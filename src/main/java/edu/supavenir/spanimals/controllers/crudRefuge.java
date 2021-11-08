@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import edu.supavenir.spanimals.models.Refuge;
-import edu.supavenir.spanimals.repositories.RefugeRepository;
+import edu.supavenir.spanimals.repositories.refugeRepository;
 import io.github.jeemv.springboot.vuejs.VueJS;
 import io.github.jeemv.springboot.vuejs.utilities.Http;
 import io.github.jeemv.springboot.vuejs.utilities.JsArray;
@@ -24,7 +24,7 @@ public class crudRefuge {
 	    private VueJS vue;
 	  
 	  @Autowired
-	    private RefugeRepository repo;
+	    private refugeRepository repo;
 
 	  @ModelAttribute(name = "vue")
 	    private VueJS getVue() {

@@ -17,10 +17,10 @@ import edu.supavenir.spanimals.models.Adoptant;
 import edu.supavenir.spanimals.models.Animal;
 import edu.supavenir.spanimals.models.Espece;
 import edu.supavenir.spanimals.models.Race;
-import edu.supavenir.spanimals.repositories.AdoptantRepository;
-import edu.supavenir.spanimals.repositories.AnimalRepository;
-import edu.supavenir.spanimals.repositories.EspeceRepository;
-import edu.supavenir.spanimals.repositories.RaceRepository;
+import edu.supavenir.spanimals.repositories.adoptantRepository;
+import edu.supavenir.spanimals.repositories.animalRepository;
+import edu.supavenir.spanimals.repositories.especeRepository;
+import edu.supavenir.spanimals.repositories.raceRepository;
 
 @RequestMapping("/employe")
 @RestController
@@ -28,16 +28,16 @@ import edu.supavenir.spanimals.repositories.RaceRepository;
 public class restEmployeController {
 
 	@Autowired
-	private AdoptantRepository RepoAdop;
+	private adoptantRepository RepoAdop;
 
 	@Autowired
-	private AnimalRepository AnimRepo;
+	private animalRepository AnimRepo;
 
 	@Autowired
-	private EspeceRepository repoE;
+	private especeRepository repoE;
 
 	@Autowired
-	private RaceRepository repoR;
+	private raceRepository repoR;
 
 	@GetMapping("/race")
 	public List<Race> AffichageRace() {
@@ -80,8 +80,13 @@ public class restEmployeController {
 	// AJOUTER UN ANIMAL [DONE]
 	@PostMapping("/add/animal")
 	private @ResponseBody String ajouteAnimal(@RequestBody Animal animal) {
+<<<<<<< HEAD
 		AnimRepo.saveAndFlush(animal);
 		return animal.toString();	
+=======
+		AnimRepo.save(animal);
+		return animal.toString();
+>>>>>>> 7c61a6816f674e24d6b5923596b7186dc78f6713
 	}
 
 	// MODIFIER UN ADOPTANT

@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import edu.supavenir.spanimals.models.Race;
 
-public interface RaceRepository extends JpaRepository<Race, Integer> {
+public interface raceRepository extends JpaRepository<Race, Integer> {
 
 }

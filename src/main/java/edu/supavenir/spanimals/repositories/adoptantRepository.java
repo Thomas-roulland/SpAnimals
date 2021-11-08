@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import edu.supavenir.spanimals.models.Adoptant;
 
 @Repository
-public interface AdoptantRepository extends JpaRepository<Adoptant, Integer> {
+public interface adoptantRepository extends JpaRepository<Adoptant, Integer> {
 
 }

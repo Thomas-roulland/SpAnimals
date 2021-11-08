@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import edu.supavenir.spanimals.models.Espece;
-import edu.supavenir.spanimals.repositories.AdoptantRepository;
-import edu.supavenir.spanimals.repositories.EspeceRepository;
+import edu.supavenir.spanimals.repositories.adoptantRepository;
+import edu.supavenir.spanimals.repositories.especeRepository;
 import io.github.jeemv.springboot.vuejs.VueJS;
 import io.github.jeemv.springboot.vuejs.utilities.Http;
 import io.github.jeemv.springboot.vuejs.utilities.JsArray;
@@ -25,7 +25,7 @@ public class crudAdoptant {
 	    private VueJS vue;
 	  
 	  @Autowired
-	    private AdoptantRepository repo;
+	    private adoptantRepository repo;
 
 	  @ModelAttribute(name = "vue")
 	    private VueJS getVue() {

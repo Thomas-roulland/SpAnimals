@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import edu.supavenir.spanimals.models.Animal;
 
 @Repository
-public interface AnimalRepository extends JpaRepository<Animal, Integer> {
+public interface animalRepository extends JpaRepository<Animal, Integer> {
 
     List<Animal> findBySos(boolean SOS);
 

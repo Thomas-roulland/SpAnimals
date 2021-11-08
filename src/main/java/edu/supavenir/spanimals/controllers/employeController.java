@@ -10,26 +10,26 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import edu.supavenir.spanimals.models.Adoptant;
-import edu.supavenir.spanimals.repositories.AdoptantRepository;
-import edu.supavenir.spanimals.repositories.AnimalRepository;
+import edu.supavenir.spanimals.repositories.adoptantRepository;
+import edu.supavenir.spanimals.repositories.animalRepository;
 @RequestMapping("/employe")
 @Controller
 public class employeController {
 
     @Autowired
-    private AnimalRepository AnimRepo;
+    private animalRepository AnimRepo;
     @Autowired
-    private AdoptantRepository RepoAdop;
+    private adoptantRepository RepoAdop;
 
     // AJOUTER UN ANIMAL
     @GetMapping("/add/animal")
     public String addAnimal() {
-	return "FormAddAni";
+	return "formAddAni";
     }
 
     @GetMapping("/add/adoptant")
     public String addAdoptant() {
-	return "FormAddAdop";
+	return "formAddAdop";
     }
 
     @GetMapping("/edit/adoptant/{id}")
@@ -37,6 +37,6 @@ public class employeController {
 
 	Optional<Adoptant> Adoptant = RepoAdop.findById(id);
 	model.addAttribute("Adoptant", Adoptant);
-	return "FormEditAdop";
+	return "formEditAdop";
     }
 }

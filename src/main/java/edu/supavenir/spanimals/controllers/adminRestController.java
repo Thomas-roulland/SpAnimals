@@ -18,19 +18,19 @@ import org.springframework.web.servlet.view.RedirectView;
 import edu.supavenir.spanimals.models.Espece;
 import edu.supavenir.spanimals.models.Race;
 import edu.supavenir.spanimals.models.Refuge;
-import edu.supavenir.spanimals.repositories.EspeceRepository;
-import edu.supavenir.spanimals.repositories.RaceRepository;
-import edu.supavenir.spanimals.repositories.RefugeRepository;
+import edu.supavenir.spanimals.repositories.especeRepository;
+import edu.supavenir.spanimals.repositories.raceRepository;
+import edu.supavenir.spanimals.repositories.refugeRepository;
 
 @RequestMapping("/admin")
 @RestController
 public class adminRestController {
 	@Autowired
-	private EspeceRepository repoE;
+	private especeRepository repoE;
 	@Autowired
-	private RefugeRepository repoR;
+	private refugeRepository repoR;
 	@Autowired
-	private RaceRepository repor;
+	private raceRepository repor;
 
 	@GetMapping("/refuge")
 	public List<Refuge> indexAction() {

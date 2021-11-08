@@ -11,56 +11,56 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import edu.supavenir.spanimals.models.Espece;
 import edu.supavenir.spanimals.models.Race;
 import edu.supavenir.spanimals.models.Refuge;
-import edu.supavenir.spanimals.repositories.EspeceRepository;
-import edu.supavenir.spanimals.repositories.RaceRepository;
-import edu.supavenir.spanimals.repositories.RefugeRepository;
+import edu.supavenir.spanimals.repositories.especeRepository;
+import edu.supavenir.spanimals.repositories.raceRepository;
+import edu.supavenir.spanimals.repositories.refugeRepository;
 
 @RequestMapping("/admin")
 @Controller
 public class adminController {
 
 	@Autowired
-	private EspeceRepository repoE;
+	private especeRepository repoE;
 	@Autowired
-	private RefugeRepository repoR;
+	private refugeRepository repoR;
 	@Autowired
-	private RaceRepository repor;
+	private raceRepository repor;
 
 	@GetMapping("/add/espece")
 	private String addEspece() {
-		return "FormAddEspece";
+		return "formAddEspece";
 	}
 
 	@GetMapping("/modifier/espece/{id}")
 	private String AdminEspeceAction(Model model) {
 		List<Espece> especes = repoE.findAll();
 		model.addAttribute("especes", especes);
-		return "FormModifierEspece";
+		return "formModifierEspece";
 	}
 
 	@GetMapping("/add/refuge")
 	private String addRefuge() {
-		return "FormAddRefuge";
+		return "formAddRefuge";
 	}
 
 	@GetMapping("/modifier/refuge/{id}")
 	private String AdminRefugeAction(Model model) {
 		List<Refuge> refuges = repoR.findAll();
 		model.addAttribute("refuges", refuges);
-		return "FormModifierRefuge";
+		return "formModifierRefuge";
 	}
 
 	@GetMapping("/add/race")
 	private String addRace(Model model) {
 		List<Race> race = repor.findAll();
 		model.addAttribute("race", race);
-		return "FormAddRace";
+		return "formAddRace";
 	}
 
 	@GetMapping("/modifier/race/{id}")
 	private String AdminRaceAction(Model model) {
 		List<Race> race = repor.findAll();
 		model.addAttribute("refuges", race);
-		return "FormModifierRace";
+		return "formModifierRace";
 	}
 }

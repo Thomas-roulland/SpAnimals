@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import edu.supavenir.spanimals.models.Race;
-import edu.supavenir.spanimals.repositories.RaceRepository;
+import edu.supavenir.spanimals.repositories.raceRepository;
 import io.github.jeemv.springboot.vuejs.VueJS;
 import io.github.jeemv.springboot.vuejs.utilities.Http;
 import io.github.jeemv.springboot.vuejs.utilities.JsArray;
@@ -24,7 +24,7 @@ public class crudRace {
 	    private VueJS vue;
 	  
 	  @Autowired
-	    private RaceRepository repo;
+	    private raceRepository repo;
 
 	  @ModelAttribute(name = "vue")
 	    private VueJS getVue() {

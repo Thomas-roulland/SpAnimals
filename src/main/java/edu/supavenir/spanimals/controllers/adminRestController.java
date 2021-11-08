@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -48,7 +49,7 @@ public class adminRestController {
 	}
 
 	@PostMapping("/add/espece")
-	private @ResponseBody String ajouteEspece(Espece espece) {
+	private @ResponseBody String ajouteEspece(@RequestBody Espece espece) {
 		repoE.saveAndFlush(espece);
 		return espece.toString();
 	}
@@ -66,19 +67,19 @@ public class adminRestController {
 	}
 
 	@PostMapping("/modifier/espece/{id}")
-	private @ResponseBody String modifierEspece(@PathVariable int id, Espece espece) {
+	private @ResponseBody String modifierEspece(@PathVariable int id, @RequestBody Espece espece) {
 		repoE.save(espece);
 		return espece.toString();
 	}
 
 	@PostMapping("/add/refuge")
-	private @ResponseBody String ajouteRefuge(Refuge refuge) {
+	private @ResponseBody String ajouteRefuge(@RequestBody Refuge refuge) {
 		repoR.saveAndFlush(refuge);
 		return refuge.toString();
 	}
 
 	@PostMapping("/modifier/refuge/{id}")
-	private String AdminRefugeAction(Refuge refuge) {
+	private String AdminRefugeAction(@RequestBody Refuge refuge) {
 		repoR.save(refuge);
 		return refuge.toString();
 	}
@@ -95,13 +96,13 @@ public class adminRestController {
 	}
 
 	@PostMapping("add/race")
-	private @ResponseBody String ajouteRace(Race race) {
+	private @ResponseBody String ajouteRace(@RequestBody Race race) {
 		repor.saveAndFlush(race);
 		return race.toString();
 	}
 
 	@PostMapping("/modifier/race/{id}")
-	private String AdminRaceAction(Race race) {
+	private String AdminRaceAction(@RequestBody Race race) {
 		repoR.save(race);
 		return race.toString();
 	}
@@ -116,16 +117,4 @@ public class adminRestController {
 		}
 		return null;
 	}
-	
-	 @GetMapping("/test/supprimer/{id}")
-	    public RedirectView delete(@PathVariable int id, Model model, RedirectAttributes attrs) {
-		Race etst = repor.getById(id);
-		repor.deleteById(id);
-		return new RedirectView("/crud/races");
-	    }
-	 
-	 @GetMapping("/test/lol")
-	 public String lol() {
-		 return ("test");
-	 }
 }

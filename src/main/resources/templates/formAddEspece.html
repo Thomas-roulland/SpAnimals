@@ -46,7 +46,7 @@ var app = new Vue({
 		    
 		    methods: {
 				  loadEspece(){
-					  this.$http.get('/employe/espece').then((response)=>{
+					  this.$http.get('/admin/espece').then((response)=>{
 						  this.espece=response.data;
 					  })
 				  },	

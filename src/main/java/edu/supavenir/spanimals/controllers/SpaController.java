@@ -34,7 +34,7 @@ import edu.supavenir.spanimals.repositories.RefugeRepository;
 import io.github.jeemv.springboot.vuejs.VueJS;
 
 @Controller
-public class SpaController {
+public class spaController {
 
 
     @Autowired

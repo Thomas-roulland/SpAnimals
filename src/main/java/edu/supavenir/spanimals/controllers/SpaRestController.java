@@ -10,7 +10,7 @@ import edu.supavenir.spanimals.models.Animal;
 import edu.supavenir.spanimals.repositories.AnimalRepository;
 
 @RestController
-public class SpaRestController {
+public class spaRestController {
 
     @Autowired
     private AnimalRepository repo;

@@ -18,7 +18,7 @@ import io.github.jeemv.springboot.vuejs.utilities.JsArray;
 
 @Controller
 @RequestMapping("/crud/animaux")
-public class CrudAnimal {
+public class crudAnimal {
 
 	
 	  @Autowired

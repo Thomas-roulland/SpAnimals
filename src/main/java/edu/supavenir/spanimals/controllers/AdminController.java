@@ -17,7 +17,7 @@ import edu.supavenir.spanimals.repositories.RefugeRepository;
 
 @RequestMapping("/admin")
 @Controller
-public class AdminController {
+public class adminController {
 
 	@Autowired
 	private EspeceRepository repoE;

@@ -24,7 +24,7 @@ import edu.supavenir.spanimals.repositories.RaceRepository;
 @RequestMapping("/employe")
 @RestController
 
-public class RestEmployeController {
+public class restEmployeController {
 
 	@Autowired
 	private AdoptantRepository RepoAdop;

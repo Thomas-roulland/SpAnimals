@@ -80,9 +80,15 @@ public class restEmployeController {
 	// AJOUTER UN ANIMAL [DONE]
 	@PostMapping("/add/animal")
 	private @ResponseBody String ajouteAnimal(@RequestBody Animal animal) {
+<<<<<<< HEAD
 		AnimRepo.saveAndFlush(animal);
 		return animal.toString();	
 
+=======
+
+		AnimRepo.saveAndFlush(animal);
+		return animal.toString();	
+>>>>>>> b3a4cc2d5724a39537f93c0f6017db393a4b78fc
 	}
 
 	// MODIFIER UN ADOPTANT

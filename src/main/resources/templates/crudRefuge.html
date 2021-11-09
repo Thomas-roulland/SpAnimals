@@ -71,11 +71,7 @@
         	<v-divider class="mx-2" inset vertical></v-divider>
         	<v-spacer></v-spacer>
        		<v-dialog v-model="dialog" max-width="500px" >
-          		<template v-slot:activator="{ on, attrs }">
-		            <v-btn color="primary" dark class="mb-2" v-bind="attrs" v-on="on">
-			              New Item
-		            </v-btn>
-          		</template>
+          	
 	          	<v-card>
 	            	<v-card-title>
               			<span class="text-h5"><% formTitle %></span>
@@ -156,6 +152,9 @@
     </template>
   </v-data-table>
   </v-container>
+  <div class="d-flex justify-center">
+  <v-btn width="50%"><a href="/admin/add/refuge">Ajouter refuge</a></v-btn>
+  </div>
 
 </v-app>
 

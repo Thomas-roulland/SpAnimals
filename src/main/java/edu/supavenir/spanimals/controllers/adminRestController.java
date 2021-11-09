@@ -47,6 +47,11 @@ public class adminRestController {
 	private List<Race> listRace() {
 		return repor.findAll();
 	}
+	
+	@GetMapping("/race/{id}")
+	private Optional<Race> listRace(@PathVariable int id) {
+		return repor.findById(id);
+	}
 
 	@PostMapping("/add/espece")
 	private @ResponseBody String ajouteEspece(@RequestBody Espece espece) {

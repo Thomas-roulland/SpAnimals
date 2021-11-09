@@ -71,11 +71,7 @@
         	<v-divider class="mx-2" inset vertical></v-divider>
         	<v-spacer></v-spacer>
        		<v-dialog v-model="dialog" max-width="500px" >
-          		<template v-slot:activator="{ on, attrs }">
-		            <v-btn color="primary" dark class="mb-2" v-bind="attrs" v-on="on">
-			              New Item
-		            </v-btn>
-          		</template>
+          		
 	          	<v-card>
 	            	<v-card-title>
               			<span class="text-h5"><% formTitle %></span>
@@ -131,7 +127,7 @@
 		<v-icon small class="mr-2" @click="editItem(item)">
         mdi-pencil
         </v-icon>
-		<v-icon small @click="remove">
+		<v-icon small @click="">
         mdi-delete
         </v-icon>
     </template>
@@ -142,6 +138,10 @@
     </template>
   </v-data-table>
   </v-container>
+  
+  <div class="d-flex justify-center">
+  <v-btn width="50%"><a href="/admin/add/race">Ajouter raçe</a></v-btn>
+  </div>
   
 
 

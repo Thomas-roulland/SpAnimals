@@ -50,7 +50,7 @@ public class crudRace {
 		vue.addData("DefaultItem", new Race());
 		
 		vue.addMethod("remove",
-			"let self=this;" + Http.delete("'/admin/delete/race/'+race.id", JsArray.remove("self.race", "race"), "race"));
+			"let self=this;" + Http.delete("'/admin/race/'+race.id", JsArray.remove("self.race", "race"), "race"));
 		
 		vue.addMethod("close", "this.dialog=false; editedIndex=-1;");
 		vue.addMethod("save", "if (this.editedIndex > -1) {\r\n"

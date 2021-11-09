@@ -90,7 +90,7 @@ public class AdminController {
 				+ Http.post("/admin/add/race", "this.newRace", "this.race.push(response.data);") + "}");
 		vue.addData("valid", true);
 		vue.addDataRaw("Rules",
-				"[\r\n" + "					    v => !!v || 'champ obligatoire',\r\n" + "					  ]");
+				"[\r\n" + "	 v => !!v || 'champ obligatoire',\r\n" + "	  ]");
 		vue.addData("checkbox", false);
 		vue.addMethod("reset", "this.$refs.form.reset()");
 		vue.addMethod("resetValidation", "this.$refs.form.resetValidation();");

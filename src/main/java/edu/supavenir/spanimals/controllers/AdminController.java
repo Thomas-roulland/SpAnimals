@@ -94,9 +94,6 @@ public class AdminController {
 		vue.addData("checkbox", false);
 		vue.addMethod("reset", "this.$refs.form.reset()");
 		vue.addMethod("resetValidation", "this.$refs.form.resetValidation();");
-		vue.addMethod("delete",
-				Http.delete("/admin/delete/race/{id}", "this.deleteById(id)", "this.race.delete(response.data);")
-						+ "}");
 		return "formAddRace";
 	}
 

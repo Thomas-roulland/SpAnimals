@@ -52,8 +52,8 @@ public class CrudAdoptant {
 				+ "          Object.assign(this.orgas[this.editedIndex], this.editedItem)\r\n" + "        } else {\r\n"
 				+ "          this.adoptant.push(this.editedItem)\r\n" + "        }\r\n" + "        this.close()");
 		vue.addMethod("closeDelete",
-				"  this.dialogDelete = false\r\n" + "        this.$nextTick(() => {\r\n"
-						+ "          this.editedItem = Object.assign({}, this.defaultItem)\r\n"
+				"  this.dialogDelete = false;\r\n" + "        this.$nextTick(() => {\r\n"
+						+ "          this.editedItem = Object.assign({}, this.defaultItem);\r\n"
 						+ "          this.editedIndex = -1\r\n" + "        })");
 		vue.addMethod("deleteItemConfirm",
 				" this.adoptant.splice(this.editedIndex, 1)\r\n" + "        this.closeDelete()");

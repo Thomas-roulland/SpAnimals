@@ -1,0 +1,132 @@
+{{> inc/header }}
+
+
+<v-app>
+<div 
+style="background-color:#e3e3e1;">
+
+  <v-card flat tile>
+  
+    <v-toolbar dark  extended  dense>
+
+      <v-toolbar-title><a class="white--text" href="/">SpAnimals</a></v-toolbar-title>
+
+      <v-spacer></v-spacer>
+
+   
+
+      <template v-slot:extension>
+        <v-tabs >
+        <v-tab><a class="white--text" href="/"><v-icon>mdi-home</v-icon></a></v-tab>
+          <v-tab><a class="white--text" href="/animal">Adopter</a></v-tab>
+           <v-tab><a class="white--text"  href="/Missions">Missions</a></v-tab>
+           <v-tab><a class="white--text"  href="/contact">Contact</a></v-tab>
+        </v-tabs>
+      
+      </template>
+    </v-toolbar>
+    <v-sheet
+      id="scrolling-techniques-4"
+      class="overflow-y-auto"
+      max-height="600"
+    >
+    </v-sheet>
+  </v-card>
+  
+  <div class="d-flex justify-center">
+  <v-card width="50%" class="px-15 pt-10 mt-10">    
+ 
+ 	<v-card-title class="mb-3"><h2>Articles :</h2></v-card-title>
+ 	
+ 	<v-card-text>
+ 	
+ 		<template>
+  <v-card
+    class="mx-auto mb-5"
+    color="#26c6da"
+    dark
+    max-width="750"
+    v-for="card in cards"
+  >
+    <v-card-title>
+      <v-icon
+        large
+        left
+      >
+        mdi-twitter
+      </v-icon>
+      <span class="text-h6 font-weight-light" v-text="card.title"></span>
+    </v-card-title>
+
+    <v-card-text class="font-weight-bold" v-text="card.text2"> 
+      
+    </v-card-text>
+
+    <v-card-actions>
+      <v-list-item class="grow">
+        <v-list-item-avatar>
+        	<v-avatar><v-img :src="card.src"></v-img></v-avatar>
+        </v-list-item-avatar>
+
+        <v-list-item-content>
+          <v-list-item-title v-text="card.name"></v-list-item-title>
+        </v-list-item-content>
+	<v-btn
+       
+        @click="show = !show"
+      >
+       Découvrir pourquoi
+      </v-btn>
+    </v-card-actions>
+
+    <v-expand-transition>
+      <div v-show="show">
+        <v-divider></v-divider>
+
+        <v-card-text v-text="card.text	">
+         
+        </v-card-text>
+      </div>
+      	
+      </v-list-item>
+    </v-card-actions>
+     
+    </v-expand-transition>
+    
+  </v-card>
+</template>
+ 	
+ 	
+ 	</v-card-text>
+  
+  </v-card>
+  </div>
+  
+  
+</div>
+
+</v-app>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vuetify/2.5.9/vuetify.min.js"></script>
+<script>
+var app = new Vue({
+	  el: 'v-app',
+	  vuetify: new Vuetify(),
+		    data: () => ({
+		    	show: false,
+		    	cards: [
+		    		{title : "Chat-Fait Peur", 
+		    		text: "On retrace dès l’Egypte ancienne les premiers signes de ces croyances populaires. D’abord vénéré comme une représentation divine, le chat noir est, dès l’Antiquité devenu un signe de malheurs et de mauvaise fortune. Au Moyen-âge, il a ensuite été considéré comme une incarnation du diable et a été associé à la sorcellerie et à la pratique de la magie noire. Il était offert en sacrifice lors de rîtes sataniques. Croiser un chat noir aurait la capacité d’absorber l’âme des mortels. Si depuis les chats noirs ont été réhabilités dans nos foyers, ils restent encore associés à cette image dans de nombreuses œuvres actuelles : Sabrina et son chat noir Salem, Pat, l’ennemie juré de Mickey, Sylvestre dans Titi et Grominet ", 
+		    		name: "kaishi", src:"https://images7.alphacoders.com/871/thumb-1920-871169.png",
+		    		text2:"Aujourd’hui encore, les chats noirs souffrent de ces vieilles superstitions. On estime qu’ils passeront plus de temps en refuge qu’un autre chat, ils sont également plus exposés aux maltraitances et aux abandons. Ridicule, dîtes-vous ? Nous partageons ce sentiment … Venez rencontrer nos adorables loulous, qui, nous vous l’assurons, ne vous jeterons pas de sorts (sauf si vous ne leurs donnez pas de friandises) et vous apporteront beaucoup d'amour ! "},
+		    		{title : "Identifier son animal", src:"https://images7.alphacoders.com/871/thumb-1920-871169.png",text: "L’identification est une obligation légale en France. Depuis juin 1989 pour les chiens. Depuis janvier 2012 pour les chats. Selon l’I-CAD, en plus de protéger l’animal, l’identification permet également « à l’État d’assurer le suivi sanitaire, la sécurité des populations, le respect de l’environnement, la surveillance des pratiques commerciales, des importations et du trafic, grâce à la traçabilité de l’animal. »", name:"kaishi",
+		    			text2:"Donner une « carte d’identité » à votre compagnon devrait tout avoir d’un réflexe pour l’ensemble des détenteurs d’animaux. C’est non seulement lui offrir une sécurité supplémentaire très importante – et pouvant lui sauver la vie ! … Mais c’est aussi, vous aider vous-mêmes, au cas où votre copain s’aventurerait dans une fugue imprévue ou pire, serait volé par des personnes malintentionnées" },
+		    		{title : "Les refuges de demain", src:"https://images7.alphacoders.com/871/thumb-1920-871169.png",text: "Ce nouveau concept de refuge sera décliné en référentiel technique qui sera le support de conception pour les prochaines constructions de refuge. Un des premiers sera celui d'Evrecy, qui viendra remplacer notre refuge situé actuellement à Marennes. Le projet comprend un refuge et une fourrière pour chats, chiens et NAC, une volière, une ferme pédagogique et des espaces pour les équidés.", name: "kaishi", text2:"SpAnimals a imaginé ses refuges de demain ! Disposant d’un réseau de 62 refuges et Maisons SPA, l’association a travaillé sur un concept de refuge pour les futures constructions. C’est une réflexion de long terme, qui a été menée de façon structurée pour la rendre pérenne."},
+		    	]
+		    }),
+	  delimiters: ['<%', '%>'],
+	})
+
+</script>
+{{> inc/footer }}

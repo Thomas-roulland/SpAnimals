@@ -77,6 +77,11 @@ public class SpaController {
 	public String mission() {
 		return "informations";
 	}
+	
+	@GetMapping("/actualites")
+	public String articles() {
+		return"actualites";
+	}
 
 	@GetMapping("/boardLeCrabeVampire")
 	public String indexDash(ModelMap model) {

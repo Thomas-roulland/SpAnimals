@@ -31,7 +31,7 @@ public class CrudRace {
 		vue.addData("draw", true);
 		vue.addData("races", repo.findAll());
 		vue.addDataRaw("headers",
-				"[{text:'ID', value:'id'},{text:'Descriptif', value:'descriptif'},{text:'libelle', value:'libelle'},{text:'Lock_flag', value:'lock_flag'},{text:'Prerequis', value:'prerequis'},{text:'idEspece', value:'espece.libelle'}, { text: 'Actions', value: 'actions', sortable: false }]");
+				"[{text:'ID', value:'id'},{text:'Descriptif', value:'descriptif'},{text:'libelle', value:'libelle'},{text:'Prerequis', value:'prerequis'},{text:'idEspece', value:'espece.libelle'}, { text: 'Actions', value: 'actions', sortable: false }]");
 		vue.addData("dialog", false);
 		vue.addData("dialogDelete", false);
 		vue.addComputed("formTitle", " return this.editedIndex === -1 ? 'Nouvelle refuge' : 'modifier refuge'");
@@ -39,8 +39,8 @@ public class CrudRace {
 		vue.addData("editedItem", new Race());
 		vue.addMethod("close", "this.dialog=false; editedIndex=-1;");
 		vue.addMethod("save", "if (this.editedIndex > -1) {\r\n"
-				+ "          Object.assign(this.orgas[this.editedIndex], this.editedItem)\r\n" + "        } else {\r\n"
-				+ "          this.refuge.push(this.editedItem)\r\n" + "        }\r\n" + "        this.close()");
+				+ "          Object.assign(this.races[this.editedIndex], this.editedItem)\r\n" + Http.put("'/admin/modifier/race/'+this.editedItem.id", "this.closeDelete()")+ "        } else {\r\n"
+				+ "          this.races.push(this.editedItem)\r\n" + "        }\r\n" + "        this.close()");
 		vue.addMethod("closeDelete",
 				"  this.dialogDelete = false;\r\n" + "        this.$nextTick(() => {\r\n"
 						+ "          this.editedItem = Object.assign({}, this.defaultItem)\r\n"
@@ -53,6 +53,6 @@ public class CrudRace {
 				+ " this.dialog = true;","item");
 		vue.addWatcher("dialog", " val || this.close()");
 		vue.addWatcher("dialogDelete", " val || this.closeDelete()");
-		return "crudrace";
+		return "crudRace";
 	}
 }

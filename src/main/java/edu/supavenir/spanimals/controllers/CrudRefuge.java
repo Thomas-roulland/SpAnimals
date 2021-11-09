@@ -47,7 +47,7 @@ public class CrudRefuge {
 		vue.addData("editedItem", new Refuge());
 		vue.addMethod("close", "this.dialog=false; editedIndex=-1;");
 		vue.addMethod("save", "if (this.editedIndex > -1) {\r\n"
-				+ "          Object.assign(this.orgas[this.editedIndex], this.editedItem)\r\n" + "        } else {\r\n"
+				+ "          Object.assign(this.refuge[this.editedIndex], this.editedItem)\r\n" + Http.put("'/admin/modifier/refuge/'+this.editedItem.id", "this.closeDelete()")+ "        } else {\r\n"
 				+ "          this.refuge.push(this.editedItem)\r\n" + "        }\r\n" + "        this.close()");
 		vue.addMethod("closeDelete",
 				"  this.dialogDelete = false;\r\n" + "        this.$nextTick(() => {\r\n"
@@ -58,8 +58,9 @@ public class CrudRefuge {
 
 		vue.addMethod("deleteItem", "this.editedItem=item;\r\n" + "        this.dialogDelete = true", "item");
 
-		vue.addMethod("editItem", "this.editedIndex = this.race.indexOf(item)\r\n"
-				+ "        this.editedItem = Object.assign({}, item)\r\n" + "        this.dialog = true");
+		vue.addMethod("editItem", "this.editedIndex = this.refuge.indexOf(item);\r\n"
+				+ "        this.editedItem = Object.assign({}, item);\r\n" 
+				+ " this.dialog = true;","item");
 		vue.addWatcher("dialog", " val || this.close()");
 		vue.addWatcher("dialogDelete", " val || this.closeDelete()");
 

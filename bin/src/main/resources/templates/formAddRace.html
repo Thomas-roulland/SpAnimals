@@ -2,19 +2,16 @@
 
 <v-app >
  <a class="ui primary flat button" href="/employe/"><i class="home icon"></i>Accueil Employe</a>
+ 
 <v-form ref="form" v-model="valid" lazy-validation>
   	
-  	<v-text-field v-model="newRefuge.complementad" name="complementad" :rules="Rules" label="complementad"  required ></v-text-field>
+  	<v-text-field v-model="newRace.descriptif" name="descriptif" :rules="Rules" label="descriptif"  required ></v-text-field>
   	
-  	<v-text-field v-model="newRefuge.libelle" name="libelle" :rules="Rules" label="libelle"  required ></v-text-field>
+  	<v-text-field v-model="newRace.libelle" name="libelle" :rules="Rules" label="libelle"  required ></v-text-field>
   	
-  	<v-text-field v-model="newRefuge.nom" name="nom" :rules="Rules" label="nom"  required ></v-text-field>
+  	<v-text-field v-model="newRace.prerequis" name="" :rules="Rules" label="prerequis"  required ></v-text-field>
   	
-  	<v-text-field v-model="newRefuge.cp" name="cp" :rules="Rules" label="cp"  required ></v-text-field>
-
-	<v-text-field v-model="newRefuge.description" name="description" :rules="Rules" label="description"  required ></v-text-field>
-	
-	<v-text-field v-model="newRefuge.localisation" name="localisation" :rules="Rules" label="localisation"  required ></v-text-field>
+  	<v-select v-model="newRace.espece" :items="especes" item-text="libelle" label="Selectionner l'espece de l'animal" return-object required ></v-select>
 
     <v-btn :disabled="!valid" color="success" class="mr-4" @click="validate" @click="dialog = false" > Validate </v-btn>
 

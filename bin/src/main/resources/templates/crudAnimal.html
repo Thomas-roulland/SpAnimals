@@ -64,14 +64,13 @@
     
 
 <v-container class="d-flex justify-center align-center">
-  <v-data-table :headers="headers" :items="adoptant" sort-by="name" class="elevation-1" >
+  <v-data-table :headers="headers" :items="animal" sort-by="name" class="elevation-1" >
     <template v-slot:top>
       <v-toolbar flat >
-        <v-toolbar-title>CRUD Adoptant</v-toolbar-title>
+        <v-toolbar-title>CRUD Animal</v-toolbar-title>
         	<v-divider class="mx-2" inset vertical></v-divider>
         	<v-spacer></v-spacer>
        		<v-dialog v-model="dialog" max-width="500px" >
-          	
 	          	<v-card>
 	            	<v-card-title>
               			<span class="text-h5"><% formTitle %></span>
@@ -80,42 +79,54 @@
 	              		<v-container>
 	                		<v-row>
 	                  			<v-col cols="12" sm="6" md="6">
-                    				<v-text-field v-model="editedItem.complementad" label="complementad"></v-text-field>
+                    				<v-text-field v-model="editedItem.adopte"label="adopte"></v-text-field>
                   				</v-col>
-			       				<v-col cols="12" sm="6" md="4">
-			         				<v-text-field v-model="editedItem.cp" label="cp"></v-text-field>
-			       				</v-col>
-								<v-col cols="12" sm="6" md="4">
-									<v-text-field v-model="editedItem.datenaiss" label="datenaiss"></v-text-field>
-								</v-col>
-								<v-col cols="12" sm="6" md="4">
-									<v-text-field v-model="editedItem.infoscomplementaires" label="infoscomplementaires"></v-text-field>
-								</v-col>
-								<v-col cols="12" sm="6" md="4">
-									<v-text-field v-model="editedItem.lock_flag" label="lock_flag"></v-text-field>
-								</v-col>
-								<v-col cols="12" sm="6" md="4">
-									<v-text-field v-model="editedItem.mail" label="mail"></v-text-field>
-								</v-col>
-								<v-col cols="12" sm="6" md="4">
-									<v-text-field v-model="editedItem.nom" label="nom"></v-text-field>
-								</v-col>
-								<v-col cols="12" sm="6" md="4">
-									<v-text-field v-model="editedItem.nuemroetrue" label="numeroetrue"></v-text-field>
-								</v-col>
-								<v-col cols="12" sm="6" md="4">
-									<v-text-field v-model="editedItem.prenom" label="prenom"></v-text-field>
-								</v-col>
-								<v-col cols="12" sm="6" md="4">
-									<v-text-field v-model="editedItem.telfixe" label="telfixe"></v-text-field>
-								</v-col>
-								<v-col cols="12" sm="6" md="4">
-									<v-text-field v-model="editedItem.telfixe" label="telmobile"></v-text-field>
-								</v-col>
-								<v-col cols="12" sm="6" md="4">
-									<v-text-field v-model="editedItem.ville" label="ville"></v-text-field>
-								</v-col>
-			                </v-row>
+       				<v-col cols="12" sm="6" md="4">
+         				<v-text-field v-model="editedItem.couleur" label="couleur"></v-text-field>
+       				</v-col>
+					<v-col cols="12" sm="6" md="4">
+						<v-text-field v-model="editedItem.description"label="descroption"></v-text-field>
+					</v-col>
+						<v-col cols="12" sm="6" md="4">
+						<v-text-field v-model="editedItem.dnaissance"label="dnaissance"></v-text-field>
+					</v-col>
+						<v-col cols="12" sm="6" md="4">
+						<v-text-field v-model="editedItem.frais"label="frais"></v-text-field>
+					</v-col>
+						<v-col cols="12" sm="6" md="4">
+						<v-text-field v-model="editedItem.lock_flag"label="lock_flag"></v-text-field>
+					</v-col>
+						<v-col cols="12" sm="6" md="4">
+						<v-text-field v-model="editedItem.nom"label="nom"></v-text-field>
+					</v-col>
+						<v-col cols="12" sm="6" md="4">
+						<v-text-field v-model="editedItem.sexe"label="sexe"></v-text-field>
+						</v-col>
+							<v-col cols="12" sm="6" md="4">
+						<v-text-field v-model="editedItem.similaire"label="similaire"></v-text-field>
+					</v-col>
+						<v-col cols="12" sm="6" md="4">
+						<v-text-field v-model="editedItem.sos"label="sos"></v-text-field>
+					</v-col>
+					</v-col>
+						<v-col cols="12" sm="6" md="4">
+						<v-text-field v-model="editedItem.idespece"label="idespece"></v-text-field>
+					</v-col>
+					</v-col>
+						<v-col cols="12" sm="6" md="4">
+						<v-text-field v-model="editedItem.idrace"label="idrace"></v-text-field>
+					</v-col>
+					</v-col>
+						<v-col cols="12" sm="6" md="4">
+						<v-text-field v-model="editedItem.idrefuge"label="idrefuge"></v-text-field>
+					</v-col>
+					</v-col>
+						<v-col cols="12" sm="6" md="4">
+						<v-text-field v-model="editedItem.img"label="img"></v-text-field>
+					</v-col>
+					
+					
+                </v-row>
               </v-container>
             </v-card-text>
 
@@ -160,7 +171,7 @@
   </v-container>
   
   <div class="d-flex justify-center">
-  <v-btn width="50%"><a href="/employe/add/adoptant">Ajouter Adoptant</a></v-btn>
+  <v-btn width="50%"><a href="/employe/add/animal">Ajouter animal</a></v-btn>
   </div>
 
 </v-app>

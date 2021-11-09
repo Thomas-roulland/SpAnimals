@@ -64,7 +64,7 @@
     
 
 <v-container class="d-flex justify-center align-center">
-  <v-data-table :headers="headers" :items="adoptant" sort-by="name" class="elevation-1" >
+  <v-data-table :headers="headers" :items="espece" sort-by="name" class="elevation-1" >
     <template v-slot:top>
       <v-toolbar flat >
         <v-toolbar-title>CRUD Adoptant</v-toolbar-title>
@@ -80,42 +80,42 @@
 	              		<v-container>
 	                		<v-row>
 	                  			<v-col cols="12" sm="6" md="6">
-                    				<v-text-field v-model="editedItem.complementad" label="complementad"></v-text-field>
+                    				<v-text-field v-model="editedItem.complementad"label="complementad"></v-text-field>
                   				</v-col>
-			       				<v-col cols="12" sm="6" md="4">
-			         				<v-text-field v-model="editedItem.cp" label="cp"></v-text-field>
-			       				</v-col>
-								<v-col cols="12" sm="6" md="4">
-									<v-text-field v-model="editedItem.datenaiss" label="datenaiss"></v-text-field>
-								</v-col>
-								<v-col cols="12" sm="6" md="4">
-									<v-text-field v-model="editedItem.infoscomplementaires" label="infoscomplementaires"></v-text-field>
-								</v-col>
-								<v-col cols="12" sm="6" md="4">
-									<v-text-field v-model="editedItem.lock_flag" label="lock_flag"></v-text-field>
-								</v-col>
-								<v-col cols="12" sm="6" md="4">
-									<v-text-field v-model="editedItem.mail" label="mail"></v-text-field>
-								</v-col>
-								<v-col cols="12" sm="6" md="4">
-									<v-text-field v-model="editedItem.nom" label="nom"></v-text-field>
-								</v-col>
-								<v-col cols="12" sm="6" md="4">
-									<v-text-field v-model="editedItem.nuemroetrue" label="numeroetrue"></v-text-field>
-								</v-col>
-								<v-col cols="12" sm="6" md="4">
-									<v-text-field v-model="editedItem.prenom" label="prenom"></v-text-field>
-								</v-col>
-								<v-col cols="12" sm="6" md="4">
-									<v-text-field v-model="editedItem.telfixe" label="telfixe"></v-text-field>
-								</v-col>
-								<v-col cols="12" sm="6" md="4">
-									<v-text-field v-model="editedItem.telfixe" label="telmobile"></v-text-field>
-								</v-col>
-								<v-col cols="12" sm="6" md="4">
-									<v-text-field v-model="editedItem.ville" label="ville"></v-text-field>
-								</v-col>
-			                </v-row>
+       				<v-col cols="12" sm="6" md="4">
+         				<v-text-field v-model="editedItem.cp" label="cp"></v-text-field>
+       				</v-col>
+					<v-col cols="12" sm="6" md="4">
+						<v-text-field v-model="editedItem.datenaiss"label="datenaiss"></v-text-field>
+					</v-col>
+					<v-col cols="12" sm="6" md="4">
+						<v-text-field v-model="editedItem.infoscomplementaires"label="infoscomplementaires"></v-text-field>
+					</v-col>
+					<v-col cols="12" sm="6" md="4">
+						<v-text-field v-model="editedItem.lock_flag"label="lock_flag"></v-text-field>
+					</v-col>
+					<v-col cols="12" sm="6" md="4">
+						<v-text-field v-model="editedItem.mail"label="mail"></v-text-field>
+					</v-col>
+					<v-col cols="12" sm="6" md="4">
+						<v-text-field v-model="editedItem.nom"label="nom"></v-text-field>
+					</v-col>
+					<v-col cols="12" sm="6" md="4">
+						<v-text-field v-model="editedItem.nuemroetrue"label="numeroetrue"></v-text-field>
+					</v-col>
+					<v-col cols="12" sm="6" md="4">
+						<v-text-field v-model="prenom"label="prenom"></v-text-field>
+					</v-col>
+					<v-col cols="12" sm="6" md="4">
+						<v-text-field v-model="telfixe"label="telfixe"></v-text-field>
+					</v-col>
+					<v-col cols="12" sm="6" md="4">
+						<v-text-field v-model="telfixe"label="telmobile"></v-text-field>
+					</v-col>
+					<v-col cols="12" sm="6" md="4">
+						<v-text-field v-model="ville"label="ville"></v-text-field>
+					</v-col>
+                </v-row>
               </v-container>
             </v-card-text>
 

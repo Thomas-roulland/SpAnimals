@@ -1,0 +1,106 @@
+{{> inc/header}}
+
+<v-app >
+<a class="ui primary flat button" href="/employe/"><i class="home icon"></i>Accueil Employe</a>
+ {{#Adoptant}}
+  <v-form ref="form" v-model="valid" lazy-validation>
+
+    <v-text-field v-model="Mail" :rules="emailRules" label="Email" :items="Adoptant" item-text="mail" item-value="mail"  required ></v-text-field>
+    
+    <v-text-field v-model="nom" :rules="Rules" label="nom" value="{{adoptant.nom}}" required ></v-text-field>
+    
+    <v-text-field v-model="prenom" :rules="Rules" label="prenom" value="{{prenom}}" required ></v-text-field>
+    
+    <v-text-field v-model="ville" :rules="Rules" label="ville" value="{{ville}}" required ></v-text-field>
+    
+    <v-text-field v-model="cp" :rules="CpRules" label="cp" value="{{cp}}" required ></v-text-field>
+    
+    <v-text-field v-model="numeroetrue" :rules="Rules" label="Numero et rue" value="{{numeroetrue}}" required ></v-text-field>
+    
+    <v-text-field v-model="complementad" :counter="100" :rules="Rules" label="complementad" value={{complementad}} required></v-text-field>
+	
+	<v-text-field v-model="telfixe" :rules="TelRules" label="Téléphone Fixe" value="{{telfixe}}" required ></v-text-field>
+	
+	<v-text-field v-model="telmobile" :rules="TelRules" label="Téléphone mobile" value="{{telmobile}}" required ></v-text-field>
+
+	<v-text-field v-model="infocomplementaires" :rules="Rules" label="info Complementaires" value="{{infocomplementaires}}" required ></v-text-field>
+
+    <v-btn :disabled="!valid" color="success" class="mr-4" @click="validate" > Validate </v-btn>
+
+    <v-btn color="error" class="mr-4" @click="reset">Reset Form</v-btn>
+
+    <v-btn color="warning" @click="resetValidation">Reset Validation</v-btn>
+  </v-form>
+ {{/Adoptant}}
+</v-app>
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vuetify/2.5.9/vuetify.min.js"></script>
+<script>
+
+var app = new Vue({
+	  el: 'v-app',
+	  vuetify: new Vuetify(),
+		    data: () => ({
+		    	adoptant:[],
+		    	dialog: {visible:false, mode:0},
+		    	newAdoptant: {mail:"",nom:"",prenom:"",datenaiss:"",ville:"",cp:"",numeroetrue:"",complementad:"",telfixe:"",telmobile:"",infocomplementaires:""},
+		    	valid: true,
+		    	CpRules: '',
+			      CpRules: [
+			        v => !!v || 'champ obligatoire',
+			        v => (v && v.length <= 5 && v.length >4) || 'le Code Postal doit être égal à 5 caractères',
+			      ],
+			      email: '',
+			      emailRules: [
+			        v => !!v || 'champ obligatoire',
+			        v => /.+@.+\..+/.test(v) || 'E-mail doit être valide ',
+			      ],
+			      TelRules: [
+				        v => !!v || 'champ obligatoire',
+				        v => (v && v.length <= 10 && v.length >9) || 'le numéro de téléphone doit être égal à 10 caractères',
+				      ],
+				  Rules: [
+					    v => !!v || 'champ obligatoire',
+					  ],
+			      checkbox: false,
+		  
+		    }),
+		    mounted(){
+				this.loadAdoptant();
+			},
+		    
+		    methods: {
+		    	loadEspece(){
+					  this.$http.get('/employe/adoptant').then((response)=>{
+						  this.adoptant=response.data;
+					  })
+				  },	
+				  validate(){
+					  if(this.dialog.mode==0){
+						  this.$http.post('/employe/add/adoptant', this.newAdoptant).then((response)=>{
+							  this.adoptant.push(response.data);
+						  })
+					  }else{
+					  this.$http.put('/employe/modifier/adoptant/{id}'+this.newAdoptant.id, this.newAdoptant).then((response)=>{
+							  let index=this.adoptant.findIndex((item)=>item.id==this.newAdoptant.id);
+							  if(index!=-1){
+								  this.adoptant[index]=this.newAdoptant;
+							  }
+					  	  })
+					}
+				},
+		        reset () {
+		          this.$refs.form.reset()
+		        },
+		        resetValidation () {
+		          this.$refs.form.resetValidation()
+		        },
+		      },
+		      
+	  delimiters: ['<%', '%>'],
+	})
+</script>
+
+{{> inc/footer}}

@@ -1,0 +1,115 @@
+<!-- {{> inc/header}}
+
+{{#especes}}
+<form method="post" action="/admin/modifier/Race/{{id}}">
+
+<div class="ui input">
+<input type="text" value="{{descriptif}}" name="descriptif">
+</div>
+
+<div class="ui input">
+<input type="text" value="{{libelle}}" name="libelle">
+</div>
+
+<div class="ui input">
+<input type="text" value="{{lockFlag}}" name="lockFlag">
+</div>
+
+<div class="ui input">
+<input type="text" value="{{prerequis}}" name="prerequis">
+</div>
+
+<div class="ui input">
+<input type="text" value="espece" name="espece">
+</div>
+
+<button>Modifier</button>
+
+</form>
+{{/especes}}
+
+{{> inc/footer}}-->
+
+{{> inc/header}}
+
+<v-app >
+ <a class="ui primary flat button" href="/employe/"><i class="home icon"></i>Accueil Employe</a>
+<v-form ref="form" v-model="valid" lazy-validation>
+  	
+  	<v-text-field v-model="newRace.descriptif" name="descriptif" :rules="Rules" label="descriptif"  required ></v-text-field>
+  	
+  	<v-text-field v-model="newRace.libelle" name="libelle" :rules="Rules" label="libelle"  required ></v-text-field>
+  	
+  	<v-text-field v-model="newRace.prerequis" name="" :rules="Rules" label="prerequis"  required ></v-text-field>
+  	
+  	<v-select v-model="newRace.espece" :items="race" item-text="id" label="Selectionner l'espece de l'annimal" return-object required ></v-select>
+
+    <v-btn :disabled="!valid" color="success" class="mr-4" @click="validate" @click="dialog = false" > Validate </v-btn>
+
+    <v-btn color="error" class="mr-4" @click="reset">Reset Form</v-btn>
+
+    <v-btn color="warning" @click="resetValidation">Reset Validation</v-btn>
+  </v-form>
+
+  
+</v-app>
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vuetify/2.5.9/vuetify.min.js"></script>
+<script>
+Vue.prototype.$http = axios;
+var app = new Vue({
+	  el: 'v-app',
+	  vuetify: new Vuetify(),
+		    data: () => ({
+				race:[],
+		    	dialog: {visible:false, mode:0},
+		    	newRace: {descriptif:"",libelle:"",prerequis:"",espece:""},
+		    	valid: true,
+				  Rules: [
+					    v => !!v || 'champ obligatoire',
+					  ],
+			    checkbox: false,
+		  
+		    }),
+		    mounted(){
+				this.loadRace();
+			},
+		    
+			methods: {
+				loadRace(){
+					  this.$http.get('/admin/race').then((response)=>{
+						  this.race=response.data;
+					  })
+				  },	
+				 validate(){
+					  if(this.dialog.mode==0){
+						  this.$http.post('/admin/add/race', this.newRace).then((response)=>{
+							  this.race.push(response.data);
+						  })
+					  }else{
+						  this.$http.put('/admin/modifier/race/{id}'+this.newRace.id, this.newRace).then((response)=>{
+							  let index=this.race.findIndex((item)=>item.id==this.newRace.id);
+							  if(index!=-1){
+								  this.race[index]=this.newRace;
+							  }
+					  	  })
+					  }
+				  },
+
+		        reset () {
+		          this.$refs.form.reset()
+		        },
+		        resetValidation () {
+		          this.$refs.form.resetValidation()
+		        },
+		      },
+		      
+	  delimiters: ['<%', '%>'],
+	})
+</script>
+
+{{> inc/footer}}
+

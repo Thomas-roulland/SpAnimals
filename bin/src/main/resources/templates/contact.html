@@ -1,0 +1,180 @@
+{{> inc/header }}
+
+<v-app style="
+
+background: rgba(0, 0, 0, .85)  url(https://dessindigo.com/storage/images/posts/montagne/dessin-paysage-montagne.jpg);
+background-blend-mode: darken;
+    /* bottom, image */
+   
+background-repeat:no-repeat;
+background-size:cover;
+">
+  <v-card flat tile>
+  
+    <v-toolbar dark  extended  dense>
+
+      <v-toolbar-title><a class="white--text" href="/">SpAnimals</a></v-toolbar-title>
+
+      <v-spacer></v-spacer>
+
+      
+
+      <template v-slot:extension>
+        <v-tabs >
+        <v-tab><a class="white--text" href="/"><v-icon>mdi-home</v-icon></a></v-tab>
+          <v-tab><a class="white--text" href="/animal">Adopter</a></v-tab>
+           <v-tab><a class="white--text"  href="/missions">Missions</a></v-tab>
+           <v-tab><a class="white--text"  href="/contact">Contact</a></v-tab>
+        </v-tabs>
+      </template>
+    </v-toolbar>
+    <v-sheet
+      id="scrolling-techniques-4"
+      class="overflow-y-auto"
+      max-height="600"
+    >
+    </v-sheet>
+  </v-card>
+    
+    
+    <v-container style="height: 100vh;" class="d-flex justify-center align-center">
+    
+   
+   
+   <v-row >
+   <v-col class="green lighten-1 white--text px-16 pt-15" cols="4">
+   	<h2 class="text-uppercase">Contact nous !</h2>
+   		<p> Nous sommes ouvert à la discussion si vous avez des questions, n'hésitez pas !</p>
+   		  <v-list-item
+          v-for="(item, i) in list"
+          :key="i"
+        
+        >
+          <v-list-item-icon>
+            <v-icon class="white--text" large v-text="item.icon"></v-icon>
+          </v-list-item-icon>
+          <v-list-item-content>
+            <v-list-item-title  class="white--text" v-text="item.text"></v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list-item-group>
+    </v-list>
+   </v-col>
+   <v-col class="white px-16 pt-15" >
+  <v-form
+    ref="form"
+    v-model="valid"
+    lazy-validation
+  >
+    <v-text-field
+      v-model="name"
+      :counter="10"
+      :rules="nameRules"
+      label="Nom"
+      required
+    ></v-text-field>
+
+    <v-text-field
+      v-model="email"
+      :rules="emailRules"
+      label="E-mail"
+      required
+    ></v-text-field>
+
+    <v-textarea
+          solo
+          name="input-7-4"
+          label="Message"
+          required
+        ></v-textarea>
+
+    <v-checkbox
+      v-model="checkbox"
+      :rules="[v => !!v || 'You must agree to continue!']"
+      label="Êtes-vous d'accord ?"
+      required
+    ></v-checkbox>
+
+    <v-btn
+      :disabled="!valid"
+      color="success"
+      class="mr-4"
+      @click="validate"
+    >
+      Envoyer
+    </v-btn>
+
+    <v-btn
+      color="error"
+      class="mr-4"
+      @click="reset"
+    >
+      Rénitialiser
+    </v-btn>
+  </v-form>
+  </v-col>
+</v-row>
+
+
+</v-container>
+
+    
+ 
+</v-app>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vuetify/2.5.9/vuetify.min.js"></script>
+<script>
+var app = new Vue({
+	  el: 'v-app',
+	  vuetify: new Vuetify(),
+		    data: () => ({
+		    	 valid: true,
+		         name: '',
+		         nameRules: [
+		           v => !!v || 'Name is required',
+		           v => (v && v.length <= 10) || 'Name must be less than 10 characters',
+		         ],
+		         email: '',
+		         emailRules: [
+		           v => !!v || 'E-mail is required',
+		           v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
+		         ],
+		         select: null,
+		         items: [
+		           'Item 1',
+		           'Item 2',
+		           'Item 3',
+		           'Item 4',
+		         ],
+		         checkbox: false,
+		         list: [
+		             { text: 'Adresse : 7 rue des randonnées', icon: 'mdi-map-marker' },
+		             { text: 'Télephone : 06.28.09.51.87', icon: 'mdi-phone' },
+		             { text: 'Email : spAnimals@gmail.com', icon: 'mdi-mail' },
+		             { text: 'Site : spAnimals.fr', icon: 'mdi-web' },
+		           ],
+		    }),
+		    mounted(){
+			},
+		    
+			  methods: {
+			      validate () {
+			        this.$refs.form.validate()
+			      },
+			      reset () {
+			        this.$refs.form.reset()
+			      },
+			      resetValidation () {
+			        this.$refs.form.resetValidation()
+			      },
+			    },
+	  delimiters: ['<%', '%>'],
+	})
+
+</script>
+
+{{> inc/footer }}

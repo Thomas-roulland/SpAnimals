@@ -44,13 +44,12 @@ public class CrudRace {
 		vue.addData("editedIndex", -1);
 		vue.addData("editedItem", new Race());
 		vue.addData("DefaultItem", new Race());
-
 		vue.addMethod("close", "this.dialog=false; editedIndex=-1;");
 		vue.addMethod("save", "if (this.editedIndex > -1) {\r\n"
 				+ "          Object.assign(this.orgas[this.editedIndex], this.editedItem)\r\n" + "        } else {\r\n"
 				+ "          this.race.push(this.editedItem)\r\n" + "        }\r\n" + "        this.close()");
 		vue.addMethod("closeDelete",
-				"  this.dialogDelete = false\r\n" + "        this.$nextTick(() => {\r\n"
+				"  this.dialogDelete = false;\r\n" + "        this.$nextTick(() => {\r\n"
 						+ "          this.editedItem = Object.assign({}, this.defaultItem)\r\n"
 						+ "          this.editedIndex = -1\r\n" + "        })");
 		vue.addMethod("deleteItemConfirm",

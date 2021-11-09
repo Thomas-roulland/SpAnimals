@@ -85,8 +85,6 @@ public class employeController {
 		vue.addDataRaw("Rules",
 				"[\r\n" + "					    v => !!v || 'champ obligatoire',\r\n" + "					  ]");
 		vue.addData("checkbox", false);
-		vue.addMethod("validate", "if(this.dialog.mode==0){\r\n"
-				+ Http.post("/employe/add/adoptant", "this.newAdoptant", "this.adoptant.push(response.data);") + "}");
 		vue.addMethod("reset", "this.$refs.form.reset()");
 		vue.addMethod("resetValidation", "this.$refs.form.resetValidation();");
 		return "formAddAdop";

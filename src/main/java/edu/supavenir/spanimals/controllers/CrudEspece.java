@@ -43,19 +43,24 @@ public class CrudEspece {
 		vue.addData("dialogDelete", false);
 		vue.addComputed("formTitle", " return this.editedIndex === -1 ? 'Nouvelle espece' : 'modifier espece'");
 		vue.addData("editedIndex", -1);
-		vue.addMethod("remove", "let self=this;"
-				+ Http.delete("'/admin/delete/espece/'+espece.id", JsArray.remove("self.espece", "espece"), "espece"));
 		vue.addData("editedItem", new Espece());
 		vue.addMethod("close", "this.dialog=false; editedIndex=-1;");
 		vue.addMethod("save", "if (this.editedIndex > -1) {\r\n"
 				+ "          Object.assign(this.orgas[this.editedIndex], this.editedItem)\r\n" + "        } else {\r\n"
 				+ "          this.espece.push(this.editedItem)\r\n" + "        }\r\n" + "        this.close()");
 		vue.addMethod("closeDelete",
-				"  this.dialogDelete = false\r\n" + "        this.$nextTick(() => {\r\n"
+				"  this.dialogDelete = false;\r\n" + "        this.$nextTick(() => {\r\n"
 						+ "          this.editedItem = Object.assign({}, this.defaultItem)\r\n"
 						+ "          this.editedIndex = -1\r\n" + "        })");
 		vue.addMethod("deleteItemConfirm",
-				" this.espece.splice(this.editedIndex, 1)\r\n" + "        this.closeDelete()");
+				"let self=this;" + Http.delete("'/admin/delete/espece/'+this.editedItem.id", "this.closeDelete()"));
+
+		vue.addMethod("deleteItem", "this.editedItem=item;\r\n" + "        this.dialogDelete = true", "item");
+
+		vue.addMethod("editItem", "this.editedIndex = this.race.indexOf(item)\r\n"
+				+ "        this.editedItem = Object.assign({}, item)\r\n" + "        this.dialog = true");
+		vue.addWatcher("dialog", " val || this.close()");
+		vue.addWatcher("dialogDelete", " val || this.closeDelete()");
 
 		return "crudEspece";
 	}

@@ -12,9 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import edu.supavenir.spanimals.models.Adoptant;
 import edu.supavenir.spanimals.models.Animal;
-import edu.supavenir.spanimals.models.Espece;
 import edu.supavenir.spanimals.repositories.adoptantRepository;
-import edu.supavenir.spanimals.repositories.animalRepository;
 import edu.supavenir.spanimals.repositories.especeRepository;
 import edu.supavenir.spanimals.repositories.raceRepository;
 import edu.supavenir.spanimals.repositories.refugeRepository;
@@ -26,8 +24,6 @@ public class employeController {
 	
 	@Autowired
 	private VueJS vue;
-    @Autowired
-    private animalRepository AnimRepo;
     @Autowired
     private adoptantRepository RepoAdop;
     @Autowired

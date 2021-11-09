@@ -89,7 +89,7 @@ public class Animal implements Serializable {
     @ManyToOne(optional = true)
     @JoinColumn(name = "IDRACE", nullable = true)
     private Race race;
-    @ManyToOne(optional = false,cascade = CascadeType.ALL)
+    @ManyToOne(optional = false,cascade = CascadeType.MERGE)
     @JoinColumn(name = "IDESPECE", nullable = false)
     private Espece espece;
     @ManyToOne(optional = true)

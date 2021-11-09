@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import edu.supavenir.spanimals.models.Animal;
 import edu.supavenir.spanimals.repositories.animalRepository;
-
+import edu.supavenir.spanimals.repositories.especeRepository;
+import edu.supavenir.spanimals.repositories.raceRepository;
+import edu.supavenir.spanimals.repositories.refugeRepository;
 import io.github.jeemv.springboot.vuejs.VueJS;
 import io.github.jeemv.springboot.vuejs.utilities.Http;
 import io.github.jeemv.springboot.vuejs.utilities.JsArray;
@@ -22,10 +24,16 @@ public class crudAnimal {
 
 	
 	  @Autowired
-	    private VueJS vue;
+	  private VueJS vue;
 	  
-	  @Autowired
-	    private animalRepository repo;
+   @Autowired
+	private raceRepository repor;
+    @Autowired
+    private refugeRepository repoR;
+    @Autowired
+    private especeRepository repoE;
+    @Autowired
+    private animalRepository repo;
 
 	  @ModelAttribute(name = "vue")
 	    private VueJS getVue() {
@@ -39,6 +47,9 @@ public class crudAnimal {
 
 		vue.addData("mini", true);
 		vue.addData("draw", true);
+	   	vue.addData("refuge",repoR.findAll());
+    	vue.addData("race",repor.findAll());
+    	vue.addData("especes",repoE.findAll());
 		vue.addData("animal", repo.findAll());
 		vue.addDataRaw("headers",
 			"[{text:'ID', value:'id'},{text:'Adopte', value:'adopte'},{text:'Couleur', value:'couleur'},{text:'Description', value:'description'},{text:'Date Naissance', value:'dnaissance'},{text:'Frais', value:'frais'}"

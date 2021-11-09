@@ -16,7 +16,7 @@ import io.github.jeemv.springboot.vuejs.utilities.Http;
 
 @Controller
 @RequestMapping("/crud/races")
-public class CrudRace {
+public class crudRace {
 
 	@Autowired
 	private VueJS vue;
@@ -50,7 +50,7 @@ public class CrudRace {
 				+ "          Object.assign(this.orgas[this.editedIndex], this.editedItem)\r\n" + "        } else {\r\n"
 				+ "          this.race.push(this.editedItem)\r\n" + "        }\r\n" + "        this.close()");
 		vue.addMethod("closeDelete",
-				"  this.dialogDelete = false\r\n" + "        this.$nextTick(() => {\r\n"
+				"  this.dialogDelete = false;\r\n" + "        this.$nextTick(() => {\r\n"
 						+ "          this.editedItem = Object.assign({}, this.defaultItem)\r\n"
 						+ "          this.editedIndex = -1\r\n" + "        })");
 		vue.addMethod("deleteItemConfirm",

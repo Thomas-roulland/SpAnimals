@@ -1,0 +1,45 @@
+{{> inc/header}}
+
+<v-app >
+<a class="ui primary flat button" action="/employe/animal/add" href="/employe/"><i class="home icon"></i>Accueil Employe</a>
+
+  <v-form ref="form" v-model="valid" lazy-validation>
+  
+  	<v-text-field v-model="newAnimal.datenaiss" name="datenaiss" :rules="Rules" label="Date De Naissance"  required ></v-text-field>
+  	
+  	<v-text-field v-model="newAnimal.description" name="description" :rules="Rules" label="Description"  required ></v-text-field>
+  	
+  	<v-text-field v-model="newAnimal.couleur" name="couleur" :rules="Rules" label="Couleur"  required ></v-text-field>
+
+  	<v-select v-model="newAnimal.sos" name="sos" :items="Alerte" item-text="sos" label="sos" required></v-select>
+  	
+  	<v-select v-model="newAnimal.adopte" name="adopte" :items="Adopte" item-text="adopte" label="Adopté" required></v-select>
+  	
+  	<v-text-field v-model="newAnimal.nom" :rules="Rules" label="nom"  required ></v-text-field>
+  	
+  	<v-text-field v-model="newAnimal.frais" :rules="Rules" label="Frais"  required ></v-text-field>
+  	
+  	<v-select v-model="newAnimal.espece" name="espece" :items="especes" item-text="libelle" label="Selectionner une espece" return-object required ></v-select>
+  	
+   	<v-select v-model="newAnimal.race" name="race" :items="race" item-text="libelle" label="Selectionner une race" return-object required ></v-select>
+  	
+  	<v-select v-model="newAnimal.refuge" name="refuge" :items="refuge" item-text="nom" label="Selectionner un refuge" return-object required ></v-select>
+  	
+  	<v-select v-model="newAnimal.sexe" name="sexe" :items="Sexe" label="Selectionner le sexe de l'annimal" return-object required ></v-select>
+
+    <v-btn :disabled="!valid" color="success" class="mr-4" @click="validate" @click="dialog = false" > Validate </v-btn>
+
+    <v-btn color="error" class="mr-4" @click="reset">Reset Form</v-btn>
+
+    <v-btn color="warning" @click="resetValidation">Reset Validation</v-btn>
+  </v-form>
+
+</v-app>
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vuetify/2.5.9/vuetify.min.js"></script>
+{{{vue}}}
+
+{{> inc/footer}}

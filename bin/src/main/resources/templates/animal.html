@@ -1,73 +1,199 @@
 {{> inc/header }}
 
-<h1>Animaux disponible</h1>
 
-<form method="post" action="search">
-<select class="ui dropdown" name="espece">
-  <option value="">espece</option>
-{{#especes}}
-  <option value="1">{{libelle}}</option>
-{{/especes}}
-</select>
+<v-app>
+<div 
+style="background-color:#e3e3e1;">
+  <v-card flat tile>
+  
+    <v-toolbar dark  extended  dense>
 
-<div class="ui input">
-<input type="text" placeholder="race" name="race">
+      <v-toolbar-title><a class="white--text" href="/">SpAnimals</a></v-toolbar-title>
+
+      <v-spacer></v-spacer>
+
+   
+
+      <template v-slot:extension>
+        <v-tabs >
+        <v-tab><a class="white--text" href="/"><v-icon>mdi-home</v-icon></a></v-tab>
+          <v-tab><a class="white--text" href="/animal">Adopter</a></v-tab>
+           <v-tab><a class="white--text"  href="/missions">Missions</a></v-tab>
+           <v-tab><a class="white--text"  href="/contact">Contact</a></v-tab>
+        </v-tabs>
+      
+      </template>
+    </v-toolbar>
+    <v-sheet
+      id="scrolling-techniques-4"
+      class="overflow-y-auto"
+      max-height="600"
+    >
+    </v-sheet>
+  </v-card>
+
+<div class="d-flex justify-center">
+  <v-alert
+      prominent
+      type="error"
+      class=" text-justify mt-3 "
+  	width="90%"
+    >
+       <div class="ml-16">
+	      <h2>LES ADOPTIONS RESPONSABLES </h2>
+	      <v-row>
+	      <v-col cols="10">
+	     <p>Vous souhaitez adopter un animal à la SPA ? Votre décision est mûrement réfléchie ? Vous pouvez consulter la liste de nos candidats à l’adoption en identifiant le refuge le plus proche de votre domicile. Repérez le ou les profils d’animaux qui vous correspondent, en fonction de votre mode de vie et de la composition de votre foyer.</p>
+		 <p>Ensuite, le meilleur moyen de rentrer en contact avec le refuge est de lui adresser un e-mail à l’adresse que vous trouverez sur notre site la-spa.fr, en renseignant votre démarche d’adoption responsable et le profil d’animaux qui vous correspondrait. Nous vous conseillons d’indiquer votre numéro de téléphone pour qu’on vous rappelle plus rapidement. </p>
+		 <p>Bonne chance dans votre démarche d’adoption responsable !</p>
+		 <p class="font-weight-bold">OFFREZ-LEUR LA VIE QU'ILS MÉRITENT</p>
+		 </v-col>
+		 </v-row>   
+	 </div>
+   	 </v-alert>
 </div>
+<div class="">
+<v-card  elevation="24" >
 
-<select class="ui dropdown" name="refuge">
-  <option value="">Refuge</option>
-{{#refuges}}
-  <option value="1">{{nom}}</option>
-{{/refuges}}
-</select>
 
-<select class="ui dropdown">
-  <option value="">Sexe</option>
-  <option value="1">Male</option>
-  <option value="0">Femelle</option>
-</select>
 
-<div class="ui input">
-<input type="text" placeholder="Age" name="age">
+<v-card-text>
+<v-form method="post" action="search" >
+	<v-container fluid>
+		<v-row>
+		<v-col cols="1">
+			<v-select :items="espece" item-text="libelle" placeholder="especes" name="espece" filled return-object></v-select>
+		</v-col>
+	
+		<v-col cols="1">
+			<v-select :items="race" item-text="libelle" placeholder="races" name="race" filled return-object>
+		</v-select>
+		</v-col>
+	
+		<v-col cols="1">
+			<v-select :items="refuges" item-text="nom" placeholder="refuges" name="refuges" filled return-object></v-select>
+		</v-col>
+	
+		<v-col cols="1">
+			<v-select :items="sexe" item-text="Sexe" placeholder="espece" name="sexe" filled return-object> </v-select>
+		</v-col>
+	
+		<v-col cols="1">
+		 <v-text-field
+            v-model="nom"
+            label="nom"
+          ></v-text-field>
+		</v-col>
+	
+		<v-col cols="1">
+		 <v-text-field
+            v-model="age"
+            label="age"
+          ></v-text-field>
+		</v-col>
+		
+		<v-col cols="1">
+		<v-button class="ui button">Rechercher</v-button>
+		</v-col>
+		</v-row>
+		</v-container>
+</v-form>
+<v-container fluid>
+	<v-row>
+	<v-col >
+	Voir les animaux en detresse : <a class="negative ui button" href="/sos"> SOS <i class="heartbeat icon"></i></a>
+	</v-col>
+	</v-row>
+	</v-container>
+<v-card-text>
+
+
+<v-container class="pt-5" >
+     	<v-row >
+     		{{#animaux}}
+     			<v-col cols="4">
+			<v-card elevation="24">
+			<v-img src="{{img}}" max-height="300"></v-img>
+			<v-card-title class="font-weight-bold text-uppercase">{{nom}}</v-card-title>
+			<v-card-text>
+				{{#refuge}}
+				<p>Se trouve dans le refuge : {{nom}}</p>
+				<p>{{ville}}, {{cp}}</p>
+				{{/refuge}}
+			</v-card-text>
+			<v-divider></v-divider>
+			<v-card-action>
+			<v-icon class="ml-2">mdi-eye</v-icon>
+					<a href="/animal/{{id}}" class="font-weight-bold ml-2">Voir la fiche animal</a>
+				</v-card-action>
+			</v-card>
+			</v-col>
+				{{/animaux}}
+			</v-row>
+	</v-container>
+
+
+	
 </div>
+	</div>
+</v-app>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vuetify/2.5.9/vuetify.min.js"></script>
+<script>
+var app = new Vue({
+	  el: 'v-app',
+	  vuetify: new Vuetify(),
+		    data: () => ({
+		    	  icons: [
+		              'mdi-facebook',
+		              'mdi-twitter',
+		              'mdi-linkedin',
+		              'mdi-instagram',
+		            ],
+		            animal:[],
+					refuges:[],
+					espece:[],
+					race:[],
+					Sexe: [
+						'male',
+						'femelle'
+					],
+				
+		    }),
+		    mounted(){
+				this.loadRefuges();
+				this.loadEspece();
+				this.loadRace();
+				this.loadAnimal();
+			},
+		    
+		    methods: {
+				loadAnimal(){
+						this.$http.get('/employe/animal').then((response)=>{
+							this.animal=response.data;
+							})
+						},
+		    	loadRefuges(){
+					  this.$http.get('/employe/refuge').then((response)=>{
+						  this.refuge=response.data;
+					  })
+				  },
+				  loadEspece(){
+					  this.$http.get('/employe/espece').then((response)=>{
+						  this.espece=response.data;
+					  })
+				  },	
+				  loadRace(){
+					this.$http.get('/employe/race').then((response)=>{
+						this.race=response.data;
+					})
+				},
+		    },
+	  delimiters: ['<%', '%>'],
+	})
 
-<div class="ui input">
-<input type="text" placeholder="Nom" name="nom">
-</div>
-
-<button class="ui button">Rechercher</button>
-</form>
-
-<br>
-<p>Voir les animaux en detresse : </p><a class="negative ui button" href="/sos"> SOS <i class="heartbeat icon"></i></a>
-
-{{#animaux}}
-<div class="ui card">
-  <div class="image">
-    <img src="/images/chien.jpg">
-  </div>
-  <div class="content">
-    <a class="header">{{nom}}</a>
-    <div class="meta">
-    {{#espece}}
-      <span class="date">{{libelle}}</span>
-     {{/espece}}
-    </div>
-    <div class="description">
-      {{#refuge}}
-      	Localisation : {{nom}}
-      {{/refuge}}
-    </div>
-  </div>
-  <div class="extra content">
-    <a href="">
-      <i class="eye icon"></i>
-      Voir fiche animal
-    </a>
-  </div>
-</div>
-  {{/animaux}}
-
+</script>
 
 
 {{> inc/footer }}

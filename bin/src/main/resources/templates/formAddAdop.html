@@ -1,0 +1,129 @@
+{{> inc/header}}
+
+<v-app >
+<a class="ui primary flat button" href="/employe/"><i class="home icon"></i>Accueil Employe</a>
+
+  <v-form ref="form"  v-model="valid" lazy-validation>
+
+<<<<<<< HEAD
+  <v-text-field v-model="newAdoptant.mail" :rules="emailRules" label="Email"  required ></v-text-field>
+    
+   <v-text-field v-model="newAdoptant.nom" :rules="Rules" label="nom"  required ></v-text-field>
+=======
+    <v-text-field v-model="newAdoptant.mail" :rules="emailRules" label="mail"  required ></v-text-field>
+    
+    <v-text-field v-model="newAdoptant.nom" :rules="Rules" label="nom"  required ></v-text-field>
+>>>>>>> 0122bde548877454242a547ee7b16e935669d003
+    
+    <v-text-field v-model="newAdoptant.prenom" :rules="Rules" label="prenom"  required ></v-text-field>
+    
+    <v-text-field v-model="newAdoptant.datenaiss" :rules="Rules" label="Date Naissance (YY-MM-DD)"  required ></v-text-field>
+    
+    <v-text-field v-model="newAdoptant.ville" :rules="Rules" label="ville"  required ></v-text-field>
+    
+<<<<<<< HEAD
+  	<v-text-field v-model="newAdoptant.cp" :rules="CPRules" label="cp"  required ></v-text-field>
+=======
+    <v-text-field v-model="newAdoptant.cp" :rules="CpRules" label="cp"  required ></v-text-field>
+>>>>>>> 0122bde548877454242a547ee7b16e935669d003
+    
+    <v-text-field v-model="newAdoptant.numeroetrue" :rules="Rules" label="Numero et rue"  required ></v-text-field>
+    
+    <v-text-field v-model="newAdoptant.complementad" :counter="100" :rules="Rules" label="complementad"  required></v-text-field>
+	
+	<v-text-field v-model="newAdoptant.telfixe" :rules="TelRules" label="Téléphone Fixe"  required ></v-text-field>
+	
+	<v-text-field v-model="newAdoptant.telmobile" :rules="TelRules" label="Téléphone mobile"  required ></v-text-field>
+
+	<v-text-field v-model="newAdoptant.infocomplementaires" :rules="Rules" label="info Complementaires"  required ></v-text-field>
+
+    <v-btn :disabled="!valid" color="success" class="mr-4" @click="validate" > Validate </v-btn>
+
+    <v-btn color="error" class="mr-4" @click="reset">Reset Form</v-btn>
+
+    <v-btn color="warning" @click="resetValidation">Reset Validation</v-btn>
+  </v-form>
+
+</v-app>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vuetify/2.5.9/vuetify.min.js"></script>
+<<<<<<< HEAD
+{{{vue}}}
+=======
+<script>
+Vue.prototype.$http = axios;
+var app = new Vue({
+	  el: 'v-app',
+	  vuetify: new Vuetify(),
+		    data: () => ({
+		    	adoptant:[],
+		    	dialog: {visible:false, mode:0},
+		    	newAdoptant: {mail:"",nom:"",prenom:"",datenaiss:"",ville:"",cp:"",numeroetrue:"",complementad:"",telfixe:"",telmobile:"",infocomplementaires:""},
+		    	valid: true,
+		    	CpRules: '',
+			      CpRules: [
+			        v => !!v || 'champ obligatoire',
+			        v => (v && v.length <= 5 && v.length >4) || 'le Code Postal doit être égal à 5 caractères',
+			      ],
+			      email: '',
+			      emailRules: [
+			        v => !!v || 'champ obligatoire',
+			        v => /.+@.+\..+/.test(v) || 'E-mail doit être valide ',
+			      ],
+			      TelRules: [
+				        v => !!v || 'champ obligatoire',
+				        v => (v && v.length <= 10 && v.length >9) || 'le numéro de téléphone doit être égal à 10 caractères',
+				      ],
+				  Rules: [
+					    v => !!v || 'champ obligatoire',
+					  ],
+			      checkbox: false,
+		  
+		    }),
+		    mounted(){
+				this.loadAdoptant();
+			},
+		    
+		    methods: {
+<<<<<<< HEAD
+		    	loadEspece(){
+					  this.$http.get('/employe/adoptant').then((response)=>{
+						  this.adoptant=response.data;
+					  })
+				  },	
+				  validate(){
+					  if(this.dialog.mode==0){
+						  this.$http.post('/employe/add/adoptant', this.newAdoptant).then((response)=>{
+							  this.adoptant.push(response.data);
+						  })
+					  }else{
+					  this.$http.put('/employe/modifier/adoptant/{id}'+this.newAdoptant.id, this.newAdoptant).then((response)=>{
+							  let index=this.adoptant.findIndex((item)=>item.id==this.newAdoptant.id);
+							  if(index!=-1){
+								  this.adoptant[index]=this.newAdoptant;
+							  }
+					  	  })
+					}
+				},
+=======
+		        validate () {					  
+		          this.$refs.form.validate()
+		        },
+>>>>>>> 9ada0c2d50bada8835bb568fe5432cc44e135887
+		        reset () {
+		          this.$refs.form.reset()
+		        },
+		        resetValidation () {
+		          this.$refs.form.resetValidation()
+		        },
+		      },
+		      
+	  delimiters: ['<%', '%>'],
+	})
+</script>
+
+>>>>>>> 0122bde548877454242a547ee7b16e935669d003
+{{> inc/footer}}
+

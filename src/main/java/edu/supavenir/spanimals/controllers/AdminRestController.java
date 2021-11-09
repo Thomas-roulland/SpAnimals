@@ -56,17 +56,7 @@ public class AdminRestController {
 		return espece.toString();
 	}
 
-	@DeleteMapping("/delete/espece/{id}")
-	public Espece deleteAction(@PathVariable int id) {
-		Optional<Espece> opt = repoE.findById(id);
-		if (opt.isPresent()) {
-			Espece model = opt.get();
-			repoE.delete(opt.get());
-			return model;
-		}
-		return null;
-
-	}
+	
 
 	@PostMapping("/modifier/espece/{id}")
 	private @ResponseBody String modifierEspece(@PathVariable int id, @RequestBody Espece espece) {
@@ -86,16 +76,7 @@ public class AdminRestController {
 		return refuge.toString();
 	}
 
-	@DeleteMapping("/delete/refuge/{id}")
-	public Refuge deleteRefugeAction(@PathVariable int id) {
-		Optional<Refuge> refuge = repoR.findById(id);
-		if (refuge.isPresent()) {
-			Refuge model = refuge.get();
-			repoE.deleteById(id);
-			return model;
-		}
-		return null;
-	}
+	
 
 	@PostMapping("add/race")
 	private @ResponseBody String ajouteRace(@RequestBody Race race) {
@@ -114,9 +95,49 @@ public class AdminRestController {
 		Optional<Race> opt = repor.findById(id);
 		if (opt.isPresent()) {
 			Race race = opt.get();
-			repor.deleteById(id);
-			repor.flush();
-			return race;
+			repor.delete(race);
+			return null;
+		}
+		return null;
+	}
+	@DeleteMapping("/delete/refuge/{id}")
+	public Refuge deleteRefugeAction(@PathVariable int id) {
+		Optional<Refuge> refuge = repoR.findById(id);
+		if (refuge.isPresent()) {
+			Refuge model = refuge.get();
+			repoE.deleteById(id);
+			return model;
+		}
+		return null;
+	}
+	@DeleteMapping("/delete/espece/{id}")
+	public Espece deleteEspeceAction(@PathVariable int id) {
+		Optional<Espece> opt = repoE.findById(id);
+		if (opt.isPresent()) {
+			Espece model = opt.get();
+			repoE.delete(opt.get());
+			return model;
+		}
+		return null;
+
+	}
+	@DeleteMapping("/delete/animal/{id}")
+	public Race deleteAnimalAction(@PathVariable int id) {
+		Optional<Race> opt = repor.findById(id);
+		if (opt.isPresent()) {
+			Race race = opt.get();
+			repor.delete(race);
+			return null;
+		}
+		return null;
+	}
+	@DeleteMapping("/delete/adoptant/{id}")
+	public Refuge deleteAdoptantAction(@PathVariable int id) {
+		Optional<Refuge> refuge = repoR.findById(id);
+		if (refuge.isPresent()) {
+			Refuge model = refuge.get();
+			repoE.deleteById(id);
+			return model;
 		}
 		return null;
 	}

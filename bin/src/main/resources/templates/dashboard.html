@@ -1,0 +1,367 @@
+{{> inc/header }}
+<v-app >
+ 
+    <v-navigation-drawer
+      v-model="drawer"
+      :mini-variant.sync="mini"
+      absolute
+      permanent
+      left
+      dark
+    >
+    <v-icon class="d-flex justify-center mb-5 mt-5">mdi-view-dashboard</v-icon>
+  
+   <v-divider></v-divider>
+  
+      <v-list-item class="px-1">
+        <v-list-item-avatar>
+          <v-img src="https://images7.alphacoders.com/871/thumb-1920-871169.png"></v-img>
+        </v-list-item-avatar>
+
+        <v-list-item-title>Admin</v-list-item-title>
+
+        <v-btn
+          icon
+          @click.stop="mini = !mini"
+        >
+          <v-icon>mdi-chevron-left</v-icon>
+        </v-btn>
+      </v-list-item>
+
+      <v-divider></v-divider>
+
+
+      <v-list dense>
+        <v-list-item>
+          <v-list-item-icon>
+            <v-icon >mdi-home-city</v-icon>
+          </v-list-item-icon>
+
+          <v-list-item-content>
+           <a href="/board" class="white--text"><v-list-item-title >Home</v-list-item-title></a>
+          </v-list-item-content>
+        </v-list-item>
+        
+         <v-list-item
+        >
+          <v-list-item-icon>
+            <v-icon >mdi-circle-edit-outline</v-icon>
+          </v-list-item-icon>
+
+          <v-list-item-content>
+           <a href="/crud/animaux" class="white--text"><v-list-item-title >CRUD animal</v-list-item-title></a>
+            <a href="/crud/adoptant " class="white--text" ><v-list-item-title >CRUD adoptant</v-list-item-title></a>
+             <a href="/crud/refuge" class="white--text"><v-list-item-title >CRUD refuge</v-list-item-title></a>
+              <a href="/crud/races" class="white--text"><v-list-item-title >CRUD race</v-list-item-title></a>
+               <a href="/crud/espece" class="white--text"><v-list-item-title >CRUD espece</v-list-item-title></a>
+          </v-list-item-content>
+        </v-list-item>
+        
+       
+      </v-list>
+      
+
+    </v-navigation-drawer>
+
+
+
+    
+    <v-container class="pt-5" >
+      <v-row class="d-flex justify-center ">
+        <v-col
+          v-for="card in cards"
+          :key="card.title"
+          :cols="card.flex"
+        >
+          <v-card elevation="24" >
+		 <v-list >
+     	 	<v-list-item>
+         		<v-list-item-icon>
+          			<v-icon v-text="card.icon"></v-icon>
+        		</v-list-item-icon>
+        		<v-divider
+  				vertical
+  				class="mr-6"
+				></v-divider>
+        	<v-list-item-content>
+        		<v-list-item-subtitle v-text="card.title"></v-list-item-subtitle>
+          		<v-list-item-title v-text="card.chiffre"></v-list-item-title>
+        	</v-list-item-content>
+          </v-card>
+        </v-col>
+    </v-container>
+    
+    
+    <v-container class="pt-5" grid-list-md>
+ 	 <v-layout row wrap class="d-flex justify-center">
+     <v-flex xs9 sm4 >
+	    <v-card class=" text-center"
+	    dark
+		elevation="24"
+		height="450"
+	  	>
+    	<v-card-text>
+	      <v-sheet color="rgba(0, 0, 0, .12)">
+	        <v-sparkline
+	          :value="value"
+	          color="rgba(255, 255, 255, .7)"
+	          height="100"
+	          padding="24"
+	          stroke-linecap="round"
+	          smooth
+	        >
+          <template v-slot:label="item">
+            <% item.value %>
+          </template>
+       	  </v-sparkline>
+      	</v-sheet>
+   
+      <h2 class="mt-10">
+        Nombre d'adoptions
+      </h2>
+    </v-card-text>
+
+    <v-divider class=""></v-divider>
+
+    <v-card-actions class="justify-center">
+    <p  class="font-italic font-weight-thin mt-7" >Graph representant les adoptions dans le mois</p>
+      <v-btn 
+        block
+        text
+        bottom
+        absolute
+        class="font-weight-bold"
+      >
+       Voir en detail
+      </v-btn>
+    </v-card-actions>
+  </v-card>
+  </v-flex>
+  
+<v-flex xs9 sm3 >
+  <v-card
+   elevation="24"
+   height="450"
+  >
+    <v-img
+      height="200px"
+      src="https://miro.medium.com/max/1400/1*PpTSlj9PSgB4VPEx4zEReQ.png"></v-img>
+	<v-card-title><h2>Tout savoir sur le CRUD</h2></v-card-title>
+    <v-card-text>
+      <p>CRUD (create, read, update, delete) (creer, lire, mettre a jour, supprimer) est un acronyme pour les facons dont on peut fonctionner sur des donnees stockees.</p>
+    </v-card-text>
+	<v-card-actions>
+		<v-btn absolute bottom>Read More</v-btn>
+    </v-card-actions>
+  </v-card>
+  </v-flex>
+  
+  <v-flex xs9 sm3 >
+  <v-card  elevation="24" height="450">
+  	<v-card-title class="d-flex justify-center">Types de visites</v-card-title>
+  
+  <v-card-text class="d-flex justify-center pt-16">
+  	
+  	 <v-progress-circular class="mr-6 font-weight-bold title" :size="120" :width="20" :value="10" color="teal">10</v-progress-circular>
+    <v-progress-circular class="mr-6 font-weight-bold title" :size="120" :width="20" :value="80" color="red">90</v-progress-circular>
+
+    
+    </v-card-text>
+    
+     <v-row justify="center">
+    <v-col
+      cols="2"
+      sm="8"
+      class=""
+    >
+      <v-list>
+          <v-list-item>
+            <v-list-item-action>
+              <v-icon>mdi-laptop</v-icon>
+            </v-list-item-action>
+
+            <v-list-item-content>
+              <v-list-item-title> Visiteurs bureau</v-list-item-title>
+            </v-list-item-content>
+            <v-list-item-action>
+              <v-icon>mdi-message-text</v-icon>
+            </v-list-item-action>
+          </v-list-item>
+
+          <v-divider inset></v-divider>
+
+          <v-list-item>
+            <v-list-item-action>
+              <v-icon>mdi-cellphone</v-icon>
+            </v-list-item-action>
+
+            <v-list-item-content>
+              <v-list-item-title>Visiteurs mobile/tablette</v-list-item-title>
+            </v-list-item-content>
+
+            <v-list-item-action>
+              <v-icon>mdi-message-text</v-icon>
+            </v-list-item-action>
+          </v-list-item>
+
+         
+     
+    </v-col>
+  </v-row>
+   </v-card>
+</v-flex>
+</v-layout>
+
+
+        
+    </v-container>
+    
+     <v-container class="pt-5" grid-list-xs>
+     <v-layout row wrap class="d-flex justify-center">
+     <v-flex xs12 sm7 >
+    	<v-card 
+		    elevation="24"
+		    max-width="850"
+		    height="300">
+	        <v-img
+	        max-height="300"
+	        class="white--text title "
+	        max-width="90vh"
+	        src="https://c.wallhere.com/photos/27/50/road_red_summer_sky_blackandwhite_cloud_mountain_black-612021.jpg!d"
+	        gradient="to top right, rgba(100,115,201,.33), rgba(50,32,72,.7)"
+	      >
+            <strong class="text-h1 font-weight-regular mr-6 ml-10">04</strong>
+              <div class="text-h5 font-weight-lightml-10 ml-10">
+                Wednesday
+              </div>
+              <div class="text-uppercase font-weight-light ml-10">
+                November 2021
+              </div>
+		      </v-img>
+		      </v-image>
+		    </v-card>
+		    </v-flex>
+		    
+    	 <v-flex xs6 sm3>
+	      <v-card 
+		    elevation="24"
+		    height="300"
+		    >
+	     	<v-toolbar
+	           elevation="10"
+	          dark
+        	>
+          <v-app-bar-nav-icon></v-app-bar-nav-icon>
+          <v-card-title>Message Board</v-card-title>
+          </v-toolbar>
+          
+          <v-card-text>
+
+        <v-list two-line>
+          <template v-for="(item, index) in message">
+            <v-subheader
+              v-if="item.header"
+              :key="item.header"
+              v-text="item.header"
+            >
+             
+            </v-subheader>
+
+            <v-divider
+              v-else-if="item.divider"
+              :key="index"
+              inset
+            ></v-divider>
+
+            <v-list-item
+              v-else
+              :key="item.title"
+          
+            >
+              <v-list-item-avatar>
+              <v-avatar>
+                <v-img :src="item.avatar"></v-img>
+              </v-list-item-avatar>
+              <v-list-item-content>
+                <v-list-item-title v-html="item.title"></v-list-item-title>
+                <v-list-item-subtitle
+                  v-html="item.subtitle"
+                ></v-list-item-subtitle>
+              </v-list-item-content>
+            </v-list-item>
+  
+        </v-list>
+        </v-card-text>
+      </v-card>
+	</v-flex>
+	</v-layout>
+</template>
+    </v-container>
+    
+
+   
+</v-app>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vuetify/2.5.9/vuetify.min.js"></script>
+<script>
+
+	var app = new Vue({
+		  el: 'v-app',
+		  vuetify: new Vuetify(),
+			    data: () => ({
+			    	cards: [
+				          { title: 'Nombre de visite', icon:'mdi-eye', flex: 2, chiffre:'10', color : '#1E88E5' },
+				          { title: 'Nombre inscrits', icon:'mdi-account-multiple',flex: 2, chiffre:'2', color : '#69F0AE'  },
+				          { title: 'Nombre de recherche',icon:'mdi-magnify', flex: 2, chiffre:'0', color : '#CE93D8'  },
+				          { title: 'Estmation navigation',icon:'mdi-navigation', flex: 4, chiffre:"Envrion 15 minutes"},
+				        ],
+				        drawer: true,
+				        items: [
+				          { title: 'Home', icon: 'mdi-home-city',link: '/admin/add/Refuge' },
+				          { title: 'My Account', icon: 'mdi-account',link: '/admin/add/Refuge' },
+				          { title: 'Users', icon: 'mdi-account-group-outline',link: '/admin/add/Refuge' },
+				          { title: 'Ajout', icon: 'mdi-plus-outline',link: '/admin/add/Refuge' },
+				          { title: 'Modifier', icon: 'mdi-pencil-outline',link: '/admin/add/Refuge' },
+				          { title: 'Supression', icon: 'mdi-delete-outline',link: '/admin/add/Refuge'},
+
+				          { title: 'Home', icon: 'mdi-home-city', href:'/admin/add/Refuge' },
+				          { title: 'My Account', icon: 'mdi-account', href:'/admin/add/Refuge' },
+				          { title: 'Users', icon: 'mdi-account-group-outline', href:'/admin/add/Refuge' },
+				        ],
+				        value: [
+				            423,
+				            446,
+				            675,
+				            510,
+				            590,
+				            610,
+				            760,
+				          ],
+				          message: [
+				              {
+				                header: 'Today',
+				              },
+				              { divider: true },
+				              {
+				                avatar: 'https://images7.alphacoders.com/871/thumb-1920-871169.png',
+				                title: `<span class="font-weight-bold">EVERYONE</span>`,
+				                subtitle:
+				                  `<span class="font-weight-bold">Kaishi</span> &mdash; Configuration des roles employers`,
+				              },
+				              {
+				                avatar: 'https://images7.alphacoders.com/871/thumb-1920-871169.png',
+				                title: `<span class="font-weight-bold">EVERYONE</span>`,
+				                subtitle:
+				                  '<span class="font-weight-bold">Kaishi</span> &mdash; DashBoard done',
+				              },
+				            
+				           
+				            ],
+				        mini: true,
+			  
+			    }),
+		  delimiters: ['<%', '%>'],
+		})
+</script>
+{{> inc/footer }}

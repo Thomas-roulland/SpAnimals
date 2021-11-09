@@ -14,10 +14,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
-
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -26,83 +24,80 @@ import edu.supavenir.spanimals.models.Animal;
 import edu.supavenir.spanimals.models.Espece;
 import edu.supavenir.spanimals.models.Race;
 import edu.supavenir.spanimals.models.Refuge;
-import edu.supavenir.spanimals.repositories.adoptantRepository;
-import edu.supavenir.spanimals.repositories.animalRepository;
-import edu.supavenir.spanimals.repositories.especeRepository;
-import edu.supavenir.spanimals.repositories.raceRepository;
-import edu.supavenir.spanimals.repositories.refugeRepository;
+import edu.supavenir.spanimals.repositories.AdoptantRepository;
+import edu.supavenir.spanimals.repositories.AnimalRepository;
+import edu.supavenir.spanimals.repositories.EspeceRepository;
+import edu.supavenir.spanimals.repositories.RaceRepository;
+import edu.supavenir.spanimals.repositories.RefugeRepository;
 import io.github.jeemv.springboot.vuejs.VueJS;
 
 @Controller
-public class spaController {
+public class SpaController {
 
+	@Autowired
+	private EspeceRepository repo;
 
-    @Autowired
-    private especeRepository repo;
+	@Autowired
+	private RefugeRepository repoR;
 
-    @Autowired
-    private refugeRepository repoR;
+	@Autowired
+	private AnimalRepository AnimRepo;
 
-    @Autowired
-    private animalRepository AnimRepo;
+	@Autowired
+	private AdoptantRepository RepoAdop;
 
-    @Autowired
-    private adoptantRepository RepoAdop;
-    
-    @Autowired
-    private raceRepository RepoRace;
+	@Autowired
+	private RaceRepository RepoRace;
 
-    @Autowired
+	@Autowired
 	private VueJS vue;
 
-        @ModelAttribute(name = "vue")
-        private VueJS getVue() {
-            return this.vue;
-        }
-	
+	@ModelAttribute(name = "vue")
+	private VueJS getVue() {
+		return this.vue;
+	}
+
 	@GetMapping("/")
 	public String index(ModelMap model) {
-		
+
 		return "index";
 	}
-	
+
 	@GetMapping("/contact")
 	public String contatc() {
 		return "contact";
 	}
-	
+
 	@GetMapping("/mentionsLegales")
 	public String mentions() {
 		return "mentions";
 	}
-	
+
 	@GetMapping("/missions")
 	public String mission() {
 		return "informations";
 	}
-	
+
 	@GetMapping("/boardLeCrabeVampire")
 	public String indexDash(ModelMap model) {
-		
+
 		return "dashboard";
 	}
-	
+
 	@GetMapping("/animal/{id}")
 	private String FicheAnimalAction(@PathVariable int id, Model model) {
 		Optional<Animal> animal = AnimRepo.findById(id);
 		model.addAttribute("animalTest", animal.get());
 		return "ficheAnimal";
 	}
-	
 
-    @GetMapping("/employe")
-    public String AfficheAdoptant(Model model) {
+	@GetMapping("/employe")
+	public String AfficheAdoptant(Model model) {
 
-	List<Adoptant> adoptant = RepoAdop.findAll();
-	model.addAttribute("adoptant", adoptant);
-	return "employe";
-    }
-
+		List<Adoptant> adoptant = RepoAdop.findAll();
+		model.addAttribute("adoptant", adoptant);
+		return "employe";
+	}
 
 	@GetMapping("/animal")
 	private String ContactAction(Model model) {

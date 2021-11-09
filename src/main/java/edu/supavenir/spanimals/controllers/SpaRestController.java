@@ -7,16 +7,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.supavenir.spanimals.models.Animal;
-import edu.supavenir.spanimals.repositories.animalRepository;
+import edu.supavenir.spanimals.repositories.AnimalRepository;
 
 @RestController
-public class spaRestController {
+public class SpaRestController {
 
-    @Autowired
-    private animalRepository repo;
+	@Autowired
+	private AnimalRepository repo;
 
-    @GetMapping("/sos")
-    public List<Animal> SosAnimal() {
-	return repo.findBySos(true);
-    }
+	@GetMapping("/sos")
+	public List<Animal> SosAnimal() {
+		return repo.findBySos(true);
+	}
 }

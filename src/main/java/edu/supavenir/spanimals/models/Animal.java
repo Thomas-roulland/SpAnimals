@@ -86,13 +86,13 @@ public class Animal implements Serializable {
     private boolean adopte;
     @Column(name = "FRAIS", precision = 19, scale = 4)
     private BigDecimal frais;
-    @ManyToOne(optional = true)
+    @ManyToOne(optional = true,cascade = CascadeType.ALL)
     @JoinColumn(name = "IDRACE", nullable = true)
     private Race race;
     @ManyToOne(optional = false,cascade = CascadeType.ALL)
     @JoinColumn(name = "IDESPECE", nullable = false)
     private Espece espece;
-    @ManyToOne(optional = true)
+    @ManyToOne(optional = true,cascade = CascadeType.ALL)
     @JoinColumn(name = "IDREFUGE", nullable = true)
     private Refuge refuge;
     @JsonIgnore

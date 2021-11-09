@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import edu.supavenir.spanimals.models.Adoptant;
 import edu.supavenir.spanimals.models.Animal;
 import edu.supavenir.spanimals.repositories.AdoptantRepository;
-import edu.supavenir.spanimals.repositories.AnimalRepository;
 import edu.supavenir.spanimals.repositories.EspeceRepository;
 import edu.supavenir.spanimals.repositories.RaceRepository;
 import edu.supavenir.spanimals.repositories.RefugeRepository;
@@ -26,21 +25,20 @@ public class employeController {
 
 	@Autowired
 	private VueJS vue;
-	@Autowired
-	private AnimalRepository AnimRepo;
-	@Autowired
-	private AdoptantRepository RepoAdop;
-	@Autowired
-	private RaceRepository repor;
-	@Autowired
-	private RefugeRepository repoR;
-	@Autowired
-	private EspeceRepository repoE;
 
-	@ModelAttribute(name = "vue")
-	private VueJS getVue() {
-		return this.vue;
-	}
+    @Autowired
+    private AdoptantRepository RepoAdop;
+    @Autowired
+    private RaceRepository repor;
+    @Autowired
+    private RefugeRepository repoR;
+    @Autowired
+    private EspeceRepository repoE;
+    
+	  @ModelAttribute(name = "vue")
+	    private VueJS getVue() {
+			return vue;
+	  }
 
 	// AJOUTER UN ANIMAL
 	@GetMapping("/add/animal")

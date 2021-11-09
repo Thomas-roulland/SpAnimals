@@ -16,7 +16,7 @@ import io.github.jeemv.springboot.vuejs.utilities.Http;
 
 @Controller
 @RequestMapping("/crud/races")
-public class CrudRace {
+public class crudRace {
 
 	@Autowired
 	private VueJS vue;
@@ -44,6 +44,7 @@ public class CrudRace {
 		vue.addData("editedIndex", -1);
 		vue.addData("editedItem", new Race());
 		vue.addData("DefaultItem", new Race());
+
 		vue.addMethod("close", "this.dialog=false; editedIndex=-1;");
 		vue.addMethod("save", "if (this.editedIndex > -1) {\r\n"
 				+ "          Object.assign(this.orgas[this.editedIndex], this.editedItem)\r\n" + "        } else {\r\n"

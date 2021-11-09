@@ -95,6 +95,15 @@ public class SpaController {
 		model.addAttribute("animalTest", animal.get());
 		return "ficheAnimal";
 	}
+	
+	@GetMapping("/refuge/{id}")
+	private String FicheRefuge(@PathVariable int id, Model model) {
+		Optional<Refuge> refuge = repoR.findById(id);
+		model.addAttribute("refuge", refuge.get());
+		return "infoRefuge";
+	}
+	
+	
 
 	@GetMapping("/employe")
 	public String AfficheAdoptant(Model model) {

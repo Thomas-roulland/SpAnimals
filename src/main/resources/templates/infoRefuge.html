@@ -1,0 +1,122 @@
+{{> inc/header }}
+
+
+<v-app>
+<div 
+style="background-color:#e3e3e1;"></div>
+  <v-card flat tile>
+  
+    <v-toolbar dark  extended  dense>
+
+      <v-toolbar-title><a class="white--text" href="/">SpAnimals</a></v-toolbar-title>
+
+      <v-spacer></v-spacer>
+
+   
+
+      <template v-slot:extension>
+        <v-tabs >
+        <v-tab><a class="white--text" href="/"><v-icon>mdi-home</v-icon></a></v-tab>
+          <v-tab><a class="white--text" href="/animal">Adopter</a></v-tab>
+           <v-tab><a class="white--text"  href="/missions">Missions</a></v-tab>
+           <v-tab><a class="white--text"  href="/contact">Contact</a></v-tab>
+        </v-tabs>
+      
+      </template>
+    </v-toolbar>
+    <v-sheet
+      id="scrolling-techniques-4"
+      class="overflow-y-auto"
+      max-height="600"
+    >
+    </v-sheet>
+  </v-card>
+
+	{{#refuge}}
+	<div class="d-flex justify-center mt-16">
+	<v-card width="50%" elevation="10">
+           
+     
+                <v-card-title><h2>{{nom}}</h2> </v-card-title>
+                <v-card-text>
+                <div>
+                	<p>Description : {{description}}</p>
+                </div>	
+                <div>
+                	<h4>Localisation :</h4>
+                	<p>{{numeroetrue}}</p>
+                	<p>{{cp}}, {{ville}}</p>
+                	<p>{{localisation}}</p>
+                </div>
+                <div>
+                	<h4>Contact</h4>
+                	<p>{{tel}}</p>
+                
+                </div>
+                
+                </v-card-text>
+	</v-card>
+	</div>
+	{{/refuge}}
+
+</v-app>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vuetify/2.5.9/vuetify.min.js"></script>
+<script>
+var app = new Vue({
+	  el: 'v-app',
+	  vuetify: new Vuetify(),
+		    data: () => ({
+		    	  icons: [
+		              'mdi-facebook',
+		              'mdi-twitter',
+		              'mdi-linkedin',
+		              'mdi-instagram',
+		            ],
+		            animal:[],
+					refuges:[],
+					espece:[],
+					race:[],
+					Sexe: [
+						'male',
+						'femelle'
+					],
+				
+		    }),
+		    mounted(){
+				this.loadRefuges();
+				this.loadEspece();
+				this.loadRace();
+				this.loadAnimal();
+			},
+		    
+		    methods: {
+				loadAnimal(){
+						this.$http.get('/employe/animal').then((response)=>{
+							this.animal=response.data;
+							})
+						},
+		    	loadRefuges(){
+					  this.$http.get('/employe/refuge').then((response)=>{
+						  this.refuge=response.data;
+					  })
+				  },
+				  loadEspece(){
+					  this.$http.get('/employe/espece').then((response)=>{
+						  this.espece=response.data;
+					  })
+				  },	
+				  loadRace(){
+					this.$http.get('/employe/race').then((response)=>{
+						this.race=response.data;
+					})
+				},
+		    },
+	  delimiters: ['<%', '%>'],
+	})
+
+</script>
+
+
+{{> inc/footer }}

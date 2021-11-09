@@ -148,8 +148,14 @@ style="background-color:#e3e3e1;">
 						<p>{{nom}}</p>
 						<p>{{numeroetrue}}</p>
 						<p>{{cp}} {{ville}}</p>
-					{{/refuge}}
+					
 						</v-col>
+						<v-col class="d-flex align-center ">
+							<v-btn text>
+								<a href="/refuge/{{id}}"  >Voir le refuge</a>
+							</v-btn>
+						</v-col>
+						{{/refuge}}
 					</v-card-text>
 				</v-card>
 				</div>

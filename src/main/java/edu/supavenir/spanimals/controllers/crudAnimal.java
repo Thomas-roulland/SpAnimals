@@ -17,7 +17,7 @@ import io.github.jeemv.springboot.vuejs.utilities.JsArray;
 
 @Controller
 @RequestMapping("/crud/animaux")
-public class crudAnimal {
+public class CrudAnimal {
 
 	@Autowired
 	private VueJS vue;
@@ -59,7 +59,7 @@ public class crudAnimal {
 				+ "          Object.assign(this.orgas[this.editedIndex], this.editedItem)\r\n" + "        } else {\r\n"
 				+ "          this.animal.push(this.editedItem)\r\n" + "        }\r\n" + "        this.close()");
 		vue.addMethod("closeDelete",
-				"  this.dialogDelete = false;\r\n" + "        this.$nextTick(() => {\r\n"
+				"  this.dialogDelete = false\r\n" + "        this.$nextTick(() => {\r\n"
 						+ "          this.editedItem = Object.assign({}, this.defaultItem)\r\n"
 						+ "          this.editedIndex = -1\r\n" + "        })");
 		vue.addMethod("deleteItemConfirm",

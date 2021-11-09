@@ -36,7 +36,7 @@ public class CrudRace {
 		vue.addData("dialogDelete", false);
 		vue.addComputed("formTitle", " return this.editedIndex === -1 ? 'Nouvelle refuge' : 'modifier refuge'");
 		vue.addData("editedIndex", -1);
-		vue.addData("editedItem", new Refuge());
+		vue.addData("editedItem", new Race());
 		vue.addMethod("close", "this.dialog=false; editedIndex=-1;");
 		vue.addMethod("save", "if (this.editedIndex > -1) {\r\n"
 				+ "          Object.assign(this.orgas[this.editedIndex], this.editedItem)\r\n" + "        } else {\r\n"
@@ -48,8 +48,9 @@ public class CrudRace {
 		vue.addMethod("deleteItemConfirm",
 				"let self=this;" + Http.delete("'/admin/delete/race/'+this.editedItem.id", "this.closeDelete()"));
 		vue.addMethod("deleteItem", "this.editedItem=item;\r\n" + "        this.dialogDelete = true", "item");
-		vue.addMethod("editItem", "this.editedIndex = this.race.indexOf(item)\r\n"
-				+ "        this.editedItem = Object.assign({}, item)\r\n" + "        this.dialog = true");
+		vue.addMethod("editItem", "this.editedIndex = this.races.indexOf(item);\r\n"
+				+ "        this.editedItem = Object.assign({}, item);\r\n" 
+				+ " this.dialog = true;","item");
 		vue.addWatcher("dialog", " val || this.close()");
 		vue.addWatcher("dialogDelete", " val || this.closeDelete()");
 		return "crudrace";

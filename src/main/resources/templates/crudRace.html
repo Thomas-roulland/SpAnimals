@@ -64,7 +64,7 @@
     
 
 <v-container class="d-flex justify-center align-center">
-  <v-data-table :headers="headers" :items="race" sort-by="name" class="elevation-1" >
+  <v-data-table :headers="headers" :items="races" sort-by="name" class="elevation-1" >
     <template v-slot:top>
       <v-toolbar flat >
         <v-toolbar-title>CRUD Race</v-toolbar-title>
@@ -124,10 +124,14 @@
     </template>
     <template v-slot:item.actions="{ item }">
     	
-		<v-icon small class="mr-2" @click="editItem(item)">
+		<v-icon small class="mr-2" @click="editItem">
         mdi-pencil
         </v-icon>
+<<<<<<< HEAD
 		<v-icon small @click="">
+=======
+		<v-icon small @click="deleteItem(item)">
+>>>>>>> 1dee19c55a1b5e0018055251ad98057b583d2fac
         mdi-delete
         </v-icon>
     </template>

@@ -16,7 +16,7 @@ import io.github.jeemv.springboot.vuejs.utilities.Http;
 
 @Controller
 @RequestMapping("/crud/races")
-public class crudRace {
+public class CrudRace {
 
 	@Autowired
 	private VueJS vue;

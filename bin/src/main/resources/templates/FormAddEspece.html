@@ -1,18 +1,27 @@
 {{> inc/header}}
 
+<v-app >
+<a class="ui primary flat button" href="/employe/"><i class="home icon"></i>Accueil Employe</a>
 
-<form method="post" action="/admin/add/espece">
+  <v-form ref="form" v-model="valid" lazy-validation>
 
-<div class="ui input">
-<input type="text" placeholder="frais" name="frais">
-</div>
+    <v-text-field v-model="newEspece.frais" :rules="Rules" label="frais"  required ></v-text-field>
+    
+    <v-text-field v-model="newEspece.libelle" :rules="Rules" label="libelle"  required ></v-text-field>
 
-<div class="ui input">
-<input type="text" placeholder="libelle" name="libelle">
-</div>
+    <v-btn :disabled="!valid" color="success" class="mr-4" @click="validate" > Validate </v-btn>
 
-<button>Ajoute</button>
-</form>
+    <v-btn color="error" class="mr-4" @click="reset">Reset Form</v-btn>
 
+    <v-btn color="warning" @click="resetValidation">Reset Validation</v-btn>
+  </v-form>
+
+</v-app>
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vuetify/2.5.9/vuetify.min.js"></script>
+{{{vue}}}
 
 {{> inc/footer}}

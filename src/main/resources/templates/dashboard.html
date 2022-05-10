@@ -85,7 +85,9 @@
 				></v-divider>
         	<v-list-item-content>
         		<v-list-item-subtitle v-text="card.title"></v-list-item-subtitle>
-          		<v-list-item-title v-text="card.chiffre"></v-list-item-title>
+        		{{#animaux}}
+          		<v-list-item-title v-text="{{id}}"></v-list-item-title>
+          		{{/animaux}}
         	</v-list-item-content>
           </v-card>
         </v-col>
@@ -311,8 +313,8 @@
 		  vuetify: new Vuetify(),
 			    data: () => ({
 			    	cards: [
-				          { title: 'Nombre de visite', icon:'mdi-eye', flex: 2, chiffre:'10', color : '#1E88E5' },
-				          { title: 'Nombre inscrits', icon:'mdi-account-multiple',flex: 2, chiffre:'2', color : '#69F0AE'  },
+				          { title: 'Nombre d\'animaux', icon:'mdi-eye', flex: 2, color : '#1E88E5' },
+				          { title: 'Nombre de refuges', icon:'mdi-account-multiple',flex: 2, chiffre:'2', color : '#69F0AE'  },
 				          { title: 'Nombre de recherche',icon:'mdi-magnify', flex: 2, chiffre:'0', color : '#CE93D8'  },
 				          { title: 'Estmation navigation',icon:'mdi-navigation', flex: 4, chiffre:"Envrion 15 minutes"},
 				        ],

@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import edu.supavenir.spanimals.conf.EmailSenderServices;
 import edu.supavenir.spanimals.models.Adoptant;
 import edu.supavenir.spanimals.models.Animal;
 import edu.supavenir.spanimals.models.Espece;
@@ -54,6 +55,9 @@ public class spaController {
 
     @Autowired
 	private VueJS vue;
+    
+    @Autowired
+	private EmailSenderServices service;
 
         @ModelAttribute(name = "vue")
         private VueJS getVue() {
@@ -71,6 +75,13 @@ public class spaController {
 		return "contact";
 	}
 	
+	@PostMapping("/contact")
+	public void sendContactAction() {
+		service.sendSimpleEmail("spanimals.project@gmail.com", "Test", "Contact pour adoption");
+	}
+	
+	
+	
 	@GetMapping("/mentionsLegales")
 	public String mentions() {
 		return "mentions";
@@ -83,7 +94,8 @@ public class spaController {
 	
 	@GetMapping("/boardLeCrabeVampire")
 	public String indexDash(ModelMap model) {
-		
+		List<Animal> animal = AnimRepo.findAll();
+		model.addAttribute("animaux", animal.size());
 		return "dashboard";
 	}
 	
